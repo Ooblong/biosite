@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Sairah González</title>
+<meta name="description" content="Sairah González. Get My Photo Gallery, a free desktop app.">
+<meta name="theme-color" content="#0d0a24">
+<link rel="icon" href="../../shared/icon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Sora:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../shared/kit.css">
+<style>
+:root{--k-bg:#17123a;--k-fg:#fff;--k-muted:#c9c4ea;--k-accent:#fff;--k-on:#17123a;--k-line:#8c84c9;--k-r:12px;--k-font:Sora,sans-serif;--k-display:Unbounded,sans-serif;--k-ok:#8dffcb;--k-err:#ffb3c1}
+*{box-sizing:border-box}
+html,body{min-height:100%;margin:0;color:#fff;font:14.5px/1.4 Sora,sans-serif;background:#0d0a24}
+body{background:radial-gradient(120% 70% at 50% 0,#33208a 0,#120d33 55%,#0a0820);overflow-x:hidden}
+button{font:inherit;color:inherit}
+a{color:inherit}
+:focus-visible{outline:2px solid #fff;outline-offset:2px}
+.head{padding:calc(16px + env(safe-area-inset-top)) 20px 6px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.head h1{margin:0;font:700 15px Unbounded,sans-serif;letter-spacing:.01em}
+.socs{display:flex}
+.deck{--w:min(86vw,352px);position:relative;width:var(--w);height:calc(var(--w)*1.46);margin:10px auto 0;perspective:1100px;touch-action:pan-y}
+.card{position:absolute;inset:0;border-radius:22px;transform-style:preserve-3d;transition:transform .55s cubic-bezier(.2,.9,.25,1.05),opacity .35s;will-change:transform;background:#000}
+.face{position:absolute;inset:0;padding:18px;display:flex;flex-direction:column;gap:9px;border-radius:22px;overflow:hidden;background:var(--bg);color:var(--fg,#fff);box-shadow:0 18px 50px rgba(0,0,0,.55),inset 0 0 0 2px rgba(255,255,255,.3)}
+.face>*{position:relative;z-index:2}
+.foil,.glare{position:absolute!important;inset:0;z-index:3!important;pointer-events:none;border-radius:22px}
+.foil{mix-blend-mode:color-dodge;opacity:.5;background:
+ repeating-linear-gradient(calc(110deg + var(--rx,0)*1deg),#ff5fa2 0,#ffe45f 6%,#5fffb0 12%,#5fc8ff 18%,#c27bff 24%,#ff5fa2 30%);
+ background-size:220% 220%;background-position:calc(50% + var(--mx,0)*60%) calc(50% + var(--my,0)*60%);
+ -webkit-mask:repeating-linear-gradient(45deg,#000 0 3px,#0006 3px 6px)}
+.glare{mix-blend-mode:soft-light;background:radial-gradient(circle at calc(50% + var(--mx,0)*60%) calc(50% + var(--my,0)*60%),#fff,transparent 55%)}
+.kicker{display:flex;justify-content:space-between;font:700 11px Unbounded,sans-serif;letter-spacing:.06em;text-transform:uppercase}
+h2{margin:0;font:900 clamp(30px,9.4vw,38px)/1 Unbounded,sans-serif;letter-spacing:-.03em}
+.win{flex:1;min-height:0;border-radius:12px;overflow:hidden;box-shadow:inset 0 0 0 2px #fff7;position:relative;display:grid;place-items:center}
+.win svg{position:absolute;inset:0;width:100%;height:100%}
+.av{position:relative;width:128px;height:128px;display:grid;place-items:center;font:900 44px Unbounded,sans-serif;color:#17123a;background:#fff;border-radius:50%;overflow:hidden;box-shadow:0 8px 24px #0006}
+.av img{width:100%;height:100%;object-fit:cover}
+.face p{margin:0}
+.btn{min-height:54px;width:100%;font:900 16px Unbounded,sans-serif;color:#17123a;background:#fff;border:0;border-radius:13px;cursor:pointer}
+.btn2{min-height:44px;width:100%;font-weight:600;background:#fff2;border:1.5px solid #fff8;border-radius:12px;cursor:pointer}
+.small{font-size:12px}
+.lk{display:grid;gap:5px;flex:1;align-content:center}
+.lk>*{display:flex;justify-content:space-between;gap:10px;align-items:center;min-height:46px;padding:4px 12px;font:inherit;font-weight:600;text-align:left;color:inherit;text-decoration:none;background:#0003;border:0;border-radius:10px}
+.lk>*:first-child{color:#17123a;background:#fff;cursor:pointer}
+.lk small{font-size:11px;font-weight:400;white-space:nowrap}
+.ctl{display:flex;justify-content:center;align-items:center;gap:14px;padding:16px 0 6px}
+.ctl button{width:50px;height:50px;font-size:20px;background:#fff1;border:1.5px solid #fff5;border-radius:50%;cursor:pointer}
+.pips{display:flex;gap:0}
+.pips button{width:34px;height:44px;padding:0;background:none;border:0;cursor:pointer;display:grid;place-items:center}
+.pips button:after{content:"";width:9px;height:9px;border-radius:50%;background:#fff5}
+.pips button[aria-current=true]:after{background:#fff}
+.foot{max-width:420px;margin:0 auto;padding:6px 20px calc(24px + env(safe-area-inset-bottom));display:flex;flex-wrap:wrap;justify-content:center;gap:0 18px;font-size:13px;align-items:center}
+.foot a{min-height:44px;display:inline-flex;align-items:center}
+.pg{--pg-bg:#100c30;--pg-fg:#fff;--pg-mut:#c9c4ea;--pg-line:#4a4190;--pg-acc:#fff;--pg-on:#17123a;--pg-font:Sora,sans-serif}
+.k-get,.k-prev{border:1px solid #fff3}
+@media(min-width:900px){.deck{--w:min(46vh,380px);margin-top:calc(50dvh - 44vh)}.head{position:fixed;left:0;right:0;top:0}.foot{position:fixed;left:0;right:0;bottom:0;max-width:none}.ctl{padding-top:14px}}
+@media(prefers-reduced-motion:reduce){.card{transition:none}}
+</style>
+</head>
+<body>
+<header class="head"><h1 data-t="person.name"></h1><div class="socs" data-soc></div></header>
+<main>
+  <div class="deck" id="deck" aria-roledescription="card deck">
+    <article class="card" aria-label="Profile"><div class="face" style="--bg:linear-gradient(155deg,#ff4f9a,#6a2bff 70%)">
+      <div class="kicker"><span>Maker</span><span>Card 1 of 5</span></div>
+      <div class="win"><span id="a1" style="position:absolute;inset:0"></span><div class="av" data-av></div></div>
+      <h2 data-t="person.first"></h2><p data-t="person.bio"></p>
+      <i class="foil"></i><i class="glare"></i></div></article>
+    <article class="card" aria-label="My Photo Gallery"><div class="face" style="--bg:linear-gradient(155deg,#ffc53d,#ff5f3c 55%,#c9237e)">
+      <div class="kicker"><span data-t="product.price"></span><span data-t="product.compat"></span></div>
+      <div class="win" id="a2" style="max-height:120px"></div>
+      <h2 style="font-size:clamp(26px,8vw,32px)" data-t="product.name"></h2>
+      <p style="font-size:13px" data-t="product.description"></p>
+      <p style="font-size:13px;font-weight:600" data-t="product.promise"></p>
+      <ul data-details></ul>
+      <button class="btn" data-get>Get it free</button>
+      <button class="btn2" data-preview>Preview the app</button>
+      <i class="foil"></i><i class="glare"></i></div></article>
+    <article class="card" aria-label="Links"><div class="face" style="--bg:linear-gradient(155deg,#10b7a8,#1450c8)">
+      <div class="kicker"><span>Links</span><span>Card 3 of 5</span></div><h2>Links</h2>
+      <div class="lk" id="links"></div>
+      <i class="foil"></i><i class="glare"></i></div></article>
+    <article class="card" aria-label="Currently building"><div class="face" style="--bg:linear-gradient(155deg,#5e5ce6,#1d1a5a)">
+      <div class="kicker"><span>In progress</span><span>Card 4 of 5</span></div>
+      <div class="win" id="a4"></div>
+      <p class="small">Currently building</p><h2 data-t="building.name"></h2><p data-t="building.status"></p>
+      <a data-build-link>Follow the journey</a>
+      <i class="foil"></i><i class="glare"></i></div></article>
+    <article class="card" aria-label="Newsletter"><div class="face" style="--bg:linear-gradient(155deg,#26264d,#7a2bd8)">
+      <div class="kicker"><span>Newsletter</span><span>Card 5 of 5</span></div><h2 style="flex:1;display:flex;align-items:center">Stay dealt in</h2>
+      <p data-t="newsletter.intro"></p><div data-form="newsletter"></div>
+      <i class="foil"></i><i class="glare"></i></div></article>
+  </div>
+  <div class="ctl"><button id="p" aria-label="Previous card">←</button><div class="pips" id="pips"></div><button id="n" aria-label="Next card">→</button></div>
+</main>
+<footer class="foot"><a data-contact>Contact</a><a data-privacy>Privacy policy</a><span data-t="footer.credit"></span></footer>
+<script src="../../shared/content.js"></script>
+<script src="../../shared/kit.js"></script>
+<script>
+const {$,$$,S,art,link,esc,reduced}=BIO;
+$('#a1').innerHTML=art(2,400,300);$('#a2').innerHTML=art(0,400,160);$('#a4').innerHTML=art(6,400,300);
+$('#links').innerHTML=S.links.map(l=>link(l,`<span>${esc(l.label)}</span><small>${esc(l.note)}</small>`)).join('');
+const deck=$('#deck'),cards=$$('.card');let cur=1,drag=null;
+$('#pips').innerHTML=cards.map((c,i)=>`<button data-c="${i}" aria-label="Card ${i+1}"></button>`).join('');
+function lay(fly){cards.forEach((c,i)=>{const d=(i-cur+cards.length)%cards.length;c.inert=d!==0;c.style.zIndex=20-d;
+ c.style.transform=d===0?'':`translateY(${d*9}px) translateZ(${-d*38}px) rotateZ(${(d%2?1:-1)*d*1.6}deg)`;
+ c.style.opacity=d>2?0:1});$$('#pips button').forEach((b,i)=>b.setAttribute("aria-current",i===cur))}
+function go(n){cur=(n+cards.length)%cards.length;lay()}
+function throwCard(dir){const c=cards[cur];c.style.transition='transform .34s ease-in';c.style.transform=`translateX(${dir*130}%) rotateZ(${dir*20}deg)`;
+ setTimeout(()=>{c.style.transition='';go(cur+1);},reduced?0:240)}
+$('#n').onclick=()=>throwCard(1);$('#p').onclick=()=>go(cur-1);$('#pips').onclick=e=>{const b=e.target.closest('[data-c]');if(b)go(+b.dataset.c)};
+// tilt
+function tilt(x,y){const c=cards[cur];if(!c||drag)return;c.style.setProperty('--mx',x);c.style.setProperty('--my',y);c.style.setProperty('--rx',x*40);c.style.transform=`rotateY(${x*16}deg) rotateX(${-y*16}deg)`}
+if(!reduced){
+ addEventListener('pointermove',e=>{if(e.pointerType!=='mouse')return;const r=deck.getBoundingClientRect();tilt(Math.max(-1,Math.min(1,(e.clientX-r.left)/r.width*2-1)),Math.max(-1,Math.min(1,(e.clientY-r.top)/r.height*2-1)))},{passive:true});
+ const o=e=>{if(e.gamma!=null)tilt(Math.max(-1,Math.min(1,e.gamma/28)),Math.max(-1,Math.min(1,(e.beta-40)/28)))};
+ addEventListener('deviceorientation',o,{passive:true});
+ addEventListener('pointerup',()=>{if(window.DeviceOrientationEvent&&DeviceOrientationEvent.requestPermission){DeviceOrientationEvent.requestPermission().catch(()=>{})}},{once:true});
+ // a short "look, it's foil" sway on arrival, then the card holds still so buttons are easy to tap
+ let t=0,live=true;addEventListener('pointerdown',()=>{live=false},{once:true,capture:true});
+ (function idle(){t+=.02;const fade=Math.max(0,1-t/5);if(!live||fade===0){if(!drag&&!deck.matches(':hover')){const c=cards[cur];c.style.transform='';c.style.setProperty('--mx',0);c.style.setProperty('--my',0)}return}
+  if(!drag&&!deck.matches(':hover'))tilt(Math.sin(t*1.4)*.5*fade,Math.cos(t)*.32*fade);requestAnimationFrame(idle)})();
+}
+// swipe
+deck.addEventListener('pointerdown',e=>{if(e.target.closest('input,button,a,label'))return;drag={x:e.clientX,id:e.pointerId,c:cards[cur]};drag.c.style.transition='none'});
+addEventListener('pointermove',e=>{if(!drag||e.pointerId!==drag.id)return;const dx=e.clientX-drag.x;drag.dx=dx;drag.c.style.transform=`translateX(${dx}px) rotateZ(${dx/18}deg)`},{passive:true});
+function end(){if(!drag)return;const {c,dx=0}=drag;c.style.transition='';drag=null;if(Math.abs(dx)>70)throwCard(Math.sign(dx));else c.style.transform=''}
+addEventListener('pointerup',end);addEventListener('pointercancel',end);
+addEventListener('keydown',e=>{if(e.target.matches('input'))return;if(e.key==='ArrowRight')throwCard(1);if(e.key==='ArrowLeft')go(cur-1)});
+window.BIO_GOTO=go;
+lay();
+</script>
+</body>
+</html>

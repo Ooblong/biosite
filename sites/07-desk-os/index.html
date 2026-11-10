@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Sairah González</title>
+<meta name="description" content="Sairah González. Get My Photo Gallery, a free desktop app.">
+<meta name="theme-color" content="#7a6cf0">
+<link rel="icon" href="../../shared/icon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../shared/kit.css">
+<style>
+:root{--desk:#7a6cf0;--win:#fff3e4;--line:#2b1f57;--bar:#ff7eb6;--bar2:#ffd166;--ink:#2b1f57;
+--k-bg:#fff3e4;--k-fg:#2b1f57;--k-muted:#5a4f86;--k-accent:#2b1f57;--k-on:#fff3e4;--k-line:#2b1f57;--k-r:0;--k-font:"Atkinson Hyperlegible",sans-serif;--k-display:Silkscreen,monospace;--k-dlg-r:0;--k-dlg-b:3px solid #2b1f57;--k-field:#fff}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;overflow:hidden;color:var(--ink);font:15px/1.4 "Atkinson Hyperlegible",sans-serif;overscroll-behavior:none}
+button{font:inherit;color:inherit}
+a{color:inherit}
+:focus-visible{outline:2px dashed var(--ink);outline-offset:2px}
+.desk{position:fixed;inset:0;background-color:var(--desk);background-image:conic-gradient(#6a5ce4 25%,transparent 0 50%,#6a5ce4 0 75%,transparent 0);background-size:4px 4px;overflow:hidden}
+.icons{position:absolute;left:6px;top:calc(8px + env(safe-area-inset-top));display:grid;grid-template-columns:repeat(4,1fr);width:calc(100% - 12px);max-width:380px;gap:2px;z-index:1}
+.ic{display:grid;justify-items:center;gap:3px;padding:6px 0;min-height:70px;font:400 9.5px/1.2 Silkscreen,monospace;color:#fff;background:none;border:0;cursor:pointer;text-shadow:1px 1px 0 var(--ink);text-align:center}
+.ic span{display:grid;place-items:center;width:40px;height:34px;font-size:20px;background:var(--bar2);color:var(--ink);box-shadow:0 0 0 2px var(--ink),3px 3px 0 2px var(--ink);text-shadow:none}
+.ic[data-w=gallery] span{background:var(--bar)}
+.win{position:absolute;display:flex;flex-direction:column;width:min(var(--ww,340px),calc(100vw - 16px));max-height:calc(100dvh - 58px);background:var(--win);border:2.5px solid var(--line);box-shadow:5px 5px 0 var(--line);animation:op .22s cubic-bezier(.2,.9,.3,1.2)}
+@keyframes op{from{transform:scale(.9);opacity:0}}
+.ttl{flex:none;display:flex;align-items:center;gap:8px;height:40px;padding:0 3px 0 8px;font:700 12px Silkscreen,monospace;background:repeating-linear-gradient(0deg,var(--ink) 0 2px,transparent 2px 4px) right 44px center/calc(100% - 200px) 14px no-repeat,#e8dcff;border-bottom:2.5px solid var(--line);cursor:grab;touch-action:none;user-select:none}
+.win.front .ttl{background:repeating-linear-gradient(0deg,var(--ink) 0 2px,transparent 2px 4px) right 44px center/calc(100% - 200px) 14px no-repeat,var(--bar)}
+.ttl span{flex:none;white-space:nowrap}
+.ttl button{margin-left:auto;width:40px;height:32px;padding:0;font:700 13px Silkscreen,monospace;background:var(--win);border:2px solid var(--line);cursor:pointer;position:relative}
+.ttl button:after{content:"";position:absolute;inset:-9px -7px}
+.bd{padding:14px;overflow:auto}
+.bd h1{margin:0;font:700 clamp(29px,8.8vw,34px)/1.04 Silkscreen,monospace;letter-spacing:-.04em}
+.bd h2{margin:0 0 6px;font:700 25px/1.08 Silkscreen,monospace;letter-spacing:-.03em}
+.bd p{margin:0 0 9px}
+.prof{display:flex;gap:12px;align-items:center;margin-bottom:8px}
+.av{flex:none;width:64px;height:64px;display:grid;place-items:center;font:700 22px Silkscreen,monospace;color:var(--ink);background:var(--bar2);border:2.5px solid var(--line);overflow:hidden}
+.av img{width:100%;height:100%;object-fit:cover}
+.socs{display:flex;gap:2px;margin-left:-10px}
+.flag{display:inline-block;padding:1px 7px;margin-right:6px;font:700 12px Silkscreen,monospace;background:var(--bar2);border:2px solid var(--line)}
+.flag.d{background:#fff}
+.btn{display:block;width:100%;min-height:54px;font:700 17px Silkscreen,monospace;color:var(--win);background:var(--ink);border:0;box-shadow:inset -3px -3px 0 #0007,inset 3px 3px 0 #fff5;cursor:pointer}
+.btn:active{box-shadow:inset 3px 3px 0 #0007}
+.sm{font-size:13px;color:var(--k-muted)}
+.pg{--pg-bg:#fff;--pg-fg:#2b1f57;--pg-mut:#5a4f86;--pg-line:#2b1f57;--pg-acc:#7a6cf0;--pg-on:#fff;--pg-r:0;--pg-tile-r:0;--pg-font:"Atkinson Hyperlegible",sans-serif;margin:8px 0;border-width:2px}
+.lk{display:grid;border:2px solid var(--line);background:#fff}
+.lk>*{display:flex;justify-content:space-between;gap:10px;align-items:center;min-height:46px;padding:4px 10px;font-weight:700;text-align:left;text-decoration:none;color:inherit;background:none;border:0;border-bottom:1px dotted var(--line);width:100%}
+.lk>*:last-child{border-bottom:0}
+.lk>*:first-child{background:var(--bar2);cursor:pointer}
+.lk small{font-weight:400;font-size:12.5px;white-space:nowrap}
+.bar{position:absolute;left:0;right:0;bottom:0;z-index:9999;display:flex;align-items:center;gap:5px;height:calc(46px + env(safe-area-inset-bottom));padding:0 6px env(safe-area-inset-bottom);background:var(--win);border-top:2.5px solid var(--line)}
+.tabs{flex:1;display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;min-width:0}
+.tabs::-webkit-scrollbar{display:none}
+.tabs button{flex:none;height:34px;max-width:130px;padding:0 8px;font:400 10px Silkscreen,monospace;background:#fff;border:2px solid var(--line);cursor:pointer;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tabs button.on{background:var(--bar2)}
+.clock{flex:none;font:400 11px Silkscreen,monospace;padding-left:4px}
+.a-links{display:grid;gap:2px}
+.a-links a{min-height:42px;display:inline-flex;align-items:center}
+@media(min-width:900px){.icons{grid-template-columns:90px;width:auto;left:14px;top:14px}.ic{font-size:11px}.bd h1{font-size:40px}}
+@media(prefers-reduced-motion:reduce){.win{animation:none}}
+</style>
+</head>
+<body>
+<main class="desk" id="desk">
+  <div class="icons" id="icons"></div>
+  <div class="bar"><div class="tabs" id="tabs"></div><span class="clock" id="clock"></span></div>
+</main>
+<template id="w-about"><div class="prof"><div class="av" data-av></div><h1 data-t="person.name"></h1></div><p data-t="person.bio"></p><div class="socs" data-soc data-labels></div></template>
+<template id="w-gallery"><p><span class="flag" data-t="product.price"></span><span class="flag d" data-t="product.compat"></span></p><h2 data-t="product.name"></h2><p data-t="product.description"></p><p><b data-t="product.promise"></b></p><ul data-details></ul><button class="btn" data-get>Get it free</button><p class="sm" style="margin:9px 0 0" data-t="product.compatNote"></p><div data-demo></div></template>
+<template id="w-links"><div class="lk" id="links"></div></template>
+<template id="w-build"><p class="sm">Currently building</p><h2 data-t="building.name"></h2><p data-t="building.status"></p><a data-build-link>Follow the journey</a></template>
+<template id="w-news"><h2>Newsletter</h2><p data-t="newsletter.intro"></p><div data-form="newsletter"></div></template>
+<template id="w-info"><div class="a-links"><a data-contact>Contact</a><a data-privacy>Privacy policy</a><span class="sm" data-t="footer.credit"></span></div></template>
+<script src="../../shared/content.js"></script>
+<script src="../../shared/kit.js"></script>
+<script>
+const {$,$$,S,link,esc,hydrate}=BIO;
+const W={about:['About.txt','☺',340],gallery:['Photo Gallery','▣',400],links:['Links','☰',340],build:['Building','⚒',310],news:['Newsletter','✉',340],info:['Info','ⓘ',280]};
+const desk=$('#desk'),tabs=$('#tabs');let z=10,open={};
+$('#icons').innerHTML=Object.entries(W).map(([k,[t,i]])=>`<button class="ic" data-w="${k}"><span aria-hidden="true">${i}</span>${t}</button>`).join('');
+const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
+function front(k){Object.values(open).forEach(o=>o.el.classList.remove('front'));const o=open[k];if(!o)return;o.el.style.zIndex=++z;o.el.classList.add('front');$$('#tabs button').forEach(b=>b.classList.toggle('on',b.dataset.t===k))}
+function place(el,x,y){const mw=innerWidth-el.offsetWidth,mh=innerHeight-46-el.offsetHeight;el.style.left=clamp(x,Math.min(0,mw),Math.max(0,mw))+'px';el.style.top=clamp(y,0,Math.max(0,mh))+'px'}
+function openWin(k,x,y){if(open[k])return front(k);const [t,,w]=W[k];const el=document.createElement('section');el.className='win';el.style.setProperty('--ww',w+'px');el.setAttribute('aria-label',t);
+ el.innerHTML=`<div class="ttl"><span>${t}</span><button aria-label="Close ${t}">x</button></div><div class="bd"></div>`;
+ $('.bd',el).append($('#w-'+k).content.cloneNode(true));desk.insertBefore(el,$('.bar'));
+ if(k==='links')$('#links',el).innerHTML=S.links.map(l=>link(l,`<span>${esc(l.label)}</span><small>${esc(l.note)}</small>`)).join('');
+ hydrate(el);$$('[data-soc]',el).forEach(s=>s.dataset.soc='');open[k]={el};
+ const n=Object.keys(open).length,m=innerWidth<900;
+ place(el,x??(m?(innerWidth-el.offsetWidth)/2+(n%3-1)*5:110+n*34),y??(m?(innerHeight-46-el.offsetHeight)*.55+n*8:30+n*30));
+ const b=document.createElement('button');b.textContent=t;b.dataset.t=k;tabs.append(b);
+ $('.ttl button',el).onclick=()=>{el.remove();b.remove();delete open[k]};
+ el.addEventListener('pointerdown',()=>front(k));
+ const ttl=$('.ttl',el);let d=null;
+ ttl.addEventListener('pointerdown',e=>{if(e.target.tagName==='BUTTON')return;d={x:e.clientX-el.offsetLeft,y:e.clientY-el.offsetTop};ttl.setPointerCapture(e.pointerId)});
+ ttl.addEventListener('pointermove',e=>{if(d)place(el,e.clientX-d.x,e.clientY-d.y)});
+ ttl.addEventListener('pointerup',()=>d=null);front(k);return el}
+$('#icons').onclick=e=>{const b=e.target.closest('[data-w]');if(b)openWin(b.dataset.w)};
+tabs.onclick=e=>{const b=e.target.closest('[data-t]');if(b)front(b.dataset.t)};
+const tick=()=>{$('#clock').textContent=new Date().toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'})};tick();setInterval(tick,3e4);
+if(innerWidth>=900){openWin('about',130,40);openWin('gallery',Math.min(520,innerWidth-430),24);openWin('links',Math.max(150,innerWidth-1000),Math.max(300,innerHeight-420));}
+else{const a=openWin('about',undefined,0),top0=Math.max(150,$('#icons').offsetHeight+14);a.style.top=top0+'px';const gy=Math.min(top0+a.offsetHeight-6,innerHeight*.5);const g=openWin('gallery',undefined,gy);g.style.maxHeight=(innerHeight-46-gy-10)+'px';g.style.top=gy+'px';}
+window.BIO_QA=async()=>{Object.keys(W).forEach(k=>openWin(k))};
+</script>
+</body>
+</html>

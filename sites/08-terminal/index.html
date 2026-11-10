@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,interactive-widget=resizes-content">
+<title>Sairah González</title>
+<meta name="description" content="Sairah González. Get My Photo Gallery, a free desktop app.">
+<meta name="theme-color" content="#120a02">
+<link rel="icon" href="../../shared/icon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../shared/kit.css">
+<style>
+:root{--bg:#120a02;--am:#ffb000;--dim:#d48f00;
+--k-bg:#120a02;--k-fg:#ffb000;--k-muted:#d9a033;--k-accent:#ffb000;--k-on:#120a02;--k-line:#ffb000;--k-r:0;--k-font:VT323,monospace;--k-display:VT323,monospace;--k-err:#ff7043;--k-ok:#ffd978;--k-dlg-r:0;--k-dlg-b:2px solid #ffb000}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;background:#000;color:var(--am);font:21px/1.18 VT323,monospace;overscroll-behavior:none}
+button{font:inherit;color:inherit}
+a{color:inherit}
+::selection{background:var(--am);color:var(--bg)}
+:focus-visible{outline:2px solid var(--am);outline-offset:1px}
+.crt{position:relative;height:100dvh;max-width:860px;margin:auto;display:flex;flex-direction:column;background:radial-gradient(ellipse at center,#241402 0,var(--bg) 70%);text-shadow:0 0 6px rgba(255,176,0,.55);overflow:hidden}
+.crt:before{content:"";position:absolute;inset:0;z-index:5;pointer-events:none;background:repeating-linear-gradient(0deg,rgba(0,0,0,.22) 0 1px,transparent 1px 3px)}
+.crt:after{content:"";position:absolute;left:0;right:0;height:90px;z-index:5;pointer-events:none;background:linear-gradient(transparent,rgba(255,176,0,.05),transparent);animation:sweep 7s linear infinite}
+@keyframes sweep{from{top:-100px}to{top:100%}}
+.out{flex:1;overflow-y:auto;padding:calc(14px + env(safe-area-inset-top)) 16px 6px;scrollbar-width:none;overflow-wrap:anywhere}
+.out::-webkit-scrollbar{display:none}
+.out p{margin:0 0 4px}
+pre{margin:0;font:inherit;white-space:pre;line-height:1}
+.logo{font-size:clamp(11px,3.5vw,18px);line-height:1;margin:2px 0 10px}
+h1{margin:6px 0;font:400 clamp(44px,13.5vw,76px)/.95 VT323,monospace}
+h2{margin:6px 0;font:400 clamp(38px,11vw,58px)/.95 VT323,monospace}
+.d{color:var(--dim)}
+.cmd{margin:12px 0 4px}
+.cmd:before{content:"sairah@gallery:~$ ";color:var(--dim)}
+.rev{padding:0 6px;background:var(--am);color:var(--bg);text-shadow:none}
+.action{display:block;width:100%;min-height:52px;margin:10px 0 6px;font-size:28px;color:var(--bg);background:var(--am);border:0;cursor:pointer;text-shadow:none}
+.action:hover{filter:brightness(1.15)}
+.lk>*{display:flex;gap:8px;min-height:40px;align-items:center;color:inherit;text-decoration:none;background:none;border:0;padding:0;width:100%;text-align:left;font:inherit}
+.lk>*:before{content:">";color:var(--dim)}
+.lk button{cursor:pointer}.lk button:hover{background:var(--am);color:var(--bg);text-shadow:none}
+.lk i{margin-left:auto;font-style:normal;color:var(--dim);white-space:nowrap;font-size:18px}
+.socs{display:flex;gap:0 14px;flex-wrap:wrap}
+.socs .k-soc{min-height:40px}
+.pg{--pg-bg:#000;--pg-fg:#ffb000;--pg-mut:#d9a033;--pg-line:#a06c00;--pg-acc:#ffb000;--pg-on:#120a02;--pg-r:0;--pg-tile-r:0;--pg-font:VT323,monospace;--pg-filter:grayscale(1) sepia(1) saturate(5) hue-rotate(-12deg) brightness(.9);font-size:18px;margin:8px 0;max-width:460px}
+.pg-search{font-size:20px}
+.k-in{font-size:21px}.k-btn{font-size:22px;font-weight:400;text-shadow:none}.k-chk{font-size:19px}.k-msg{font-size:19px}
+.k-chk input{border-radius:0}
+.chips{flex:none;display:flex;gap:6px;overflow-x:auto;padding:6px 12px 2px;scrollbar-width:none;position:relative;z-index:6}
+.chips::-webkit-scrollbar{display:none}
+.chips button{flex:none;min-height:42px;padding:0 11px;background:none;border:1px solid var(--am);cursor:pointer;text-shadow:inherit}
+.chips button.hot{color:var(--bg);background:var(--am);text-shadow:none}
+.line{flex:none;display:flex;align-items:center;gap:8px;padding:6px 16px calc(10px + env(safe-area-inset-bottom));position:relative;z-index:6}
+.line label{color:var(--dim);white-space:nowrap}
+.line input{flex:1;min-width:0;min-height:40px;font:inherit;color:var(--am);caret-color:var(--am);background:none;border:0;outline:0;text-shadow:inherit}
+@media(min-width:900px){body{display:grid;place-items:center;background:#1a1612}.crt{width:860px;height:min(720px,92dvh);border-radius:26px;box-shadow:0 0 0 14px #2a241c,0 0 0 16px #443a2c,0 40px 90px #000}}
+@media(prefers-reduced-motion:reduce){.crt:after{animation:none;display:none}}
+</style>
+</head>
+<body>
+<main class="crt">
+  <div class="out" id="out" role="log" aria-live="polite"></div>
+  <div class="chips" id="chips" aria-label="Commands"></div>
+  <form class="line" id="line"><label for="cmd">~$</label><input id="cmd" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="type help or tap a command" style="font-size:21px"></form>
+</main>
+<script src="../../shared/content.js"></script>
+<script src="../../shared/kit.js"></script>
+<script>
+const {$,$$,S,link,esc,hydrate,reduced}=BIO;
+const out=$('#out'),input=$('#cmd'),P=S.product;
+const LOGO=`  ___   ___\n / __| / __|\n \\__ \\| (_ |\n |___/ \\___|`;
+const C={
+ help:['List commands',()=>`<p>${Object.entries(C).map(([k,v])=>`<b>${k.padEnd(9,' ')}</b> <span class="d">${v[0]}</span>`).join('<br>')}</p>`],
+ whoami:['Who is this',()=>`<div data-av hidden></div><h1>${esc(S.person.name)}</h1><p>${esc(S.person.bio)}</p><div class="socs" data-soc="label"></div>`],
+ gallery:['Featured app',()=>`<p><span class="rev">${esc(P.price)}</span> <span class="rev">${esc(P.compat)}</span></p><h2>${esc(P.name)}</h2><p>${esc(P.description)}</p><p>${esc(P.promise)}</p>${P.details.map(d=>`<p>- ${esc(d)}</p>`).join('')}<button class="action" data-run="get">Get it free</button><p class="d">${esc(P.compatNote)}</p>`],
+ preview:['Try the sample preview',()=>`<div data-demo></div>`],
+ get:['Email me the app',()=>`<p>${esc(S.download.intro)}</p><div data-form="download" data-btn="Email me the app"></div>`],
+ links:['Links and resources',()=>`<div class="lk">${S.links.map(l=>l.action==='get'?`<button data-run="get">${esc(l.label)}<i>${esc(l.note)}</i></button>`:link(l,`${esc(l.label)}<i>${esc(l.note)}</i>`)).join('')}</div>`],
+ building:['Current project',()=>`<p class="d">Currently building</p><h2>${esc(S.building.name)}</h2><p>${esc(S.building.status)}</p>${S.building.url?`<a href="${esc(S.building.url)}" target="_blank" rel="noopener">Follow the journey</a>`:''}`],
+ subscribe:['Join the newsletter',()=>`<p>${esc(S.newsletter.intro)}</p><div data-form="newsletter"></div>`],
+ contact:['Contact and privacy',()=>`<p><a data-contact>Contact</a> &nbsp; <a data-privacy>Privacy policy</a></p><p class="d">${esc(S.footer.credit)}</p>`],
+ clear:['Clear the screen',()=>{out.innerHTML='';return ''}]
+};
+const hist=[];let hp=0;
+const type=async(el,txt)=>{if(reduced){el.textContent=txt;return}for(let i=1;i<=txt.length;i++){el.textContent=txt.slice(0,i);await new Promise(r=>setTimeout(r,16))}};
+let queue=Promise.resolve();
+function run(c){return queue=queue.then(async()=>{c=c.trim().toLowerCase();if(!c)return;const p=document.createElement('p');p.className='cmd';out.append(p);await type(p,c);
+ const f=C[c];const w=document.createElement('div');
+ if(f){const h=f[1]();if(c==='clear')return;w.innerHTML=h}else w.innerHTML=`<p>Command not found: ${esc(c)}. Type <b>help</b> to see what works.</p>`;
+ out.append(w);hydrate(w);out.scrollTop=out.scrollHeight})}
+$('#line').onsubmit=e=>{e.preventDefault();const v=input.value;if(v){hist.push(v);hp=hist.length}input.value='';run(v)};
+input.addEventListener('keydown',e=>{if(e.key==='ArrowUp'){hp=Math.max(0,hp-1);input.value=hist[hp]||''}if(e.key==='ArrowDown'){hp=Math.min(hist.length,hp+1);input.value=hist[hp]||''}if(e.key==='Tab'){const m=Object.keys(C).find(k=>k.startsWith(input.value));if(m&&input.value){e.preventDefault();input.value=m}}});
+$('#chips').innerHTML=['get','gallery','preview','links','building','subscribe','contact','help'].map((k,i)=>`<button data-run="${k}" class="${!i?'hot':''}">${k}</button>`).join('');
+document.addEventListener('click',e=>{const b=e.target.closest('[data-run]');if(b)run(b.dataset.run)});
+out.innerHTML=`<p class="d">Connected. Type <b>help</b> or tap a command below.</p>`;run('whoami');run('gallery');
+window.BIO_QA=async()=>{for(const k of ['preview','get','links','building','subscribe','contact'])await run(k)};
+</script>
+</body>
+</html>

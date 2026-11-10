@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Sairah González</title>
+<meta name="description" content="Sairah González. Get My Photo Gallery, a free desktop app.">
+<meta name="theme-color" content="#f7c6d9">
+<link rel="icon" href="../../shared/icon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Monoton&family=DotGothic16&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../shared/kit.css">
+<style>
+:root{--body:#ff5b2e;--body2:#d63e17;--glass:#14202e;--led:#ff3b30;--cream:#fff4ea;--ink:#2a1208;
+--k-bg:#fff4ea;--k-fg:#2a1208;--k-muted:#6b4a3c;--k-accent:#2a1208;--k-on:#fff4ea;--k-line:#2a1208;--k-r:12px;--k-font:Outfit,sans-serif;--k-display:Outfit,sans-serif;--k-field:#fff}
+*{box-sizing:border-box}
+body{margin:0;min-height:100dvh;color:var(--ink);font:400 16px/1.4 Outfit,sans-serif;background:#f7c6d9;background-image:conic-gradient(#f2b3cb 25%,transparent 0 50%,#f2b3cb 0 75%,transparent 0);background-size:48px 48px;overflow-x:hidden}
+button{font:inherit;color:inherit}
+a{color:inherit}
+:focus-visible{outline:3px solid #2a1208;outline-offset:2px}
+.wrap{max-width:980px;margin:0 auto;padding:calc(16px + env(safe-area-inset-top)) 12px 30px}
+.me{display:flex;gap:12px;align-items:center;margin:0 4px 16px}
+.av{flex:none;width:64px;height:64px;display:grid;place-items:center;font:800 22px Outfit;color:#fff;background:var(--ink);border-radius:50%;border:3px solid #fff;overflow:hidden}
+.av img{width:100%;height:100%;object-fit:cover}
+.me h1{margin:0;font:800 clamp(26px,7.4vw,34px)/1 Outfit;letter-spacing:-.02em}
+.me p{margin:4px 0 0;font-size:14px}
+.socs{display:flex;margin:2px 0 0 -10px}
+.mach{position:relative;padding:12px;background:linear-gradient(90deg,var(--body2),var(--body) 10%,var(--body) 90%,var(--body2));border-radius:20px 20px 10px 10px;box-shadow:0 30px 60px rgba(90,20,40,.35),inset 0 0 0 3px rgba(0,0,0,.12)}
+.sign{margin:0 0 10px;padding:10px 8px 8px;text-align:center;font:400 clamp(26px,8vw,40px)/1 Monoton,cursive;color:#fff8d6;background:#2a1208;border-radius:10px;text-shadow:0 0 12px rgba(255,220,120,.7);letter-spacing:.04em;animation:flick 6s infinite}
+@keyframes flick{0%,92%,96%,100%{opacity:1}94%{opacity:.6}}
+.body{display:grid;gap:10px}
+.window{position:relative;padding:10px 10px 0;background:linear-gradient(135deg,rgba(255,255,255,.12),transparent 40%),var(--glass);border-radius:10px;box-shadow:inset 0 0 0 4px #0b131c}
+.rows{display:grid;grid-template-columns:repeat(3,1fr);gap:8px 6px}
+.slot{position:relative;display:flex;flex-direction:column;align-items:center;gap:4px;padding:6px 2px 4px;min-height:44px;background:none;border:0;cursor:pointer;color:#fff}
+.slot .box{width:78%;aspect-ratio:.8;display:grid;place-items:end center;padding:4px;font:600 10.5px/1.1 Outfit;text-align:center;border-radius:4px;background:var(--c,#444);box-shadow:inset -4px 0 0 rgba(0,0,0,.18),0 4px 0 rgba(0,0,0,.35);transition:transform .7s cubic-bezier(.5,0,.8,.5),opacity .2s .65s}
+.slot .box svg{position:absolute;inset:6px 11% auto;width:78%;height:calc(78% - 12px);border-radius:3px;opacity:.95}
+.slot.soon .box{filter:saturate(.35) brightness(.75)}
+.slot .coil{width:90%;height:10px;background:repeating-linear-gradient(90deg,#c9ced6 0 2px,transparent 2px 7px);border-radius:3px;transition:transform .7s}
+.slot.vend .coil{transform:translateX(12px)}
+.slot.vend .box{transform:translateY(240px) rotate(12deg);opacity:0}
+.slot .code{font:400 12px DotGothic16;padding:0 5px;color:#ffe9a8;background:#000;border-radius:3px}
+.slot .tag{position:absolute;top:2px;right:6%;font:800 9px Outfit;padding:1px 4px;color:var(--ink);background:#ffe14d;border-radius:3px}
+.slot.soon .tag{background:#c9ced6}
+.slot[aria-pressed=true] .code{background:var(--led);color:#fff}
+.tray{position:relative;margin:10px -10px 0;height:64px;display:grid;place-items:center;background:#0b131c;border-top:4px solid #2a3542;border-radius:0 0 10px 10px;cursor:pointer;color:#c9ced6;font:400 14px DotGothic16;border-left:0;border-right:0;border-bottom:0;width:calc(100% + 20px)}
+.tray .got{position:absolute;left:50%;top:6px;width:40px;height:50px;margin-left:-20px;border-radius:4px;background:var(--c,#ff8a3d);transform:translateY(-80px) rotate(-20deg);opacity:0;transition:transform .5s cubic-bezier(.3,1.6,.5,1),opacity .1s}
+.tray.full .got{transform:rotate(-8deg);opacity:1}
+.tray.full{color:#fff}
+.panel{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:start}
+.led{grid-column:1/-1;padding:10px 12px;min-height:58px;font:400 18px/1.25 DotGothic16,monospace;color:var(--led);background:#120403;border-radius:8px;box-shadow:inset 0 0 0 3px #000;text-shadow:0 0 6px rgba(255,59,48,.8);overflow-wrap:anywhere}
+.keys{grid-column:1/-1;display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
+.keys button{min-height:46px;font:800 18px Outfit;color:#2a1208;background:linear-gradient(#fff,#e6dcd2);border:0;border-radius:9px;box-shadow:0 3px 0 #9b7f6f;cursor:pointer}
+.keys button:active{transform:translateY(3px);box-shadow:none}
+.keys .ok{grid-column:span 2;color:#fff;background:linear-gradient(#3fbf6a,#2a9a50);box-shadow:0 3px 0 #1d6b38}
+.keys .clr{color:#fff;background:linear-gradient(#555,#333);box-shadow:0 3px 0 #111}
+.coin{grid-column:1/-1;display:flex;align-items:center;gap:10px;color:#fff;font-weight:600;font-size:13px}
+.coin i{width:10px;height:36px;border-radius:5px;background:#111;box-shadow:inset 0 0 0 2px #888}
+.prod{margin-top:18px;padding:18px;background:var(--cream);border-radius:20px;border:3px solid var(--ink);box-shadow:6px 6px 0 var(--ink);scroll-margin-top:16px}
+.prod.pop{animation:pop .5s cubic-bezier(.3,1.6,.5,1)}
+@keyframes pop{from{transform:scale(.94)}}
+.prod h2{margin:4px 0 8px;font:800 clamp(30px,8.6vw,42px)/1 Outfit;letter-spacing:-.03em}
+.prod p{margin:0 0 10px}
+.chip{display:inline-block;padding:3px 10px;margin-right:6px;font-weight:800;font-size:13px;border-radius:99px;color:#fff;background:#2a9a50}
+.chip.d{background:var(--ink)}
+.cta{display:block;width:100%;min-height:58px;margin:10px 0 8px;font:800 20px Outfit;color:#fff;background:var(--body);border:3px solid var(--ink);border-radius:14px;box-shadow:0 4px 0 var(--ink);cursor:pointer}
+.sm{font-size:14px;color:#6b4a3c}
+.pg{--pg-acc:#ff5b2e;--pg-r:14px;--pg-font:Outfit,sans-serif;--pg-line:#e3d3c6;margin-top:10px}
+.cards{display:grid;gap:14px;margin-top:18px}
+.card{padding:18px;background:#fff;border-radius:20px;border:3px solid var(--ink)}
+.card h2{margin:0 0 6px;font:800 26px/1.05 Outfit}
+.card p{margin:0 0 10px}
+.foot{display:flex;flex-wrap:wrap;gap:0 18px;justify-content:center;margin-top:16px;font-weight:600;font-size:14px}
+.foot a{min-height:44px;display:inline-flex;align-items:center}
+@media(min-width:860px){.body{grid-template-columns:1fr 230px}.panel{grid-template-columns:1fr}.mach{padding:16px}.after{display:grid;grid-template-columns:1.2fr 1fr;gap:18px;align-items:start}.cards{margin-top:18px}}
+@media(prefers-reduced-motion:reduce){.sign{animation:none}.slot .box,.slot .coil,.tray .got{transition:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="me"><div class="av" data-av></div><div><h1 data-t="person.name"></h1><p data-t="person.bio"></p><div class="socs" data-soc></div></div></header>
+  <main class="mach">
+    <p class="sign" aria-hidden="true">SAIRAH'S</p>
+    <div class="body">
+      <div class="window"><div class="rows" id="rows" role="group" aria-label="Items"></div>
+        <button class="tray" id="tray" aria-label="Collection tray">PUSH</button></div>
+      <div class="panel">
+        <div class="led" id="led" aria-live="polite"></div>
+        <div class="keys" id="keys" aria-label="Keypad"></div>
+        <div class="coin"><i aria-hidden="true"></i><span>No coins needed. Everything here is free.</span></div>
+      </div>
+    </div>
+  </main>
+  <div class="after">
+    <section class="prod" id="prod">
+      <p><span class="chip" data-t="product.price"></span><span class="chip d" data-t="product.compat"></span></p>
+      <h2 data-t="product.name"></h2><p data-t="product.description"></p><p><b data-t="product.promise"></b></p><ul data-details></ul>
+      <button class="cta" data-get>Get it free</button><p class="sm" data-t="product.compatNote"></p><div data-demo></div>
+    </section>
+    <div class="cards">
+      <section class="card"><p class="sm" style="margin:0">Restocking soon</p><h2 data-t="building.name"></h2><p data-t="building.status"></p><a data-build-link>Follow the journey</a></section>
+      <section class="card"><h2>Get restock alerts</h2><p data-t="newsletter.intro"></p><div data-form="newsletter"></div></section>
+    </div>
+  </div>
+  <footer class="foot"><a data-contact>Contact</a><a data-privacy>Privacy policy</a><span style="align-self:center" data-t="footer.credit"></span></footer>
+</div>
+<script src="../../shared/content.js"></script>
+<script src="../../shared/kit.js"></script>
+<script>
+const {$,$$,S,art,esc,reduced}=BIO;
+const COL=['#ff8a3d','#3fa7d6','#7c5cff','#2fbf71','#ffb703','#e0457b'];
+const items=S.links.map((l,i)=>({l,code:'AB'[Math.floor(i/3)]+(i%3+1),c:COL[i%COL.length],ok:l.action==='get'||!!l.url}));
+$('#rows').innerHTML=items.map((it,i)=>`<button class="slot ${it.ok?'':'soon'}" data-i="${i}" style="--c:${it.c}" aria-label="${it.code}: ${esc(it.l.label)}, ${it.ok?(it.l.tag||'open'):'coming soon'}"><span class="box">${i===0?art(0,60,60):''}<span>${esc(it.l.label)}</span></span><span class="tag">${it.ok?(it.l.tag||'OPEN'):'SOON'}</span><i class="coil"></i><span class="code">${it.code}</span></button>`).join('');
+$('#keys').innerHTML=['A','B','1','2','3','C','OK'].map(k=>`<button data-k="${k}" class="${k==='OK'?'ok':k==='C'?'clr':''}" aria-label="${k==='C'?'Clear':k}">${k}</button>`).join('');
+let code='',sel=-1;const led=$('#led');
+const say=t=>led.textContent=t;
+function select(i){sel=i;$$('.slot').forEach((s,k)=>s.setAttribute('aria-pressed',k===i));const it=items[i];code=it.code;
+ say(`${it.code} ${it.l.label.toUpperCase()} · ${it.ok?(it.l.tag||'OPEN').toUpperCase()+' · PRESS OK':'COMING SOON'}`)}
+function vend(){if(sel<0){say('ENTER A CODE, E.G. A1');return}const it=items[sel],slot=$$('.slot')[sel];
+ if(!it.ok){say(`${it.code} IS NOT IN STOCK YET. COMING SOON.`);return}
+ say('VENDING…');slot.classList.add('vend');const tray=$('#tray');tray.style.setProperty('--c',it.c);
+ setTimeout(()=>{tray.classList.add('full');tray.innerHTML='<i class="got"></i>TAKE YOUR ITEM';say(`${it.code} READY. TAKE IT FROM THE TRAY.`)},reduced?0:700);
+ setTimeout(()=>{slot.classList.remove('vend')},reduced?0:1300)}
+$('#rows').onclick=e=>{const b=e.target.closest('.slot');if(b)select(+b.dataset.i)};
+$('#keys').onclick=e=>{const b=e.target.closest('[data-k]');if(!b)return;const k=b.dataset.k;
+ if(k==='C'){code='';sel=-1;$$('.slot').forEach(s=>s.setAttribute('aria-pressed',false));say('CLEARED. ENTER A CODE.');return}
+ if(k==='OK'){vend();return}
+ code=(/[AB]/.test(k)?k:(code.length===1?code+k:''));if(code.length===2){const i=items.findIndex(x=>x.code===code);if(i>=0)select(i);else{say(`NO ITEM AT ${code}`);code=''}}else say(code?code+'_':'PICK A LETTER FIRST')};
+$('#tray').onclick=()=>{const t=$('#tray');if(!t.classList.contains('full')){say('THE TRAY IS EMPTY');return}
+ const it=items[sel];t.classList.remove('full');t.textContent='PUSH';
+ if(it.l.action==='get'){const p=$('#prod');p.classList.remove('pop');void p.offsetWidth;p.classList.add('pop');p.scrollIntoView({behavior:reduced?'auto':'smooth',block:'start'});say('ENJOY. NEED THE LINK? PRESS GET IT FREE.')}
+ else if(it.l.url)open(it.l.url,'_blank','noopener')};
+select(0);
+</script>
+</body>
+</html>

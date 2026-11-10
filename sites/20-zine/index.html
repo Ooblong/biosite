@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Sairah González</title>
+<meta name="description" content="Sairah González. Get My Photo Gallery, a free desktop app.">
+<meta name="theme-color" content="#2b2b2b">
+<link rel="icon" href="../../shared/icon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bungee&family=Rubik+Mono+One&family=Playfair+Display:ital,wght@1,900&family=Permanent+Marker&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../shared/kit.css">
+<style>
+:root{--pink:#ff3ea5;--ink:#141414;--paper:#f4f4f1;
+--k-bg:#f4f4f1;--k-fg:#141414;--k-muted:#3c3c3c;--k-accent:#141414;--k-on:#f4f4f1;--k-line:#141414;--k-r:0;--k-font:"Space Mono",monospace;--k-display:"Rubik Mono One",sans-serif;--k-field:#fff;--k-dlg-r:0}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;overflow:hidden;background:#2b2b2b;color:var(--ink);font:400 15px/1.45 "Space Mono",monospace;overscroll-behavior:none}
+button{font:inherit;color:inherit}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--pink);outline-offset:2px}
+.desk{height:100dvh;display:grid;place-items:center;padding:calc(10px + env(safe-area-inset-top)) 10px calc(70px + env(safe-area-inset-bottom));background:radial-gradient(circle at 50% 40%,#3a3a3a,#1b1b1b)}
+.book{position:relative;width:min(100%,430px,calc((100dvh - 90px)*.72));aspect-ratio:5/7;perspective:1600px}
+.leaf{position:absolute;inset:0;transform-origin:0 50%;transform-style:preserve-3d;transition:transform .8s cubic-bezier(.4,.1,.2,1)}
+.leaf.gone{transform:rotateY(-178deg)}
+.pg-face{position:absolute;inset:0;padding:22px 20px;overflow:auto;background:var(--paper);backface-visibility:hidden;box-shadow:inset 18px 0 22px -18px rgba(0,0,0,.35),0 10px 30px rgba(0,0,0,.5);scrollbar-width:none}
+.pg-face::-webkit-scrollbar{display:none}
+.pg-face:before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.22;mix-blend-mode:multiply;background-image:radial-gradient(#000 .6px,transparent .8px);background-size:4px 4px}
+.pg-face>*{position:relative}
+.staple{position:absolute!important;left:6px;width:3px;height:22px;background:linear-gradient(90deg,#999,#eee,#888);z-index:3}
+.n{position:absolute!important;bottom:8px;right:12px;font:700 12px "Space Mono"}
+.cover{background:var(--pink)}
+.ransom{display:flex;flex-wrap:wrap;gap:4px;margin:14px 0 10px;line-height:1}
+.ransom span{display:inline-block;padding:4px 6px;font-size:clamp(34px,10.5vw,52px);box-shadow:2px 2px 0 rgba(0,0,0,.25)}
+.f1{font-family:Bungee;background:#fff}.f2{font-family:"Rubik Mono One";background:var(--ink);color:#fff}.f3{font-family:"Playfair Display";font-style:italic;font-weight:900;background:#ffe600}.f4{font-family:"Permanent Marker";background:#fff;color:var(--pink)}.f5{font-family:"Space Mono";font-weight:700;background:#9df}
+.ransom span:nth-child(3n){transform:rotate(-4deg)}.ransom span:nth-child(4n+1){transform:rotate(3deg)}
+.photo{position:relative;margin:8px auto 14px;width:72%;aspect-ratio:1;transform:rotate(-3deg);filter:grayscale(1) contrast(1.6);background:#fff;padding:8px}
+.photo>div{width:100%;height:100%;display:grid;place-items:center;font:900 64px "Rubik Mono One";background:#ccc;overflow:hidden}
+.photo img{width:100%;height:100%;object-fit:cover}
+.tape{position:absolute!important;width:90px;height:26px;background:rgba(255,240,170,.75);top:-12px;left:30%;transform:rotate(-6deg);box-shadow:0 1px 2px rgba(0,0,0,.2)}
+h2{margin:0 0 10px;font:400 clamp(26px,8vw,34px)/1.05 "Rubik Mono One",sans-serif;text-transform:uppercase}
+.hl{background:linear-gradient(transparent 45%,var(--pink) 45% 88%,transparent 88%);padding:0 3px}
+.mark{font:400 22px "Permanent Marker";color:var(--pink);transform:rotate(-3deg);display:inline-block}
+.pg-face p{margin:0 0 10px}
+.socs{display:flex;gap:4px;margin-left:-10px}
+.bx{display:inline-block;padding:2px 8px;margin:0 6px 8px 0;font-weight:700;border:2px solid var(--ink)}
+.bx.f{background:var(--ink);color:#fff}
+.cut{display:block;width:100%;min-height:58px;margin:10px 0;font:400 18px "Rubik Mono One";color:#fff;background:var(--ink);border:2px dashed #fff;outline:2px solid var(--ink);cursor:pointer}
+.cut:hover{background:var(--pink)}
+.sm{font-size:13px}
+.pg{--pg-r:0;--pg-tile-r:0;--pg-acc:#141414;--pg-line:#141414;--pg-font:"Space Mono",monospace;--pg-filter:grayscale(1) contrast(1.4);border-width:2px;font-size:12.5px}
+.lk>*{display:flex;justify-content:space-between;align-items:baseline;gap:10px;width:100%;min-height:50px;padding:8px 0;font:inherit;font-weight:700;text-align:left;color:inherit;text-decoration:none;background:none;border:0;border-bottom:2px solid var(--ink)}
+.lk>*:first-child{cursor:pointer}.lk>*:first-child span{background:linear-gradient(transparent 45%,var(--pink) 45% 88%,transparent 88%)}
+.lk small{font-weight:400;font-size:12px;white-space:nowrap}
+.foot a{display:inline-flex;min-height:44px;align-items:center;margin-right:16px;font-weight:700}
+.ctl{position:fixed;left:0;right:0;bottom:calc(12px + env(safe-area-inset-bottom));display:flex;justify-content:center;align-items:center;gap:12px;color:#fff;z-index:5}
+.ctl button{min-width:52px;height:48px;padding:0 14px;font:400 14px "Rubik Mono One";color:var(--ink);background:#fff;border:0;cursor:pointer}
+.ctl span{min-width:90px;text-align:center;font-weight:700}
+.zone{position:absolute;top:0;bottom:0;width:22%;z-index:4;background:none;border:0;cursor:pointer}
+.zone.l{left:0;cursor:w-resize}.zone.r{right:0;cursor:e-resize}
+@media(min-width:900px){.book{width:min(460px,calc((100dvh - 90px)*.72))}}
+@media(prefers-reduced-motion:reduce){.leaf{transition:none}}
+</style>
+</head>
+<body>
+<main class="desk">
+  <div class="book" id="book">
+    <article class="leaf"><div class="pg-face cover"><i class="staple" style="top:22%"></i><i class="staple" style="bottom:22%"></i>
+      <p style="font-weight:700;margin:0">ISSUE 01 · INSIDE: A FREE APP</p>
+      <div class="ransom" aria-label="Sairah González"><span class="f1">SAI</span><span class="f3">rah</span><span class="f2">GON</span><span class="f4">zá</span><span class="f5">LEZ</span></div>
+      <div class="photo"><i class="tape"></i><div data-av></div></div>
+      <p data-t="person.bio"></p><div class="socs" data-soc></div>
+      <span class="n">tap → to turn</span></div></article>
+    <article class="leaf"><div class="pg-face"><span class="mark">inside: the free thing!</span>
+      <h2><span class="hl" data-t="product.name"></span></h2>
+      <p><span class="bx f" data-t="product.price"></span><span class="bx" data-t="product.compat"></span></p>
+      <p data-t="product.description"></p><p><b data-t="product.promise"></b></p><ul data-details></ul>
+      <button class="cut" data-get>✂ Get it free</button><p class="sm" data-t="product.compatNote"></p><span class="n">p.2</span></div></article>
+    <article class="leaf"><div class="pg-face"><h2>Try it<br><span class="hl">(sort of)</span></h2><div data-demo></div><span class="n">p.3</span></div></article>
+    <article class="leaf"><div class="pg-face"><h2>Links</h2><div class="lk" id="links"></div><span class="n">p.4</span></div></article>
+    <article class="leaf"><div class="pg-face" style="background:#ffe600"><span class="mark" style="color:#141414">currently building:</span><h2 style="font-size:clamp(30px,10vw,44px);margin-top:10px" data-t="building.name"></h2><p data-t="building.status"></p><a data-build-link>Follow the journey</a><span class="n">p.5</span></div></article>
+    <article class="leaf"><div class="pg-face"><h2>Get the <span class="hl">next issue</span></h2><p data-t="newsletter.intro"></p><div data-form="newsletter"></div>
+      <div class="foot" style="margin-top:22px;border-top:2px solid #141414;padding-top:6px"><a data-contact>Contact</a><a data-privacy>Privacy policy</a><p class="sm" data-t="footer.credit"></p></div><span class="n">back cover</span></div></article>
+    <button class="zone l" id="zl" aria-label="Previous page"></button><button class="zone r" id="zr" aria-label="Next page"></button>
+  </div>
+</main>
+<nav class="ctl" aria-label="Pages"><button id="p" aria-label="Previous page">←</button><span id="pn" aria-live="polite"></span><button id="n" aria-label="Next page">→</button></nav>
+<script src="../../shared/content.js"></script>
+<script src="../../shared/kit.js"></script>
+<script>
+const {$,$$,S,link,esc}=BIO;
+$('#links').innerHTML=S.links.map(l=>link(l,`<span>${esc(l.label)}</span><small>${esc(l.note)}</small>`)).join('');
+const leaves=$$('.leaf');let cur=0;
+function set(n){cur=Math.max(0,Math.min(leaves.length-1,n));leaves.forEach((l,i)=>{l.classList.toggle('gone',i<cur);l.style.zIndex=i<cur?i:100-i;l.inert=i!==cur});
+ $('#pn').textContent=cur===0?'Cover':cur===leaves.length-1?'Back cover':`Page ${cur+1}`;$('#p').disabled=cur===0;$('#n').disabled=cur===leaves.length-1;
+ $('#zl').hidden=cur===0;$('#zr').hidden=cur===leaves.length-1}
+$('#n').onclick=$('#zr').onclick=()=>set(cur+1);$('#p').onclick=$('#zl').onclick=()=>set(cur-1);
+let sx=0,sy=0;const bk=$('#book');
+bk.addEventListener('touchstart',e=>{sx=e.touches[0].clientX;sy=e.touches[0].clientY},{passive:true});
+bk.addEventListener('touchend',e=>{if(e.target.closest('input'))return;const dx=e.changedTouches[0].clientX-sx,dy=e.changedTouches[0].clientY-sy;if(Math.abs(dx)>50&&Math.abs(dx)>Math.abs(dy)*1.4)set(cur+(dx<0?1:-1))},{passive:true});
+addEventListener('keydown',e=>{if(e.target.matches('input'))return;if(e.key==='ArrowRight')set(cur+1);if(e.key==='ArrowLeft')set(cur-1)});
+window.BIO_GOTO=set;set(0);
+</script>
+</body>
+</html>

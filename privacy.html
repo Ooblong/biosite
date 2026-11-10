@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Privacy policy</title>
+<link rel="icon" href="shared/icon.svg">
+<style>
+body{margin:0;background:#fafafa;color:#1a1a1a;font:16px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif}
+main{max-width:680px;margin:0 auto;padding:40px 20px 60px}
+h1{font-size:34px;line-height:1.1;margin:0 0 6px}
+h2{font-size:20px;margin:30px 0 6px}
+.draft{padding:12px 14px;margin:18px 0 26px;background:#fff6db;border:1px solid #f0d27a;border-radius:10px;font-size:14.5px}
+a{color:#1a4fd6}
+.back{display:inline-flex;min-height:44px;align-items:center}
+</style>
+</head>
+<body>
+<main>
+<a class="back" href="javascript:history.back()">← Back</a>
+<h1>Privacy policy</h1>
+<p>For the link-in-bio site of <span data-t="person.name"></span>.</p>
+<p class="draft"><b>Draft.</b> This is a plain starting point written to match how these sites actually work. Have it reviewed for your country before you publish, and fill in your contact email in <code>shared/content.js</code>.</p>
+
+<h2>What is collected</h2>
+<p>Only what you type into a form: your email address, and whether you ticked the optional newsletter or marketing boxes. Nothing else is asked for. The sites do not use advertising or tracking cookies.</p>
+
+<h2>What it's used for</h2>
+<p>If you ask for the My Photo Gallery download link, your email is used to send you that link. If you tick the newsletter box, or subscribe through the newsletter form, your email is added to the mailing list for updates. If you tick the marketing box, you may also get emails about future products and offers. Those boxes are always unticked to start.</p>
+
+<h2>Who handles it</h2>
+<p>Emails are sent and the mailing list is stored by an email service provider (Resend) on behalf of <span data-t="person.name"></span>. Your email is not sold or shared with anyone else.</p>
+
+<h2>Fonts</h2>
+<p>The sites load fonts from Google Fonts, which means your browser connects to Google's servers to fetch them.</p>
+
+<h2>Your choices</h2>
+<p>Newsletter emails include a way to unsubscribe. You can also ask for your email to be removed at any time using the contact details below.</p>
+
+<h2>Contact</h2>
+<p id="contact"></p>
+<p><span data-t="footer.credit"></span></p>
+</main>
+<script src="shared/content.js"></script>
+<script>
+document.querySelectorAll('[data-t]').forEach(el=>{el.textContent=el.dataset.t.split('.').reduce((o,k)=>o&&o[k],SITE)});
+const c=document.getElementById('contact');
+if(SITE.footer.email){c.innerHTML='';const a=document.createElement('a');a.href='mailto:'+SITE.footer.email;a.textContent=SITE.footer.email;c.append(a)}
+else c.textContent='Contact email not added yet.';
+</script>
+</body>
+</html>

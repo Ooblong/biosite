@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Sairah González</title>
+<meta name="description" content="Sairah González. Get My Photo Gallery, a free desktop app.">
+<meta name="theme-color" content="#eef0f4">
+<link rel="icon" href="../../shared/icon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../shared/kit.css">
+<style>
+:root{--bg:#eef0f4;--tile:#fff;--ink:#101114;--mute:#62666f;--lil:#dcd6ff;--mint:#c9f2df;--peach:#ffd9c7;--sky:#cfe6ff;--acc:#4b3cf5;
+--k-bg:#fff;--k-fg:#101114;--k-muted:#62666f;--k-accent:#101114;--k-on:#fff;--k-line:#d4d7de;--k-r:14px;--k-font:Onest,sans-serif;--k-display:Onest,sans-serif;--k-field:#f5f6f8}
+*{box-sizing:border-box}
+body{margin:0;min-height:100dvh;background:var(--bg);color:var(--ink);font:500 15.5px/1.4 Onest,sans-serif}
+button{font:inherit;color:inherit}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--acc);outline-offset:3px}
+.grid{max-width:980px;margin:0 auto;padding:calc(14px + env(safe-area-inset-top)) 12px calc(16px + env(safe-area-inset-bottom));display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.t{position:relative;padding:16px;background:var(--tile);border-radius:26px;overflow:hidden;box-shadow:0 1px 2px rgba(16,17,20,.05);opacity:0;transform:translateY(14px) scale(.98);transition:transform .35s cubic-bezier(.3,1.4,.5,1),box-shadow .3s}
+.in .t{opacity:1;transform:none;transition:opacity .5s,transform .6s cubic-bezier(.2,1,.3,1),box-shadow .3s;transition-delay:calc(var(--i,0)*45ms)}
+.t:hover{box-shadow:0 14px 34px rgba(16,17,20,.10)}
+.t:before{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;background:radial-gradient(260px circle at var(--x,50%) var(--y,50%),rgba(75,60,245,.08),transparent 60%);opacity:0;transition:opacity .3s}
+.t:hover:before{opacity:1}
+.w2{grid-column:span 2}
+.me{display:flex;gap:14px;align-items:center}
+.av{flex:none;width:76px;height:76px;display:grid;place-items:center;font:800 26px Onest;color:var(--acc);background:var(--lil);border-radius:22px;overflow:hidden}
+.av img{width:100%;height:100%;object-fit:cover}
+h1{margin:0;font:800 clamp(28px,8vw,40px)/1 Onest;letter-spacing:-.035em}
+h2{margin:0 0 6px;font:800 26px/1.05 Onest;letter-spacing:-.03em}
+.t p{margin:0 0 8px}
+.mute{color:var(--mute)}
+.bio{font-size:15px}
+.soc{display:flex;flex-direction:column;justify-content:space-between;min-height:110px;padding:14px;text-decoration:none;cursor:pointer;border:0;text-align:left;font-weight:700}
+.soc svg{width:30px;height:30px}
+.soc small{font-weight:500;color:var(--mute);font-size:12.5px}
+.prod{background:linear-gradient(160deg,#1a1640,#3b2ad1);color:#fff}
+.prod .mute{color:#c9c4ff}
+.pills{display:flex;gap:6px;margin-bottom:10px}
+.pills span{padding:4px 11px;font-size:12.5px;font-weight:700;border-radius:99px;background:rgba(255,255,255,.14)}
+.pills span:first-child{color:#101114;background:var(--mint)}
+.prod h2{font-size:clamp(32px,9vw,46px)}
+.cta{display:flex;justify-content:space-between;align-items:center;width:100%;min-height:58px;margin:12px 0 8px;padding:0 10px 0 20px;font-weight:700;font-size:17px;color:#101114;background:#fff;border:0;border-radius:18px;cursor:pointer}
+.cta i{width:40px;height:40px;display:grid;place-items:center;font-style:normal;border-radius:12px;background:var(--mint);transition:transform .25s cubic-bezier(.3,1.6,.5,1)}
+.cta:hover i{transform:translateX(3px) rotate(-8deg)}
+.pg{--pg-bg:#100d33;--pg-fg:#fff;--pg-mut:#c9c4ff;--pg-line:#3d3698;--pg-acc:#c9f2df;--pg-on:#101114;--pg-r:18px;--pg-font:Onest,sans-serif;margin-top:6px}
+.fact{display:flex;flex-direction:column;justify-content:space-between;min-height:130px}
+.fact b{font-size:19px;line-height:1.15;letter-spacing:-.02em}
+.fact svg{width:44px;height:44px}
+.fact .x{stroke-dasharray:60;stroke-dashoffset:60;transition:stroke-dashoffset .8s .3s}
+.in .fact .x{stroke-dashoffset:0}
+.lk{display:grid}
+.lk>*{display:flex;justify-content:space-between;align-items:center;gap:10px;min-height:52px;padding:6px 2px;font:inherit;font-weight:600;text-align:left;color:inherit;text-decoration:none;background:none;border:0;border-top:1px solid #eceef2;width:100%}
+.lk>*:first-child{border-top:0;color:var(--acc);cursor:pointer}
+.lk small{font-weight:500;font-size:12.5px;color:var(--mute);white-space:nowrap}
+.build{background:var(--peach)}
+.bar{height:8px;margin:14px 0 10px;border-radius:9px;background:rgba(16,17,20,.1);overflow:hidden;position:relative}
+.bar i{position:absolute;inset:0 auto 0 0;width:36%;border-radius:9px;background:var(--ink);animation:ind 2.4s cubic-bezier(.6,0,.4,1) infinite}
+@keyframes ind{0%{left:-36%}100%{left:100%}}
+.news{background:var(--sky)}
+.foot{display:flex;flex-wrap:wrap;gap:0 18px;align-items:center;font-size:14px;background:none;box-shadow:none;padding:4px 6px}
+.foot a{min-height:44px;display:inline-flex;align-items:center;font-weight:600}
+@media(min-width:760px){.grid{grid-template-columns:repeat(4,1fr);padding-top:36px;gap:14px}.me{grid-column:span 2}.prod{grid-column:3/5;grid-row:1/4}.lks{grid-column:span 2}.build,.news{grid-column:span 2}}
+@media(prefers-reduced-motion:reduce){.t{opacity:1;transform:none;transition:none}.bar i{animation:none;left:0}.fact .x{stroke-dashoffset:0}}
+</style>
+</head>
+<body>
+<main class="grid" id="g">
+  <section class="t w2 me" style="--i:0"><div class="av" data-av></div><div><h1 data-t="person.name"></h1><p class="mute bio" style="margin:6px 0 0" data-t="person.bio"></p></div></section>
+  <div class="w2" id="socs" style="display:grid;grid-template-columns:repeat(3,1fr);gap:inherit"></div>
+  <section class="t w2 prod" style="--i:2">
+    <div class="pills"><span data-t="product.price"></span><span data-t="product.compat"></span></div>
+    <h2 data-t="product.name"></h2>
+    <p class="mute" data-t="product.description"></p>
+    <ul data-details></ul>
+    <button class="cta" data-get><span>Get it free</span><i aria-hidden="true">→</i></button>
+    <p class="mute" style="font-size:13px" data-t="product.compatNote"></p>
+    <div data-demo></div>
+  </section>
+  <section class="t fact" style="--i:3"><svg viewBox="0 0 48 48" fill="none" stroke="#101114" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M14 34h21a8 8 0 0 0 1-16 11 11 0 0 0-21-3 9 9 0 0 0-1 19z"/><path class="x" d="M8 8l32 32"/></svg><b>No cloud storage</b></section>
+  <section class="t fact" style="--i:4;background:var(--mint)"><svg viewBox="0 0 48 48" fill="none" stroke="#101114" stroke-width="3" stroke-linecap="round" aria-hidden="true"><rect x="8" y="12" width="32" height="24" rx="4"/><path d="M8 20h32"/><path class="x" d="M8 8l32 32"/></svg><b>No subscriptions</b></section>
+  <section class="t w2 lks" style="--i:5"><h2>Links</h2><div class="lk" id="links"></div></section>
+  <section class="t w2 build" style="--i:6"><p style="font-weight:700">Currently building</p><h2 data-t="building.name"></h2><div class="bar" aria-hidden="true"><i></i></div><p data-t="building.status"></p><a data-build-link>Follow the journey</a></section>
+  <section class="t w2 news" style="--i:7"><h2>Newsletter</h2><p data-t="newsletter.intro"></p><div data-form="newsletter"></div></section>
+  <footer class="t w2 foot" style="--i:8;grid-column:1/-1"><a data-contact>Contact</a><a data-privacy>Privacy policy</a><span class="mute" data-t="footer.credit"></span></footer>
+</main>
+<script src="../../shared/content.js"></script>
+<script src="../../shared/kit.js"></script>
+<script>
+const {$,$$,S,link,esc,icon}=BIO;
+$('#links').innerHTML=S.links.map(l=>link(l,`<span>${esc(l.label)}</span><small>${esc(l.note)}</small>`)).join('');
+$('#socs').innerHTML=S.socials.map(s=>{const inner=`${icon(s.id,30)}<span>${esc(s.label)}<br><small>${s.url?'Open':'Link coming soon'}</small></span>`;return s.url?`<a class="t soc" style="--i:1" href="${esc(s.url)}" target="_blank" rel="noopener">${inner}</a>`:`<button class="t soc" style="--i:1" data-unset="${esc(s.label)} link">${inner}</button>`}).join('');
+requestAnimationFrame(()=>$('#g').classList.add('in'));
+$$('.t').forEach(t=>t.addEventListener('pointermove',e=>{const r=t.getBoundingClientRect();t.style.setProperty('--x',e.clientX-r.left+'px');t.style.setProperty('--y',e.clientY-r.top+'px')}));
+// socials rendered by hand here, so mark them for the shared checks
+$$('#socs .soc').forEach(s=>s.classList.add('k-soc'));
+</script>
+</body>
+</html>

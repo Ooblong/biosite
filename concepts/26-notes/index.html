@@ -1,0 +1,472 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Concept 26 · Notes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600&family=Young+Serif&display=swap" rel="stylesheet">
+<style>
+:root{
+  --haze:#b7c6ee; --lilac:#e6d3f7; --frost:#f6f7ff; --blue:#2c5aa8;
+  --butter:#f4f59b; --mint:#c4e6d6; --blush:#f2cadb; --ink:#1c2233; --muted:#4a5270;
+  --glass:rgba(255,255,255,.52); --glass-line:rgba(255,255,255,.75);
+}
+*{box-sizing:border-box}
+html{background:var(--haze)}
+body{margin:0;color:var(--ink);font:400 15px/1.55 Lexend,system-ui,sans-serif;
+  background:radial-gradient(1200px 700px at 15% -10%,#dfe6fb 0,transparent 60%),
+             radial-gradient(900px 700px at 100% 20%,var(--lilac) 0,transparent 60%),
+             radial-gradient(900px 600px at 40% 110%,#cfe0f7 0,transparent 60%),var(--haze);
+  min-height:100vh}
+.wrap{max-width:1180px;margin:0 auto;padding:40px 20px 80px}
+:focus-visible{outline:3px solid var(--blue);outline-offset:3px}
+
+/* ── board typography ── */
+.eyebrow{font:500 12px/1 Lexend;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+h1{margin:12px 0 10px;font:500 clamp(40px,8vw,84px)/.98 Lexend;letter-spacing:-.03em;color:#fff;
+   text-shadow:0 1px 2px rgba(28,34,51,.14)}
+.lede{max-width:640px;font-size:18px;color:var(--ink)}
+h2{margin:0 0 6px;font:500 28px/1.15 Lexend;letter-spacing:-.02em}
+h3{margin:0 0 6px;font:600 15px/1.3 Lexend}
+.sec{margin-top:64px}
+.sec>p.sub{margin:0 0 22px;color:var(--muted);max-width:680px}
+.panel{background:var(--glass);border:1px solid var(--glass-line);border-radius:28px;padding:24px;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+.grid2{display:grid;gap:18px;grid-template-columns:1fr}
+@media(min-width:820px){.grid2{grid-template-columns:1fr 1fr}}
+ul.tick{margin:0;padding:0;list-style:none}
+ul.tick li{position:relative;padding-left:26px;margin:7px 0}
+ul.tick li:before{content:"";position:absolute;left:0;top:.42em;width:14px;height:14px;border-radius:50%;background:var(--mint);box-shadow:inset 0 0 0 1px rgba(28,34,51,.2)}
+ul.cross li:before{background:var(--blush)}
+.note{font-size:13px;color:var(--muted)}
+
+/* ── the fog title (signature) ── */
+.fog{position:relative;display:inline-block;color:#fff}
+.sharp,.fog .crisp{color:#fff;text-shadow:0 1px 3px rgba(28,34,51,.16)}
+.fog .crisp{-webkit-mask-image:linear-gradient(#000 48%,transparent 92%);mask-image:linear-gradient(#000 48%,transparent 92%)}
+.fog .soft{position:absolute;inset:0;filter:blur(4px);-webkit-mask-image:linear-gradient(transparent 40%,#000 82%);mask-image:linear-gradient(transparent 40%,#000 82%)}
+
+/* ── phones ── */
+.screens{display:flex;gap:26px;overflow-x:auto;padding:6px 4px 18px;scroll-snap-type:x mandatory}
+.screens::-webkit-scrollbar{height:6px}.screens::-webkit-scrollbar-thumb{background:rgba(28,34,51,.2);border-radius:9px}
+figure{margin:0;flex:0 0 auto;scroll-snap-align:center}
+figcaption{margin-top:12px;max-width:330px;font-size:13px;color:var(--muted)}
+figcaption b{color:var(--ink);font-weight:600}
+.phone{position:relative;width:330px;height:690px;border-radius:46px;overflow:hidden;padding:16px 16px 0;
+  background:linear-gradient(170deg,#c3d0f2 0%,#cdd6f5 38%,#e3d4f6 70%,#d4dcf6 100%);
+  border:6px solid rgba(255,255,255,.7);box-shadow:0 30px 60px -30px rgba(28,34,51,.45)}
+.status{display:flex;justify-content:space-between;align-items:center;padding:2px 14px 10px;font:600 14px Lexend;color:var(--ink)}
+.status i{display:inline-block;width:22px;height:10px;border-radius:3px;border:1.5px solid var(--ink);position:relative}
+.status i:after{content:"";position:absolute;inset:1.5px 5px 1.5px 1.5px;background:var(--ink);border-radius:1px}
+.topbar{display:flex;justify-content:space-between;align-items:center;margin:6px 4px 0}
+.av{width:52px;height:52px;border-radius:50%;display:grid;place-items:center;font:500 18px Lexend;color:var(--blue);background:rgba(255,255,255,.7);border:1px solid #fff}
+.gbtn{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.35);border:1px solid rgba(255,255,255,.8);color:#fff;font:600 16px Lexend}
+.socrow{display:flex;gap:2px}
+.socrow .gbtn{width:40px;height:40px;color:#fff;background:none;border:0;filter:drop-shadow(0 1px 2px rgba(28,34,51,.22))}
+.socrow svg{width:21px;height:21px}
+.av{overflow:hidden;width:56px;height:56px;border:2px solid #fff}
+.av img{width:100%;height:100%;object-fit:cover;display:block}
+.ptitle{margin:16px 4px 2px;font:500 44px/1 Lexend;letter-spacing:-.03em;color:#fff}
+.pbio{margin:6px 4px 12px;font-size:12.5px;line-height:1.45;color:var(--ink);opacity:.8}
+.chips{display:flex;gap:7px;margin:0 -16px 12px;padding:0 20px;overflow:hidden;white-space:nowrap}
+.chip{flex:0 0 auto;padding:7px 14px;border-radius:99px;font:400 13px Lexend;color:var(--ink);background:rgba(255,255,255,.3);border:1px solid rgba(255,255,255,.85)}
+.chip.on{background:var(--butter);border-color:var(--butter)}
+.chip.center{background:rgba(255,255,255,.25)}
+
+.mason{display:grid;grid-template-columns:1fr 1fr;gap:10px;align-items:start}
+.col{display:grid;gap:10px}
+.card{position:relative;border-radius:22px;padding:12px;overflow:hidden;border:1px solid rgba(255,255,255,.75);background:var(--glass)}
+.lbl{font:500 11px/1.2 Lexend;color:#fff}
+.lbl small{display:block;font-weight:300;opacity:.85}
+.pill{display:inline-flex;align-items:center;gap:4px;padding:4px 9px;border-radius:99px;font:500 10.5px Lexend;background:rgba(255,255,255,.28);border:1px solid rgba(255,255,255,.7);color:#fff}
+.pill.butter{background:var(--butter);border-color:var(--butter);color:var(--ink)}
+
+/* product photo-stack card */
+.stack{height:226px;padding:0;border:0;background:none;overflow:visible}
+.stack .ph{position:absolute;inset:0;border-radius:22px;border:1px solid rgba(255,255,255,.7)}
+.stack .ph.b2{transform:rotate(6deg) translate(6px,2px);background:linear-gradient(140deg,#f6a5b8,#f9d0a0)}
+.stack .ph.b1{transform:rotate(3deg) translate(3px,1px);background:linear-gradient(140deg,#9ec7e8,#cfe9d9)}
+.stack .ph.top{overflow:hidden;background:
+  radial-gradient(60px 50px at 70% 30%,#ffe7a8 0,transparent 70%),
+  radial-gradient(90px 80px at 30% 72%,#f08a5d 0,transparent 70%),
+  radial-gradient(70px 60px at 78% 80%,#d96aa0 0,transparent 70%),
+  linear-gradient(160deg,#7aa5cf,#b9a3df 60%,#efb7c7)}
+.stack .in{position:absolute;inset:0;padding:12px;display:flex;flex-direction:column;justify-content:space-between}
+.stack .row{display:flex;gap:6px;flex-wrap:wrap}
+.stack .tag{position:absolute;top:10px;right:10px}
+
+/* dot-matrix checklist */
+.chk{display:flex;align-items:center;gap:8px;margin:6px 0;padding:6px 8px;border-radius:99px;font:400 11.5px Lexend;background:rgba(255,255,255,.4);border:1px solid rgba(255,255,255,.75)}
+.chk:before{content:"";width:13px;height:13px;border-radius:50%;border:1.5px solid var(--ink);flex:0 0 auto}
+.chk.done{background:rgba(28,34,51,.72);color:#fff;border-color:transparent}
+.chk.done:before{background:#fff;border-color:#fff;box-shadow:inset 0 0 0 3px rgba(28,34,51,.72)}
+
+/* wide product card: photo stack + what it does */
+.feat{display:grid;grid-template-columns:1.05fr 1fr;gap:12px;margin-bottom:10px;padding:8px 12px 8px 8px;background:rgba(255,255,255,.5)}
+.feat .stack{position:relative;height:178px}
+.feat .stack .ph{position:absolute;inset:0;border-radius:18px;border:1px solid rgba(255,255,255,.7)}
+.feat .stack .ph.b2{transform:rotate(-6deg) translate(-2px,2px);background:linear-gradient(140deg,#f6a5b8,#f9d0a0)}
+.feat .stack .ph.b1{transform:rotate(-3deg);background:linear-gradient(140deg,#9ec7e8,#cfe9d9)}
+.feat .stack .ph.top{transform:none;overflow:hidden;background:
+  radial-gradient(50px 44px at 70% 30%,#ffe7a8 0,transparent 70%),
+  radial-gradient(80px 70px at 30% 72%,#f08a5d 0,transparent 70%),
+  radial-gradient(60px 54px at 78% 80%,#d96aa0 0,transparent 70%),
+  linear-gradient(160deg,#7aa5cf,#b9a3df 60%,#efb7c7)}
+.feat .in{position:absolute;inset:0;padding:11px;display:flex;flex-direction:column;justify-content:flex-end}
+.feat .lbl{font-size:13px;line-height:1.15}
+.feat .tag{position:absolute;top:10px;left:10px;right:auto}
+.fside{display:flex;flex-direction:column;justify-content:center;gap:6px}
+.ok{display:flex;align-items:center;gap:7px;font:400 12px Lexend;color:var(--ink)}
+.ok:before{content:"\2713";display:grid;place-items:center;width:17px;height:17px;border-radius:50%;background:#fff;color:var(--blue);font:600 9.5px/1 Lexend;box-shadow:0 1px 2px rgba(28,34,51,.12);flex:0 0 auto}
+.nocloud{margin-top:6px;font:500 12.5px/1.25 Lexend;color:var(--blue)}
+/* blue display card */
+.promise{background:rgba(255,255,255,.72)}
+.promise .big{font:500 23px/1.08 Lexend;letter-spacing:-.02em;color:var(--blue)}
+.promise .big span{display:block;filter:blur(.6px);opacity:.75}
+
+/* building pulse pill */
+.build{display:flex;align-items:center;gap:10px;padding:10px 12px;background:linear-gradient(90deg,rgba(176,170,240,.85),rgba(206,190,244,.8))}
+.wave{display:flex;gap:2px;align-items:center;height:26px}
+.wave b{display:block;width:2.5px;border-radius:3px;background:#fff}
+.build .t{font:500 11.5px/1.25 Lexend;color:#fff}
+.build .t small{display:block;font-weight:300;opacity:.9}
+
+/* paper serif cards */
+.paper{min-height:96px;background:linear-gradient(160deg,rgba(242,240,180,.85),rgba(235,232,170,.75))}
+.paper.pink{background:linear-gradient(160deg,rgba(236,196,230,.85),rgba(226,186,236,.75))}
+.paper .sf{position:absolute;left:12px;bottom:10px;font:400 30px/1 "Young Serif";color:#9a8a4c}
+.paper.pink .sf{color:#b04a8a}
+.paper .soon{font:400 10.5px Lexend;color:var(--ink);opacity:.7}
+.sheet{position:absolute;width:30px;height:38px;border-radius:5px;background:#fff;box-shadow:0 3px 8px rgba(0,0,0,.12)}
+.sheet:after{content:"";position:absolute;left:6px;right:6px;top:9px;height:14px;background:repeating-linear-gradient(#dfe3ee 0 2px,transparent 2px 5px)}
+
+/* dock */
+.dock{position:absolute;left:50%;bottom:22px;transform:translateX(-50%);display:flex;gap:8px;padding:7px;border-radius:99px;background:rgba(40,46,74,.28);border:1px solid rgba(255,255,255,.55);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.dock .go{white-space:nowrap;display:flex;align-items:center;gap:8px;height:48px;padding:0 20px;border-radius:99px;background:#fff;font:500 14px Lexend;color:var(--ink)}
+.dock .mail{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.3);border:1px solid rgba(255,255,255,.8);color:#fff;font-size:18px}
+.fade{position:absolute;left:0;right:0;bottom:0;height:120px;background:linear-gradient(transparent,rgba(212,220,246,.9))}
+
+/* detail screen */
+.dtitle{margin:22px 0 10px;text-align:center;color:#fff;font:500 42px/1.08 Lexend;letter-spacing:-.03em}
+.center{display:flex;justify-content:center}
+.deck{position:relative;margin-top:44px}
+.deck .ghost{position:absolute;left:14px;right:14px;height:40px;border-radius:18px;background:rgba(255,255,255,.55);border:1px solid #fff;font:400 9.5px Lexend;padding:6px 12px;color:var(--muted)}
+.deck .g1{top:-26px;left:26px;right:26px;background:rgba(250,246,214,.75)}
+.deck .g2{top:-13px}
+.front{position:relative;border-radius:24px;background:#fff;padding:16px 16px 34px;box-shadow:0 18px 40px -20px rgba(28,34,51,.4)}
+.front .meta{font:500 11.5px Lexend;color:var(--ink)}
+.front .meta small{display:block;font-weight:300;color:var(--muted);font-size:10px}
+.front .hd{margin:10px 0 6px;font:500 17px/1.25 Lexend;color:var(--blue)}
+.front p{margin:0 0 10px;font-size:11.5px;line-height:1.5}
+.tiles{display:grid;grid-template-columns:1.6fr 1fr;gap:8px}
+.tiles div{height:76px;border-radius:12px}
+.t1{background:radial-gradient(40px 34px at 40% 50%,#ff8a3d 0,transparent 70%),linear-gradient(140deg,#ffd27a,#f6a2c0)}
+.t2{background:radial-gradient(26px 30px at 50% 55%,#f07d9a 0,transparent 70%),linear-gradient(160deg,#a9c7ee,#e8c7e6)}
+.try{display:flex;align-items:center;gap:5px;margin:2px 0 8px;font:400 10.5px Lexend;color:var(--ink)}
+.try b{font-weight:600;margin-right:2px}
+.try span{padding:4px 9px;border-radius:99px;border:1px solid #d6dae8}
+.try span.on{background:var(--butter);border-color:var(--butter)}
+.ill{margin-top:6px;font:400 9.5px Lexend;color:var(--muted)}
+.edit{position:absolute;top:12px;right:12px;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;border:1px solid #e3e6f0;font-size:13px}
+.cta{display:flex;justify-content:center;margin-top:-18px;position:relative}
+.cta span{display:inline-flex;align-items:center;gap:8px;height:52px;padding:0 26px;border-radius:99px;background:#fff;font:500 15px Lexend;color:var(--ink);box-shadow:0 0 0 6px rgba(60,72,110,.75)}
+.dnote{margin:22px 10px 0;text-align:center;font-size:11px;line-height:1.45;color:var(--ink);opacity:.75}
+
+/* email sheet screen */
+.dim{position:absolute;inset:0;background:rgba(40,46,74,.25)}
+.bsheet{position:absolute;left:8px;right:8px;bottom:8px;border-radius:34px;padding:12px 18px 22px;background:rgba(255,255,255,.88);border:1px solid #fff}
+.grab{width:40px;height:5px;border-radius:9px;background:#cfd3e2;margin:0 auto 14px}
+.bsheet h4{margin:0 0 4px;font:500 22px/1.15 Lexend;color:var(--blue);letter-spacing:-.02em}
+.bsheet p{margin:0 0 12px;font-size:12px;color:var(--muted)}
+.field{height:50px;border-radius:16px;border:1px solid #d6dae8;background:#fff;display:flex;align-items:center;padding:0 14px;font-size:13px;color:#8a90a8}
+.tickrow{display:flex;gap:10px;align-items:flex-start;margin:12px 2px;font-size:11.5px;line-height:1.4}
+.tickrow i{flex:0 0 18px;height:18px;border-radius:6px;border:1.5px solid #9aa1b8;margin-top:1px}
+.send{display:flex;justify-content:center;align-items:center;height:52px;border-radius:99px;background:var(--ink);color:#fff;font:500 15px Lexend}
+.honest{margin-top:12px;padding:10px 12px;border-radius:14px;background:var(--butter);font-size:11px;line-height:1.4}
+
+/* desktop mock */
+.desk{border-radius:24px;overflow:hidden;border:6px solid rgba(255,255,255,.7);background:linear-gradient(160deg,#c3d0f2,#e3d4f6);box-shadow:0 30px 60px -30px rgba(28,34,51,.45)}
+.desk .bar{height:30px;display:flex;gap:6px;align-items:center;padding:0 12px;background:rgba(255,255,255,.4)}
+.desk .bar i{width:10px;height:10px;border-radius:50%;background:#fff}
+.desk .body{display:grid;grid-template-columns:1.1fr 1fr;gap:22px;padding:26px}
+.dcol .ptitle{font-size:38px;margin:0}
+.box{border-radius:16px;background:rgba(255,255,255,.5);border:1px solid rgba(255,255,255,.8)}
+.dgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px}
+.dgrid .box{height:70px}.dgrid .box.tall{grid-row:span 2;height:auto;background:linear-gradient(160deg,#7aa5cf,#b9a3df 60%,#efb7c7)}
+.dgrid .box.sel{box-shadow:0 0 0 3px #fff}
+.dright{border-radius:20px;background:rgba(255,255,255,.6);border:1px solid #fff;padding:18px}
+.dright .box{height:160px;margin:10px 0;background:linear-gradient(140deg,#ffd27a,#f6a2c0)}
+
+/* tokens */
+.sw{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:12px}
+.sw div{border-radius:18px;padding:70px 12px 12px;font-size:12px;border:1px solid rgba(255,255,255,.8)}
+.sw b{display:block;font-weight:600}
+.type .spec{padding:16px 0;border-top:1px solid rgba(28,34,51,.12)}
+.type .spec:first-child{border-top:0;padding-top:0}
+.map{width:100%;border-collapse:collapse;font-size:14px}
+.map th{text-align:left;font:500 12px Lexend;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding:0 10px 10px 0}
+.map td{padding:12px 10px 12px 0;border-top:1px solid rgba(28,34,51,.12);vertical-align:top}
+.map td:first-child{font-weight:600;white-space:nowrap}
+.tw{overflow-x:auto}
+.foot{margin-top:70px;font-size:13px;color:var(--muted)}
+@media(max-width:520px){.wrap{padding-top:28px}.panel{padding:18px;border-radius:22px}}
+</style>
+</head>
+<body>
+<main class="wrap">
+
+<p class="eyebrow">Concept only, not built yet · Site 26</p>
+<h1><span class="fog"><span class="crisp">Sairah González</span><span class="soft" aria-hidden="true">Sairah González</span></span></h1>
+<p class="lede">The link-in-bio becomes a soft, frosted notes app. Every section is a different <em>kind</em> of note (a photo stack, a voice-note-style pulse, a paper file) and tapping one opens it as a full note. My Photo Gallery gets one wide card across the top that shows it and says what it does.</p>
+
+<!-- ─────────── reference ─────────── -->
+<section class="sec">
+  <h2>What I took from your reference</h2>
+  <p class="sub">The notes-app shot you shared (design credited to Umang Vora). We borrow its feel and its ideas, not its screens or photos.</p>
+  <div class="grid2">
+    <div class="panel">
+      <h3>Taking</h3>
+      <ul class="tick">
+        <li>Periwinkle-to-lilac haze with frosted, milky cards</li>
+        <li>A masonry grid where cards have their own type personality: big blue display, serif "file" cards</li>
+        <li>Pill filter chips, with the active one in butter yellow</li>
+        <li>The headline that dissolves into fog toward the bottom</li>
+        <li>A floating dock at the bottom for the main actions</li>
+        <li>The opened note sitting on a stack of other notes, with a ringed pill button under it</li>
+      </ul>
+    </div>
+    <div class="panel">
+      <h3>Not taking</h3>
+      <ul class="tick cross">
+        <li>Stock portraits. Photo cards use soft sample artwork labelled "Illustrative preview" until Sairah adds a real screenshot</li>
+        <li>Fake notes or dates. Every card is real content from the shared content file</li>
+        <li>The exact layout or icons. Positions and card types are rebuilt for this content</li>
+        <li>Audio. The waveform card becomes the "Currently building" pulse</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────── screens ─────────── -->
+<section class="sec">
+  <h2>The three phone screens</h2>
+  <p class="sub">Static mockups to judge the look. Nothing here is clickable yet. Swipe sideways on a phone to see all three.</p>
+  <div class="screens">
+
+    <!-- 1 HOME -->
+    <figure>
+      <div class="phone" aria-label="Mockup: home screen">
+        <div class="status"><span>9:41</span><i></i></div>
+        <div class="topbar"><div class="av"><img src="../../shared/sairah.jpg" alt="Sairah González"></div>
+          <div class="socrow">
+            <span class="gbtn" title="Instagram"><svg viewBox="2.4 2.4 19.2 19.2" fill="none" stroke="currentColor" stroke-width="1.9"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none"/></svg></span>
+            <span class="gbtn" title="TikTok"><svg viewBox="1.4 0 21.3 24" fill="currentColor"><path d="M12.53.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg></span>
+            <span class="gbtn" title="YouTube"><svg viewBox="2 5 20 14"><path fill="currentColor" fill-rule="evenodd" d="M6.5 5h11A4.5 4.5 0 0 1 22 9.5v5a4.5 4.5 0 0 1-4.5 4.5h-11A4.5 4.5 0 0 1 2 14.5v-5A4.5 4.5 0 0 1 6.5 5zM10 9v6l5.2-3z"/></svg></span>
+            <span class="gbtn" title="Facebook"><svg viewBox="8 4.3 8.6 16.7" fill="currentColor"><path d="M13.5 21v-7.6h2.6l.4-3h-3V8.6c0-.9.3-1.5 1.5-1.5h1.6V4.4c-.3 0-1.2-.1-2.3-.1-2.3 0-3.8 1.4-3.8 3.9v2.2H8v3h2.5V21z"/></svg></span>
+          </div></div>
+        <div class="ptitle">Sairah<br>González</div>
+        <p class="pbio">Starting from 0 in my 20s, exploring how to make money online as a creative.</p>
+        <div class="chips"><span class="chip on">All</span><span class="chip">Free app</span><span class="chip">Links</span><span class="chip">Building</span><span class="chip">Updates</span></div>
+        <div class="card feat">
+          <div class="stack">
+            <div class="ph b2"></div><div class="ph b1"></div>
+            <div class="ph top"><div class="in">
+              <span class="pill butter tag">Free</span>
+              <div class="lbl">My Photo<br>Gallery<small>Desktop app</small></div>
+            </div></div>
+          </div>
+          <div class="fside">
+            <div class="ok">Browse</div><div class="ok">Search</div><div class="ok">Filter</div><div class="ok">Organise</div>
+            <div class="nocloud">No cloud.<br>No subscriptions.</div>
+          </div>
+        </div>
+        <div class="mason">
+          <div class="col">
+            <div class="card build">
+              <div class="wave"><b style="height:8px"></b><b style="height:16px"></b><b style="height:24px"></b><b style="height:12px"></b><b style="height:20px"></b><b style="height:26px"></b><b style="height:14px"></b><b style="height:9px"></b></div>
+              <div class="t">Something new<small>In progress</small></div>
+            </div>
+            <div class="card paper" style="min-height:104px">
+              <span class="soon">Coming soon</span>
+              <i class="sheet" style="right:28px;top:22px;transform:rotate(-8deg)"></i><i class="sheet" style="right:12px;top:16px;transform:rotate(6deg)"></i>
+              <span class="sf">Guides</span>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card promise"><div class="big">Get<span>updates</span></div><span class="pill" style="margin-top:8px;color:var(--blue);border-color:#c9d3ee">&#9993; Newsletter</span></div>
+            <div class="card paper pink"><span class="soon">Coming soon</span><span class="sf">Prompts</span></div>
+          </div>
+        </div>
+        <div class="fade"></div>
+        <div class="dock"><span class="go">↓ Get it free</span><span class="mail">✉</span></div>
+      </div>
+      <figcaption><b>1 · Home.</b> One wide card spans both columns: the photo stack on the left, what it does on the right. It's the first and biggest thing you see. The dock keeps "Get it free" under the thumb the whole time you scroll.</figcaption>
+    </figure>
+
+    <!-- 2 DETAIL -->
+    <figure>
+      <div class="phone" aria-label="Mockup: opened product note" style="background:linear-gradient(175deg,#b9c7ef 0%,#d9c8f4 45%,#e9d3f3 65%,#c9d3f3 100%)">
+        <div class="status"><span>9:41</span><i></i></div>
+        <div class="topbar"><span class="gbtn">‹</span><span class="gbtn">⋯</span></div>
+        <div class="dtitle"><span class="sharp">My Photo</span><br><span class="fog"><span class="crisp">Gallery</span><span class="soft" aria-hidden="true">Gallery</span></span></div>
+        <div class="deck">
+          <div class="ghost g1"></div><div class="ghost g2"></div>
+          <div class="front">
+            <div class="meta">Desktop HTML app<small>Free · Desktop only</small></div>
+            <div class="hd">Browse, search, filter and organise the photos and videos on your computer.</div>
+            <p>No cloud storage. No subscriptions. It works with the files you already have, including an external hard drive.</p>
+            <div class="try"><b>Try it:</b><span class="on">All</span><span>Photos</span><span>Videos</span><span>Starred</span></div>
+            <div class="tiles"><div class="t1"></div><div class="t2"></div></div>          </div>
+        </div>
+        <div class="cta"><span>↓ Get it free</span></div>
+        <p class="dnote">Runs on a computer, not on phones or tablets.<br>On your phone? Get the link by email.</p>
+      </div>
+      <figcaption><b>2 · Opened note.</b> Tapping the photo stack grows it into this full note. The "Try it" buttons sit right on the preview they filter, so they can't be mistaken for features. The blank notes behind hint there's more to swipe through.</figcaption>
+    </figure>
+
+    <!-- 3 EMAIL SHEET -->
+    <figure>
+      <div class="phone" aria-label="Mockup: email sheet" style="background:linear-gradient(175deg,#b9c7ef 0%,#d9c8f4 45%,#e9d3f3 65%,#c9d3f3 100%)">
+        <div class="status"><span>9:41</span><i></i></div>
+        <div class="dtitle" style="margin-top:60px"><span class="sharp">My Photo</span><br><span class="fog"><span class="crisp">Gallery</span><span class="soft" aria-hidden="true">Gallery</span></span></div>
+        <div class="dim"></div>
+        <div class="bsheet">
+          <div class="grab"></div>
+          <h4>Send me the download link</h4>
+          <p>Enter your email and I'll send you the download link.</p>
+          <div class="field">you@example.com</div>
+          <div class="tickrow"><i></i><span>Also add me to the newsletter (optional)</span></div>
+          <div class="send">Email me the link</div>
+          <div class="honest">Until email is set up, this says plainly: "Not connected yet. Nothing was sent." It never fakes a success.</div>
+        </div>
+      </div>
+      <figcaption><b>3 · Get it free.</b> A frosted bottom sheet slides up from the dock. The same sheet, with its own optional marketing tick, handles the newsletter.</figcaption>
+    </figure>
+
+  </div>
+</section>
+
+<!-- ─────────── desktop ─────────── -->
+<section class="sec">
+  <h2>On a computer: the two screens side by side</h2>
+  <p class="sub">Like the two phones in your reference: notes on the left, the opened note on the right. Clicking a note swaps the right side with no page jump. Desktop visitors can download straight away.</p>
+  <div class="desk" aria-label="Mockup: desktop layout">
+    <div class="bar"><i></i><i></i><i></i></div>
+    <div class="body">
+      <div class="dcol">
+        <div class="ptitle">Sairah González</div>
+        <div class="chips" style="margin:12px 0 0;padding:0"><span class="chip on">All</span><span class="chip">Free app</span><span class="chip">Links</span><span class="chip">Building</span></div>
+        <div class="dgrid"><div class="box tall sel"></div><div class="box" style="background:rgba(196,230,214,.8)"></div><div class="box" style="background:#fff"></div><div class="box" style="background:rgba(176,170,240,.8)"></div><div class="box" style="background:rgba(242,240,180,.85)"></div></div>
+      </div>
+      <div class="dright">
+        <div class="meta" style="font:500 13px Lexend">My Photo Gallery <span class="pill butter" style="margin-left:6px">Free</span></div>
+        <div class="box"></div>
+        <div style="display:flex;gap:8px"><span class="chip" style="background:var(--ink);color:#fff;border-color:var(--ink)">↓ Get it free</span><span class="chip">Preview</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────── mapping ─────────── -->
+<section class="sec">
+  <h2>Every section as a note</h2>
+  <p class="sub">All the required sections, each given the note type that suits it.</p>
+  <div class="panel tw">
+    <table class="map">
+      <tr><th>Section</th><th>Note type</th><th>What happens</th></tr>
+      <tr><td>Profile</td><td>Header: photo, name, bio, social buttons</td><td>Your photo, your name and your bio. Top right: Instagram, TikTok, YouTube and Facebook logos (email lives in the bottom bar). Each logo says "not added yet" until its link exists.</td></tr>
+      <tr><td>My Photo Gallery</td><td>Wide feature card across both columns</td><td>Photo stack on the left; browse, search, filter, organise and "No cloud. No subscriptions." on the right. Tapping it opens the full note with the working preview, Free label, Get it free and the desktop-only note.</td></tr>
+      <tr><td>Links &amp; resources</td><td>Serif "paper file" cards</td><td>Resources, apps, prompts, guides and projects. Each shows "Coming soon" until it has a link.</td></tr>
+      <tr><td>Currently building</td><td>Pulse pill (the reference's audio card)</td><td>A slow breathing waveform next to "Something new · In progress".</td></tr>
+      <tr><td>Download email</td><td>Bottom sheet from the dock</td><td>Email field plus the optional newsletter tick. Honest "not connected" message until email is set up.</td></tr>
+      <tr><td>Newsletter</td><td>Big blue "Get updates" card + envelope button in the dock</td><td>Same sheet style, with its own optional marketing-consent tick.</td></tr>
+      <tr><td>Footer</td><td>Quiet text at the end of the grid</td><td>Contact, privacy policy, © 2026 Sairah González.</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- ─────────── look ─────────── -->
+<section class="sec">
+  <h2>The look</h2>
+  <p class="sub">Light, airy and calm, the opposite of the dark Aurora Glass site.</p>
+  <div class="sw">
+    <div style="background:#b7c6ee"><b>Periwinkle haze</b>#B7C6EE · background</div>
+    <div style="background:#e6d3f7"><b>Lilac mist</b>#E6D3F7 · background</div>
+    <div style="background:#f6f7ff"><b>Frost</b>#F6F7FF · cards</div>
+    <div style="background:#2c5aa8;color:#fff"><b>Ink blue</b>#2C5AA8 · display text</div>
+    <div style="background:#f4f59b"><b>Butter</b>#F4F59B · active chip, Free</div>
+    <div style="background:#c4e6d6"><b>Mint glass</b>#C4E6D6 · checklist</div>
+    <div style="background:#f2cadb"><b>Blush</b>#F2CADB · file cards</div>
+    <div style="background:#1c2233;color:#fff"><b>Night ink</b>#1C2233 · body text</div>
+  </div>
+  <div class="grid2" style="margin-top:18px">
+    <div class="panel type">
+      <div class="spec"><span class="eyebrow">Headings &amp; interface · Lexend</span><div style="font:500 34px/1.1 Lexend;letter-spacing:-.03em">Sairah González</div><div class="note">Rounded, very readable, and its wide letters suit the fog effect.</div></div>
+      <div class="spec"><span class="eyebrow">Paper file cards · Young Serif</span><div style="font:400 34px/1.1 'Young Serif';color:#9a8a4c">Guides</div><div class="note">Soft serif for the "file" notes, used for one word each.</div></div>
+    </div>
+    <div class="panel">
+      <h3>Signature: the fog title</h3>
+      <p>The big white headline is sharp at the top and melts into soft blur at the bottom, as if written on a misty window. It's used twice: on the opened note, and as the headline at the top of this page. Each card's own type style does the rest.</p>
+      <div style="margin-top:14px;padding:26px 16px;border-radius:22px;background:linear-gradient(170deg,#b9c7ef,#e3d0f5);text-align:center">
+        <div style="font:500 46px/1.08 Lexend;letter-spacing:-.03em;color:#fff"><span class="sharp">Thought out</span><br><span class="fog"><span class="crisp">in the open</span><span class="soft" aria-hidden="true">in the open</span></span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────── motion ─────────── -->
+<section class="sec">
+  <h2>How it moves</h2>
+  <div class="grid2">
+    <div class="panel">
+      <ul class="tick">
+        <li><b>Arrival:</b> the headline un-fogs, the wide product card rises first and its four ticks pop in one by one, then the other cards follow</li>
+        <li><b>Open a note:</b> the card grows into the full note (a smooth "shared element" morph), and the back button shrinks it home</li>
+        <li><b>Filter chips:</b> cards that don't match fade out, and the rest glide into their new places</li>
+        <li><b>Photo stack:</b> the back photos fan out a little when you press the card, hinting that it opens</li>
+        <li><b>Building pulse:</b> a slow breathing waveform, the only thing that moves on its own</li>
+      </ul>
+    </div>
+    <div class="panel">
+      <ul class="tick">
+        <li><b>Reduced motion:</b> no morphs or cascades; notes open with a plain fade</li>
+        <li><b>Swipe:</b> inside an open note, swipe sideways to flip to the next note in the stack</li>
+        <li><b>Escape / back gesture</b> closes the note or sheet; focus returns to the card</li>
+        <li><b>Deep links:</b> /#gallery opens straight to the product note, handy for an Instagram story link</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────── fit ─────────── -->
+<section class="sec">
+  <h2>Fit check</h2>
+  <div class="grid2">
+    <div class="panel">
+      <h3>🔵 How it differs from the existing 25</h3>
+      <ul class="tick">
+        <li><b>17 Aurora Glass</b> is dark, with moving light and one column. This is light pastel, a two-column note grid, and notes open into their own screen.</li>
+        <li><b>18 Bento</b> is a fixed grid of tiles. Here every card is a different kind of note with its own type style, and the cards open, filter and stack.</li>
+      </ul>
+    </div>
+    <div class="panel">
+      <h3>🟡 Watch-outs</h3>
+      <ul class="tick">
+        <li><b>White text on pastel</b> can be faint. The headline gets a soft shadow, and all small text stays in dark ink.</li>
+        <li><b>Frosted blur is heavy</b> for older phones in Instagram's in-app browser. Real blur goes on the dock and sheet only; the cards fake it with milky fills.</li>
+        <li><b>Fog title</b> must stay readable: only the bottom part blurs, and screen readers get the plain text.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="panel" style="margin-top:18px">
+    <h3>Open questions for you</h3>
+    <ul class="tick">
+      <li>Once real product details exist, should they replace the four ticks, or live in the opened note?</li>
+    </ul>
+  </div>
+</section>
+
+<p class="foot">Concept 26 · a design proposal only. Nothing is built or published. Mockup photos are sample gradients, not real images.</p>
+</main>
+</body>
+</html>

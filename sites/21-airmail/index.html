@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Sairah González</title>
+<meta name="description" content="Sairah González. Get My Photo Gallery, a free desktop app.">
+<meta name="theme-color" content="#cfe0f5">
+<link rel="icon" href="../../shared/icon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&family=Caveat:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../shared/kit.css">
+<style>
+:root{--sky:#cfe0f5;--blue:#1f4fa3;--red:#d7263d;--paper:#fbfcff;--ink:#1a2238;
+--k-bg:#fbfcff;--k-fg:#1a2238;--k-muted:#4a5573;--k-accent:#1f4fa3;--k-on:#fff;--k-line:#1f4fa3;--k-r:4px;--k-font:Newsreader,serif;--k-display:Caveat,cursive;--k-field:#fff}
+*{box-sizing:border-box}
+body{margin:0;min-height:100dvh;color:var(--ink);font:400 18px/1.5 Newsreader,serif;background:var(--sky);overflow-x:hidden}
+button{font:inherit;color:inherit}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--red);outline-offset:2px}
+.stage{min-height:100dvh;display:grid;place-items:center;padding:calc(30px + env(safe-area-inset-top)) 14px 30px}
+.intro{width:min(100%,460px)}
+.from{margin:0 0 22px;text-align:center;font:700 clamp(34px,10vw,46px)/1.05 Caveat,cursive;color:var(--blue)}
+.from span{display:block;color:var(--ink)}
+.encl{margin:6px 0 0;text-align:center;font-size:16px;color:#3a4766}
+.open .from,.open .encl{display:none}
+.env{position:relative;width:min(100%,440px);aspect-ratio:1.55;perspective:1200px;transition:transform .6s cubic-bezier(.3,1,.4,1)}
+.back,.front{position:absolute;inset:0;border-radius:6px}
+.back{background:#e9eef7;box-shadow:0 20px 50px rgba(20,40,90,.35)}
+.front{z-index:3;overflow:hidden;background:var(--paper);border:12px solid transparent;border-image:repeating-linear-gradient(-45deg,var(--red) 0 12px,var(--paper) 12px 20px,var(--blue) 20px 32px,var(--paper) 32px 40px) 12;clip-path:polygon(0 0,50% 52%,100% 0,100% 100%,0 100%)}
+.addr{position:absolute;left:12%;bottom:14%;font:500 clamp(22px,6.4vw,30px)/1.1 Caveat,cursive;color:var(--ink)}
+.addr small{display:block;font-size:.62em;color:#4a5573}
+.flap{position:absolute;z-index:4;left:0;right:0;top:0;height:56%;transform-origin:50% 0;transition:transform .7s cubic-bezier(.5,0,.3,1),z-index 0s .35s;transform-style:preserve-3d}
+.flap i{position:absolute;inset:0;background:#f2f5fb;clip-path:polygon(0 0,100% 0,50% 96%);filter:drop-shadow(0 2px 2px rgba(0,0,0,.2))}
+.seal{position:absolute;z-index:5;left:50%;top:50%;width:66px;height:66px;margin:-33px 0 0 -33px;display:grid;place-items:center;font:700 22px Caveat;color:#fff;background:radial-gradient(circle at 35% 30%,#ee4a5c,#9e1428);border-radius:46% 54% 50% 50%;box-shadow:0 3px 6px rgba(0,0,0,.35);cursor:pointer;border:0;transition:transform .3s,opacity .3s}
+.seal:hover{transform:scale(1.06) rotate(-6deg)}
+.stamp{position:absolute;z-index:4;right:7%;top:12%;width:22%;aspect-ratio:.82;padding:5px;background:#fff;-webkit-mask:radial-gradient(circle 3px at 3px 3px,#0000 98%,#000) -3px -3px/9px 9px;mask:radial-gradient(circle 3px at 3px 3px,#0000 98%,#000) -3px -3px/9px 9px;transform:rotate(4deg)}
+.stamp div{width:100%;height:100%;overflow:hidden;position:relative}
+.stamp svg{width:100%;height:100%;display:block}
+.stamp b{position:absolute;left:3px;bottom:2px;font:700 11px Newsreader;color:#fff;text-shadow:0 1px 2px #000}
+.pm{position:absolute;z-index:4;right:22%;top:20%;width:80px;height:80px;border:2px solid rgba(31,79,163,.6);border-radius:50%;display:grid;place-items:center;text-align:center;font:600 9px/1.2 Newsreader;color:rgba(31,79,163,.75);transform:rotate(-14deg)}
+.hint{text-align:center;margin:18px 0 0;font:500 22px Caveat;color:var(--blue)}
+.letter{position:relative;z-index:2;width:min(100%,560px);margin:0 auto;padding:30px 24px 26px;background:var(--paper);background-image:repeating-linear-gradient(transparent 0 31px,#d9e3f2 31px 32px);box-shadow:0 20px 60px rgba(20,40,90,.3);display:none}
+.open .letter{display:block;animation:up .9s cubic-bezier(.2,1,.3,1)}
+@keyframes up{from{transform:translateY(160px) scale(.9);opacity:0}}
+.open .flap{transform:rotateX(180deg);z-index:1}
+.open .seal{opacity:0;pointer-events:none}
+.open .env{transform:translateY(-10px) scale(.92)}
+.open .hint{display:none}
+.date{text-align:right;font:500 22px Caveat;color:#4a5573;margin:0}
+.dear{font:700 34px/1.1 Caveat,cursive;color:var(--blue);margin:8px 0 10px}
+.letter p{margin:0 0 16px}
+.letter h2{margin:26px 0 8px;font:700 30px/1.1 Caveat,cursive;color:var(--red)}
+.ps{font-style:italic}
+.av{float:right;width:84px;height:100px;margin:0 0 10px 14px;display:grid;place-items:center;font:700 34px Caveat;color:var(--blue);background:#fff;border:6px solid #fff;box-shadow:0 2px 8px rgba(0,0,0,.2);transform:rotate(3deg);overflow:hidden}
+.av img{width:100%;height:100%;object-fit:cover}
+.socs{display:flex;gap:4px;margin-left:-10px;color:var(--blue)}
+.enc{padding:16px;margin:14px 0;background:#fff;border:1.5px dashed var(--blue)}
+.enc .tag{display:inline-block;padding:1px 8px;margin-right:6px;font:600 13px Newsreader;color:#fff;background:var(--red)}
+.enc .tag.b{background:var(--blue)}
+.enc h3{margin:8px 0 6px;font:600 28px/1.1 Newsreader,serif}
+.send{display:block;width:100%;min-height:56px;margin:12px 0 8px;font:700 26px Caveat;color:#fff;background:var(--blue);border:0;border-radius:4px;cursor:pointer}
+.sm{font-size:15px;color:#4a5573}
+.pg{--pg-r:4px;--pg-acc:#1f4fa3;--pg-font:Newsreader,serif;font-size:14px;margin:10px 0}
+.lk>*{display:flex;justify-content:space-between;align-items:baseline;gap:10px;width:100%;min-height:48px;padding:6px 0;font:inherit;text-align:left;color:inherit;text-decoration:none;background:none;border:0;border-bottom:1px solid #c6d3ea}
+.lk>*:first-child{cursor:pointer;color:var(--blue);font-weight:600}
+.lk small{font:500 18px Caveat;color:#4a5573;white-space:nowrap}
+.sign{font:700 44px/1 Caveat,cursive;color:var(--blue);margin:6px 0 20px}
+.foot{display:flex;flex-wrap:wrap;gap:0 20px;font-size:15px;border-top:1px solid #c6d3ea;padding-top:8px}
+.foot a{min-height:44px;display:inline-flex;align-items:center}
+.reply{padding:16px;background:#fff6f7;border:1.5px solid var(--red)}
+.k-in{font-family:Newsreader}
+@media(prefers-reduced-motion:reduce){.flap,.env,.seal{transition:none}.open .letter{animation:none}}
+</style>
+</head>
+<body>
+<main class="stage" id="stage">
+  <div class="intro">
+    <p class="from">A letter from <span data-t="person.name"></span></p>
+    <div class="env" id="env">
+      <div class="back"></div>
+      <div class="front"><div class="addr"><small>To</small>whoever opens this</div></div>
+      <div class="stamp" aria-hidden="true"><div id="stampArt"><b>FREE</b></div></div>
+      <div class="pm" id="pm" aria-hidden="true"></div>
+      <div class="flap"><i></i></div>
+      <button class="seal" id="seal" aria-label="Open the letter">SG</button>
+    </div>
+    <p class="hint">Tap the seal to open</p>
+    <p class="encl">Enclosed: <b data-t="product.name"></b>, <span data-t="product.price"></span></p>
+  </div>
+  <article class="letter" id="letter" tabindex="-1">
+    <p class="date" id="date"></p>
+    <div class="av" data-av></div>
+    <p class="dear">Hello there,</p>
+    <p>I'm <b data-t="person.name"></b>. <span data-t="person.bio"></span></p>
+    <div class="socs" data-soc></div>
+    <h2>Enclosed: a free app</h2>
+    <div class="enc">
+      <span class="tag" data-t="product.price"></span><span class="tag b" data-t="product.compat"></span>
+      <h3 data-t="product.name"></h3>
+      <p data-t="product.description"></p><p data-t="product.promise"></p><ul data-details></ul>
+      <button class="send" data-get>Get it free</button>
+      <p class="sm" style="margin:0" data-t="product.compatNote"></p>
+      <div data-demo></div>
+    </div>
+    <h2>Other things to find me by</h2>
+    <div class="lk" id="links"></div>
+    <h2>What's on my desk</h2>
+    <p><b data-t="building.name"></b>. <span data-t="building.status"></span> <a data-build-link>Follow the journey</a></p>
+    <div class="reply"><p class="dear" style="font-size:28px;margin-top:0">Write back?</p><p data-t="newsletter.intro"></p><div data-form="newsletter"></div></div>
+    <p class="sign">Sairah</p>
+    <div class="foot"><a data-contact>Contact</a><a data-privacy>Privacy policy</a><span style="align-self:center" class="sm" data-t="footer.credit"></span></div>
+  </article>
+</main>
+<script src="../../shared/content.js"></script>
+<script src="../../shared/kit.js"></script>
+<script>
+const {$,S,art,link,esc}=BIO;
+$('#links').innerHTML=S.links.map(l=>link(l,`<span>${esc(l.label)}</span><small>${esc(l.note)}</small>`)).join('');
+$('#stampArt').insertAdjacentHTML('afterbegin',art(0,90,110));
+const d=new Date();$('#date').textContent=d.toLocaleDateString(undefined,{day:'numeric',month:'long',year:'numeric'});
+$('#pm').innerHTML=`SENT<br>${d.toLocaleDateString(undefined,{day:'2-digit',month:'short'}).toUpperCase()}<br>${d.getFullYear()}`;
+function open(){$('#stage').classList.add('open');setTimeout(()=>{$('#letter').scrollIntoView({behavior:'smooth',block:'start'});$('#letter').focus({preventScroll:true})},420)}
+$('#seal').onclick=open;$('#env').addEventListener('click',e=>{if(!e.target.closest('.seal'))open()});
+window.BIO_QA=async()=>{$('#stage').classList.add('open')};
+</script>
+</body>
+</html>

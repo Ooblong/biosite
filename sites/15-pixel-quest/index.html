@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Sairah González</title>
+<meta name="description" content="Sairah González. Get My Photo Gallery, a free desktop app.">
+<meta name="theme-color" content="#1d1b3a">
+<link rel="icon" href="../../shared/icon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Pixelify+Sans:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../shared/kit.css">
+<style>
+:root{--n:#1d1b3a;--y:#f4d35e;--o:#ee964b;--r:#f95738;--t:#83c5be;--w:#fdf6e3;
+--k-bg:#1d1b3a;--k-fg:#fdf6e3;--k-muted:#c9c3e6;--k-accent:#f4d35e;--k-on:#1d1b3a;--k-line:#fdf6e3;--k-r:0;--k-font:"Pixelify Sans",sans-serif;--k-display:"Press Start 2P",monospace;--k-ok:#83c5be;--k-err:#ffb09c;--k-dlg-r:0;--k-dlg-b:4px solid #fdf6e3}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;background:var(--n);color:var(--w);font:400 18px/1.35 "Pixelify Sans",sans-serif;overscroll-behavior:none;image-rendering:pixelated}
+button{font:inherit;color:inherit}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--y);outline-offset:2px}
+.game{height:100dvh;max-width:520px;margin:auto;display:flex;flex-direction:column}
+.world{position:relative;flex:none;height:min(38dvh,300px);overflow:hidden;background:#5fa8d3}
+canvas{display:block;width:100%;height:100%;image-rendering:pixelated}
+.hud{position:absolute;left:8px;right:8px;top:calc(8px + env(safe-area-inset-top));display:flex;justify-content:space-between;font:400 10px "Press Start 2P";text-shadow:2px 2px 0 var(--n)}
+.box{position:relative;margin:0 8px;padding:12px 14px;background:var(--n);border:4px solid var(--w);box-shadow:0 0 0 4px var(--n)}
+.dlg{margin-top:-28px;min-height:96px;z-index:2}
+.dlg .nm{position:absolute;top:-14px;left:10px;padding:2px 8px;font:400 10px "Press Start 2P";color:var(--n);background:var(--y)}
+.dlg p{margin:4px 0 0;min-height:3.9em}
+.dlg .more{position:absolute;right:10px;bottom:4px;animation:blink .8s steps(2) infinite;color:var(--y)}
+@keyframes blink{50%{opacity:0}}
+.main{flex:1;min-height:0;display:flex;flex-direction:column;gap:10px;padding:12px 0 calc(10px + env(safe-area-inset-bottom))}
+.menu{display:grid;grid-template-columns:1fr 1fr;gap:2px 8px;margin:0 8px;padding:10px}
+.menu button{display:flex;align-items:center;gap:8px;min-height:44px;padding:0 4px;font:400 11px "Press Start 2P";text-align:left;background:none;border:0;cursor:pointer}
+.menu button:before{content:"";width:12px;flex:none}
+.menu button[aria-current=true]:before{content:"▶";color:var(--y);font-size:12px}
+.menu button[aria-current=true]{color:var(--y)}
+.panel{flex:1;min-height:0;overflow:auto;scrollbar-width:thin}
+.panel h2{margin:0 0 10px;font:400 clamp(15px,4.6vw,20px)/1.3 "Press Start 2P";color:var(--y)}
+.panel p{margin:0 0 10px}
+.panel[hidden]{display:none}
+.rar{display:inline-block;padding:3px 8px;margin:0 6px 8px 0;font:400 10px "Press Start 2P";color:var(--n);background:var(--t)}
+.rar.y{background:var(--y)}
+.a-btn{display:flex;justify-content:center;align-items:center;gap:10px;width:100%;min-height:56px;margin:8px 0;font:400 13px "Press Start 2P";color:var(--n);background:var(--r);border:0;box-shadow:inset -4px -4px 0 #b13a20,inset 4px 4px 0 #ffa58a;cursor:pointer}
+.a-btn:active{box-shadow:inset 4px 4px 0 #b13a20}
+.sm{font-size:15px;color:#c9c3e6}
+.pg{--pg-bg:#141230;--pg-fg:#fdf6e3;--pg-mut:#c9c3e6;--pg-line:#fdf6e3;--pg-acc:#f4d35e;--pg-on:#1d1b3a;--pg-r:0;--pg-tile-r:0;--pg-font:"Pixelify Sans",sans-serif;--pg-filter:url(#px);font-size:15px;margin:8px 0;border-width:3px}
+.map>*{display:flex;align-items:center;gap:10px;width:100%;min-height:50px;padding:6px 0;font:inherit;text-align:left;color:inherit;text-decoration:none;background:none;border:0;border-bottom:2px dashed #4a4680}
+.map>*:before{content:"";flex:none;width:14px;height:14px;background:var(--t)}
+.map>*:first-child{color:var(--y);cursor:pointer}.map>*:first-child:before{background:var(--y)}
+.map small{margin-left:auto;font-size:14px;color:#c9c3e6;white-space:nowrap}
+.map .is-soon:before{background:#4a4680}
+.prof{display:flex;gap:12px;align-items:center;margin-bottom:8px}
+.av{flex:none;width:64px;height:64px;display:grid;place-items:center;font:400 16px "Press Start 2P";color:var(--n);background:var(--y);overflow:hidden;box-shadow:0 0 0 3px var(--w)}
+.av img{width:100%;height:100%;object-fit:cover;image-rendering:pixelated}
+.prof h1{margin:0;font:400 clamp(14px,4.2vw,18px)/1.4 "Press Start 2P";color:var(--y)}
+.socs{display:flex;gap:4px}
+.info a{min-height:44px;display:inline-flex;align-items:center;margin-right:16px}
+.k-in{font-size:18px}.k-btn{font:400 12px "Press Start 2P"}
+@media(min-width:900px){body{display:grid;place-items:center;background:#0e0d20}.game{height:min(900px,96dvh);width:520px;border:6px solid #3a3670}}
+@media(prefers-reduced-motion:reduce){.dlg .more{animation:none}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="px"><feFlood x="2" y="2" height="1" width="1"/><feComposite width="5" height="5"/><feTile result="a"/><feComposite in="SourceGraphic" in2="a" operator="in"/><feMorphology operator="dilate" radius="2"/></filter></svg>
+<main class="game">
+  <div class="world"><canvas id="cv" width="160" height="90" aria-hidden="true"></canvas><div class="hud"><span>LV 1</span><span>FREE ITEM NEARBY</span></div></div>
+  <div class="box dlg" aria-live="polite"><span class="nm" data-t="person.first"></span><p id="say"></p><span class="more" aria-hidden="true">▼</span></div>
+  <div class="main">
+    <nav class="box menu" id="menu" aria-label="Menu">
+      <button data-p="item" aria-current="true">ITEM</button><button data-p="hero">HERO</button>
+      <button data-p="map">MAP</button><button data-p="quest">QUEST</button>
+      <button data-p="mail">MAIL</button><button data-p="info">INFO</button>
+    </nav>
+    <section class="box panel" data-panel="item">
+      <span class="rar y" data-t="product.price"></span><span class="rar" data-t="product.compat"></span>
+      <h2 data-t="product.name"></h2>
+      <p data-t="product.description"></p><p data-t="product.promise"></p><ul data-details></ul>
+      <button class="a-btn" data-get>▶ GET IT FREE</button>
+      <p class="sm" data-t="product.compatNote"></p>
+      <div data-demo></div>
+    </section>
+    <section class="box panel" data-panel="hero" hidden><div class="prof"><div class="av" data-av></div><h1 data-t="person.name"></h1></div><p data-t="person.bio"></p><div class="socs" data-soc></div></section>
+    <section class="box panel" data-panel="map" hidden><h2>World map</h2><div class="map" id="links"></div></section>
+    <section class="box panel" data-panel="quest" hidden><h2>Current quest</h2><p style="font-size:22px;color:var(--y)" data-t="building.name"></p><p data-t="building.status"></p><a data-build-link>Follow the journey</a></section>
+    <section class="box panel" data-panel="mail" hidden><h2>Mailbox</h2><p data-t="newsletter.intro"></p><div data-form="newsletter"></div></section>
+    <section class="box panel info" data-panel="info" hidden><h2>Info</h2><a data-contact>Contact</a><a data-privacy>Privacy policy</a><p class="sm" data-t="footer.credit"></p></section>
+  </div>
+</main>
+<script src="../../shared/content.js"></script>
+<script src="../../shared/kit.js"></script>
+<script>
+const {$,$$,S,link,esc,reduced}=BIO;
+$('#links').innerHTML=S.links.map(l=>link(l,`<span>${esc(l.label)}</span><small>${esc(l.note)}</small>`)).join('');
+const LINES={item:`You found ${S.product.name}! It's ${S.product.price.toLowerCase()}.`,hero:`I'm ${S.person.name}.`,map:'Paths marked grey are still being built.',quest:`Current quest: ${S.building.name}.`,mail:'Want word when new items arrive?',info:'Contact details and the privacy policy.'};
+let tt;function say(s){clearTimeout(tt);const el=$('#say');if(reduced){el.textContent=s;return}let i=0;(function step(){el.textContent=s.slice(0,++i);if(i<s.length)tt=setTimeout(step,24)})()}
+const btns=$$('#menu button');let cur=0;
+function pick(i){cur=(i+btns.length)%btns.length;btns.forEach((b,k)=>b.setAttribute('aria-current',k===cur));const k=btns[cur].dataset.p;$$('[data-panel]').forEach(p=>p.hidden=p.dataset.panel!==k);say(LINES[k]);blip()}
+$('#menu').onclick=e=>{const b=e.target.closest('button');if(b)pick(btns.indexOf(b))};
+addEventListener('keydown',e=>{if(e.target.matches('input'))return;const m={ArrowRight:1,ArrowLeft:-1,ArrowDown:2,ArrowUp:-2}[e.key];if(m){e.preventDefault();pick(cur+m)}});
+let ac;function blip(){try{ac=ac||new AudioContext();const o=ac.createOscillator(),g=ac.createGain();o.type='square';o.frequency.value=880;g.gain.value=.03;o.connect(g).connect(ac.destination);o.start();o.frequency.setValueAtTime(1320,ac.currentTime+.04);o.stop(ac.currentTime+.08)}catch{}}
+// pixel world: hills, clouds, a walking explorer with a camera, and a chest
+const cv=$('#cv'),c=cv.getContext('2d');c.imageSmoothingEnabled=false;
+const SPR=['..aaaa..','.abbbba.','..cccc..','..cddc..','.eeeeee.','e.eeee.e','..ffff..','..f..f..'];
+const COL={a:'#3a2a1a',b:'#f2c49b',c:'#f2c49b',d:'#1d1b3a',e:'#f95738',f:'#1d1b3a'};
+let t=0,x=20;
+function draw(){c.fillStyle='#5fa8d3';c.fillRect(0,0,160,90);
+ c.fillStyle='#fdf6e3';for(let k=0;k<3;k++){const cx=((k*60-t*.15)%200+200)%200-30;c.fillRect(cx,12+k*7,18,4);c.fillRect(cx+4,9+k*7,9,3)}
+ c.fillStyle='#f4d35e';c.fillRect(128,10,10,10);
+ c.fillStyle='#83c5be';for(let i=0;i<160;i+=1){const h=48+Math.round(Math.sin((i+t*.2)/14)*5);c.fillRect(i,h,1,90-h)}
+ c.fillStyle='#4f8f5a';c.fillRect(0,70,160,20);c.fillStyle='#3d7247';for(let i=0;i<160;i+=6)c.fillRect(i+(t>>3)%6,70,2,2);
+ c.fillStyle='#ee964b';c.fillRect(120,62,14,8);c.fillStyle='#b13a20';c.fillRect(120,62,14,2);c.fillStyle='#f4d35e';c.fillRect(126,65,2,2);
+ if(Math.floor(t/20)%2){c.fillStyle='#fdf6e3';c.fillRect(126,54,2,2);c.fillRect(124,56,2,2);c.fillRect(128,56,2,2)}
+ const bob=Math.floor(t/8)%2;SPR.forEach((row,yy)=>[...row].forEach((p,xx)=>{if(p!=='.'){c.fillStyle=COL[p];c.fillRect(Math.round(x)+xx,54+yy+bob,1,1)}}));
+ c.fillStyle='#1d1b3a';c.fillRect(Math.round(x)+8,59+bob,3,2);
+ t++;x+=.25;if(x>108)x=20;if(!reduced)requestAnimationFrame(draw)}
+draw();pick(0);
+window.BIO_QA=async()=>{$$('[data-panel]').forEach(p=>p.hidden=false)};
+</script>
+</body>
+</html>

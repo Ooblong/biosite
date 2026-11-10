@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Sairah González</title>
+<meta name="description" content="Sairah González. Get My Photo Gallery, a free desktop app.">
+<meta name="theme-color" content="#7fe0f0">
+<link rel="icon" href="../../shared/icon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Krona+One&family=Familjen+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../shared/kit.css">
+<style>
+:root{--k-bg:#06233a;--k-fg:#e9fbff;--k-muted:#a9d6e3;--k-accent:#5ff5e0;--k-on:#03202c;--k-line:#5ff5e0aa;--k-r:99px;--k-font:"Familjen Grotesk",sans-serif;--k-display:"Krona One",sans-serif;--k-ok:#5ff5e0;--k-err:#ffb4a2}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;color:#e9fbff;font:16px/1.45 "Familjen Grotesk",sans-serif;overflow-x:hidden;
+ background:linear-gradient(180deg,#bff3ff 0,#7fe0f0 7%,#21a6c9 14%,#0b6e9c 26%,#074a73 40%,#052d4d 55%,#03182c 70%,#020a16 85%,#01040a 100%)}
+button{font:inherit;color:inherit}
+a{color:inherit}
+:focus-visible{outline:2px solid #5ff5e0;outline-offset:3px}
+canvas{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:0}
+.torch{position:fixed;inset:0;pointer-events:none;z-index:0;background:radial-gradient(240px circle at var(--x,50%) var(--y,40%),rgba(95,245,224,.10),transparent 70%);opacity:var(--deep,0)}
+.gauge{position:fixed;z-index:5;right:10px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;align-items:flex-end;gap:6px;font:400 11px "Krona One",sans-serif;pointer-events:none}
+.gauge .bar{width:4px;height:40vh;background:rgba(255,255,255,.2);border-radius:4px;position:relative}
+.gauge .bar i{position:absolute;left:-4px;width:12px;height:12px;border-radius:50%;background:#fff;top:calc(var(--p,0)*100% - 6px);box-shadow:0 0 0 4px rgba(255,255,255,.2)}
+.gauge b{font-weight:400;padding:4px 7px;background:rgba(2,10,22,.55);border-radius:6px;white-space:nowrap}
+.zone{position:relative;z-index:1;min-height:100dvh;padding:90px 46px 60px 22px;display:flex;flex-direction:column;justify-content:center;max-width:640px;margin:0 auto}
+.zl{margin:0 0 12px;font:400 11px "Krona One",sans-serif;letter-spacing:.12em;text-transform:uppercase;opacity:.85}
+.surface{color:#032b3d}
+.surface .zl{color:#05506b}
+h1{margin:0;font:400 clamp(44px,13vw,82px)/.95 "Krona One",sans-serif;letter-spacing:-.04em}
+h2{margin:0 0 12px;font:400 clamp(30px,9vw,52px)/1 "Krona One",sans-serif;letter-spacing:-.03em}
+.zone p{margin:0 0 12px;max-width:34em}
+.buoy{width:96px;height:96px;margin-bottom:18px;display:grid;place-items:center;font:400 30px "Krona One",sans-serif;color:#fff;background:#ff5a36;border-radius:50%;overflow:hidden;box-shadow:0 0 0 6px #fff,0 0 0 12px #ff5a36;animation:bob 4s ease-in-out infinite}
+.buoy img{width:100%;height:100%;object-fit:cover}
+@keyframes bob{50%{transform:translateY(-6px) rotate(3deg)}}
+.socs{display:flex;gap:4px;margin:6px 0 0 -10px;color:#05506b}
+.go-down{margin-top:28px;width:max-content;min-height:48px;padding:0 20px;font-weight:700;color:#fff;background:#032b3d;border:0;border-radius:99px;cursor:pointer}
+.pod{padding:20px;background:rgba(3,40,60,.55);border:1px solid rgba(160,240,255,.3);border-radius:26px;backdrop-filter:blur(8px)}
+.chips{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
+.chip{padding:3px 11px;font-weight:700;font-size:13px;border-radius:99px;color:#03202c;background:#5ff5e0}
+.chip.o{color:#e9fbff;background:none;box-shadow:inset 0 0 0 1.5px #a9d6e3}
+.cta{display:block;width:100%;min-height:58px;margin:14px 0 10px;font:400 18px "Krona One",sans-serif;color:#03202c;background:#5ff5e0;border:0;border-radius:99px;cursor:pointer;transition:transform .2s}
+.cta:hover{transform:translateY(-2px)}
+.sm{font-size:14px;color:#a9d6e3}
+.pg{--pg-bg:#04263b;--pg-fg:#e9fbff;--pg-mut:#a9d6e3;--pg-line:#1d5a78;--pg-acc:#5ff5e0;--pg-on:#03202c;--pg-r:16px;--pg-font:"Familjen Grotesk",sans-serif;margin:8px 0}
+.lk{display:grid;gap:10px}
+.lk>*{display:flex;justify-content:space-between;align-items:center;gap:12px;min-height:56px;padding:8px 18px;font:inherit;font-weight:700;text-align:left;color:inherit;text-decoration:none;background:rgba(255,255,255,.06);border:1px solid rgba(160,240,255,.22);border-radius:99px}
+.lk>*:first-child{color:#03202c;background:#5ff5e0;border-color:transparent;cursor:pointer}
+.lk small{font-weight:400;font-size:13px;white-space:nowrap}
+.glow{color:#c9fff6;text-shadow:0 0 18px rgba(95,245,224,.6)}
+.foot{display:flex;flex-wrap:wrap;gap:0 20px;align-items:center;font-size:14px;color:#a9d6e3}
+.foot a{min-height:44px;display:inline-flex;align-items:center}
+.seabed{min-height:60dvh;justify-content:flex-end;padding-bottom:calc(40px + env(safe-area-inset-bottom))}
+@media(min-width:900px){.zone{padding-left:40px;padding-right:90px}.gauge{right:26px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.buoy{animation:none}}
+</style>
+</head>
+<body>
+<canvas id="cv" aria-hidden="true"></canvas>
+<div class="torch" id="torch"></div>
+<div class="gauge" aria-hidden="true"><b id="depth">0 m</b><div class="bar"><i id="dot"></i></div></div>
+<main>
+  <section class="zone surface" data-z="Surface">
+    <p class="zl">Surface · 0 m</p>
+    <div class="buoy" data-av></div>
+    <h1 data-t="person.name"></h1>
+    <p data-t="person.bio"></p>
+    <div class="socs" data-soc></div>
+    <button class="go-down" id="dive">Dive to <span data-t="product.name"></span> ↓</button>
+  </section>
+  <section class="zone" data-z="Sunlight zone">
+    <p class="zl">Sunlight zone · 200 m</p>
+    <div class="pod">
+      <div class="chips"><span class="chip" data-t="product.price"></span><span class="chip o" data-t="product.compat"></span></div>
+      <h2 data-t="product.name"></h2>
+      <p data-t="product.description"></p><p><b data-t="product.promise"></b></p>
+      <div data-demo></div>
+      <ul data-details></ul>
+      <button class="cta" data-get>Get it free</button>
+      <p class="sm" data-t="product.compatNote"></p>
+    </div>
+  </section>
+  <section class="zone" data-z="Twilight zone"><p class="zl">Twilight zone · 1,000 m</p><h2>Links</h2><div class="lk" id="links"></div></section>
+  <section class="zone" data-z="Midnight zone"><p class="zl">Midnight zone · 2,500 m</p><p class="sm">Currently building</p><h2 class="glow" data-t="building.name"></h2><p data-t="building.status"></p><a data-build-link>Follow the journey</a></section>
+  <section class="zone" data-z="Abyss"><p class="zl">Abyss · 4,000 m</p><h2 class="glow">Newsletter</h2><p data-t="newsletter.intro"></p><div data-form="newsletter"></div></section>
+  <footer class="zone seabed" data-z="Seabed"><p class="zl">Seabed</p><div class="foot"><a data-contact>Contact</a><a data-privacy>Privacy policy</a><span data-t="footer.credit"></span></div></footer>
+</main>
+<script src="../../shared/content.js"></script>
+<script src="../../shared/kit.js"></script>
+<script>
+const {$,$$,S,link,esc,reduced}=BIO;
+$('#links').innerHTML=S.links.map(l=>link(l,`<span>${esc(l.label)}</span><small>${esc(l.note)}</small>`)).join('');
+$('#dive').onclick=()=>$$('.zone')[1].scrollIntoView();
+const MAX=4200;let p=0;
+function upd(){const h=document.documentElement.scrollHeight-innerHeight;p=h>0?scrollY/h:0;$('#depth').textContent=Math.round(p*MAX).toLocaleString()+' m';$('#dot').parentElement.style.setProperty('--p',p);$('#torch').style.setProperty('--deep',Math.max(0,(p-.45)*2))}
+addEventListener('scroll',()=>requestAnimationFrame(upd),{passive:true});upd();
+addEventListener('pointermove',e=>{const t=$('#torch');t.style.setProperty('--x',e.clientX+'px');t.style.setProperty('--y',e.clientY+'px')},{passive:true});
+// bubbles near the top, glowing specks deeper down
+const cv=$('#cv'),cx=cv.getContext('2d');let W,H,parts=[];
+function size(){W=cv.width=innerWidth*devicePixelRatio;H=cv.height=innerHeight*devicePixelRatio}size();addEventListener('resize',size);
+for(let i=0;i<60;i++)parts.push({x:Math.random(),y:Math.random(),r:Math.random()*3+1,s:Math.random()*.0012+.0004,ph:Math.random()*6});
+let last=0;function frame(t){cx.clearRect(0,0,W,H);const deep=Math.min(1,p*1.6);
+ for(const b of parts){b.y-=b.s*(reduced?0:1);if(b.y<-.05){b.y=1.05;b.x=Math.random()}const x=(b.x+Math.sin(t/1400+b.ph)*.01)*W,y=b.y*H,r=b.r*devicePixelRatio;
+  cx.beginPath();cx.arc(x,y,r,0,7);
+  if(deep<.5){cx.strokeStyle=`rgba(255,255,255,${.5-deep*.8})`;cx.lineWidth=devicePixelRatio;cx.stroke()}
+  else{cx.fillStyle=`rgba(95,245,224,${(deep-.5)*1.4*(.4+.6*Math.abs(Math.sin(t/900+b.ph)))})`;cx.fill()}}
+ if(!reduced)requestAnimationFrame(frame)}
+requestAnimationFrame(frame);
+</script>
+</body>
+</html>

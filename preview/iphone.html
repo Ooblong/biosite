@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>iPhone Preview</title>
+<!-- Preview only. The phone frame is a size guide and is never part of the published site. -->
+<style>
+:root{--bg:#e9ebf3;--ink:#1c2233;--muted:#5a6280;--frame:#1b1d22;--edge:#3a3d45}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;background:var(--bg);color:var(--ink);font:400 14px/1.4 system-ui,sans-serif;display:flex;flex-direction:column;align-items:center;gap:18px;padding:24px 16px 40px}
+.bar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:center}
+.bar b{font-weight:600;margin-right:4px}
+.bar button{font:inherit;padding:8px 14px;border-radius:999px;border:1px solid #c7cbe0;background:#fff;color:var(--ink);cursor:pointer}
+.bar button[aria-pressed="true"]{background:var(--ink);color:#fff;border-color:var(--ink)}
+.note{color:var(--muted);font-size:13px;text-align:center;margin:0}
+.stage{transform-origin:top center}
+.phone{position:relative;padding:14px;border-radius:calc(var(--r) + 14px);background:var(--frame);box-shadow:inset 0 0 0 2px var(--edge),0 30px 60px rgba(28,34,51,.25)}
+.phone:before,.phone:after{content:"";position:absolute;width:4px;border-radius:2px;background:var(--edge)}
+.phone:before{left:-4px;top:150px;height:64px;box-shadow:0 80px 0 var(--edge)}
+.phone:after{right:-4px;top:200px;height:96px}
+.screen{position:relative;display:flex;flex-direction:column;width:var(--w);height:var(--h);border-radius:var(--r);overflow:hidden;background:#c9d2f0}
+.status{flex:none;height:54px;display:flex;align-items:center;justify-content:space-between;padding:6px 34px 0 46px;font:600 16px system-ui,sans-serif;color:#000}
+.status i{display:flex;gap:5px;align-items:center}
+.status i b{display:block;width:17px;height:11px;border-radius:2px;background:#000}
+.status i b:first-child{width:16px;clip-path:polygon(0 70%,25% 70%,25% 50%,50% 50%,50% 25%,75% 25%,75% 0,100% 0,100% 100%,0 100%)}
+.status i b:last-child{width:25px;border-radius:4px;background:linear-gradient(90deg,#000 80%,rgba(0,0,0,.3) 80%)}
+.se .status{height:20px;padding:0 8px;font-size:12px;justify-content:center}.se .status i{display:none}
+.screen iframe{display:block;flex:1;width:100%;border:0}
+.island{position:absolute;left:50%;top:11px;transform:translateX(-50%);width:124px;height:36px;border-radius:20px;background:#000;pointer-events:none;z-index:2}
+.home{position:absolute;left:50%;bottom:8px;transform:translateX(-50%);width:134px;height:5px;border-radius:3px;background:rgba(0,0,0,.35);pointer-events:none;z-index:2}
+.se .island{display:none}.se .home{display:none}
+.size{font:500 12px ui-monospace,monospace;color:var(--muted)}
+</style>
+</head>
+<body>
+<div class="bar" role="group" aria-label="Phone size">
+  <b>Phone</b>
+  <button type="button" data-w="393" data-h="852" data-r="55" aria-pressed="true">iPhone 15 / 16</button>
+  <button type="button" data-w="440" data-h="956" data-r="62" aria-pressed="false">iPhone 16 Pro Max</button>
+  <button type="button" data-w="375" data-h="667" data-r="0" data-se aria-pressed="false">iPhone SE</button>
+</div>
+<p class="note">The black frame is only a guide to the iPhone screen size. It won't appear on the real site.</p>
+<div class="stage" id="stage">
+  <div class="phone" id="phone">
+    <div class="screen">
+      <div class="status" aria-hidden="true"><span>9:41</span><i><b></b><b></b></i></div>
+      <iframe id="site" src="../sites/26-notes/" title="Sairah González notes site at iPhone size"></iframe>
+      <i class="island" aria-hidden="true"></i><i class="home" aria-hidden="true"></i>
+    </div>
+  </div>
+</div>
+<span class="size" id="size"></span>
+<script>
+const phone = document.getElementById('phone'), stage = document.getElementById('stage'), size = document.getElementById('size');
+let cur;
+function fit() {
+  // shrink the whole phone to fit short windows, keeping its true proportions
+  const h = cur.h + 28 + 140, s = Math.min(1, (innerHeight) / h, (innerWidth - 32) / (cur.w + 36));
+  stage.style.transform = s < 1 ? `scale(${s})` : '';
+  stage.style.marginBottom = s < 1 ? `${-(cur.h + 28) * (1 - s)}px` : '';
+}
+function set(b) {
+  document.querySelectorAll('.bar button').forEach(x => x.setAttribute('aria-pressed', x === b));
+  cur = { w: +b.dataset.w, h: +b.dataset.h };
+  phone.style.setProperty('--w', cur.w + 'px');
+  phone.style.setProperty('--h', cur.h + 'px');
+  phone.style.setProperty('--r', b.dataset.r + 'px');
+  phone.classList.toggle('se', 'se' in b.dataset);
+  size.textContent = `${cur.w} × ${cur.h} screen`;
+  fit();
+}
+// phones don't show a scrollbar, so hide it inside the preview only
+const site = document.getElementById('site');
+site.addEventListener('load', () => {
+  try {
+    const st = site.contentDocument.createElement('style');
+    st.textContent = 'html{scrollbar-width:none}::-webkit-scrollbar{display:none}';
+    site.contentDocument.head.append(st);
+  } catch (e) {}
+});
+document.querySelectorAll('.bar button').forEach(b => b.addEventListener('click', () => set(b)));
+addEventListener('resize', fit);
+set(document.querySelector('.bar button'));
+</script>
+</body>
+</html>

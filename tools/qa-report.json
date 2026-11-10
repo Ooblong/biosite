@@ -1,0 +1,348 @@
+[
+  {
+    "site": "01-viewfinder",
+    "vp": "phone",
+    "issues": [
+      "note: no tappable get-it button on first screen state, opened dialog directly"
+    ],
+    "formResult": "Not connected yet. Email delivery still needs setting up, so nothing was sent."
+  },
+  {
+    "site": "01-viewfinder",
+    "vp": "desktop",
+    "issues": [
+      "note: no tappable get-it button on first screen state, opened dialog directly"
+    ],
+    "formResult": "Not connected yet. Email delivery still needs setting up, so nothing was sent."
+  },
+  {
+    "site": "02-darkroom",
+    "vp": "phone",
+    "issues": [
+      "note: no tappable get-it button on first screen state, opened dialog directly"
+    ],
+    "formResult": "Not connected yet. Email delivery still needs setting up, so nothing was sent."
+  },
+  {
+    "site": "02-darkroom",
+    "vp": "desktop",
+    "issues": [
+      "note: no tappable get-it button on first screen state, opened dialog directly"
+    ],
+    "formResult": "Not connected yet. Email delivery still needs setting up, so nothing was sent."
+  },
+  {
+    "site": "03-contact-sheet",
+    "vp": "phone",
+    "issues": [],
+    "formResult": "Not connected yet. Email delivery still needs setting up, so nothing was sent."
+  },
+  {
+    "site": "03-contact-sheet",
+    "vp": "desktop",
+    "issues": [],
+    "formResult": "Not connected yet. Email delivery still needs setting up, so nothing was sent."
+  },
+  {
+    "site": "04-stories",
+    "vp": "phone",
+    "issues": [
+      "note: no tappable get-it button on first screen state, opened dialog directly"
+    ],
+    "formResult": "Not connected yet. Email delivery still needs setting up, so nothing was sent."
+  },
+  {
+    "site": "04-stories",
+    "vp": "desktop",
+    "issues": [
+      "note: no tappable get-it button on first screen state, opened dialog directly"
+    ],
+    "formResult": "Not connected yet. Email delivery still needs setting up, so nothing was sent."
+  },
+  {
+    "site": "05-text-me",
+    "vp": "phone",
+    "issues": [
+      "note: no tappable get-it button on first screen state, opened dialog directly"
+    ],
+    "formResult": "Not connected yet. Email delivery still needs setting up, so nothing was sent."
+  },
+  {
+    "site": "05-text-me",
+    "vp": "desktop",
+    "issues": [
+      "note: no tappable get-it button on first screen state, opened dialog directly"
+    ],
+    "formResult": "Not connected yet. Email delivery still needs setting up, so nothing was sent."
+  },
+  {
+    "site": "06-holo-cards",
+    "vp": "phone",
+    "issues": [],
+    "formResult": "Not connected yet. Email delivery still needs setting up, so nothing was sent."
+  },
+  {
+    "site": "06-holo-cards",
+    "vp": "desktop",
+    "issues": [],
+    "formResult": "Not connected yet. Email delivery still needs setting up, so nothing was sent."
+  },
+  {
+    "site": "07-desk-os",
+    "vp": "phone",
+    "issues": [
+      "note: no tappable get-it button on first screen state, opened dialog directly"
+    ],
+    "formResult": "Not connected yet. Email delivery still needs setting up, so nothing was sent."
+  },
+  {
+    "site": "07-desk-os",
+    "vp": "desktop",
+    "issues": [],
+    "formResult": "Not connected yet. Email delivery still needs setting up, so nothing was sent."
+  },
+  {
+    "site": "08-terminal",
+    "vp": "phone",
+    "issues": [
+      "note: no tappable get-it button on first screen state, opened dialog directly"
+    ],
+    "formResult": "Not connected yet. Email delivery still needs setting up, so nothing was sent."
+  },
+  {
+    "site": "08-terminal",
+    "vp": "desktop",
+    "issues": [
+      "note: no tappable get-it button on first screen state, opened dialog directly"
+    ],
+    "formResult": "Not connected yet. Email delivery still needs setting up, so nothing was sent."
+  },
+  {
+    "site": "09-receipt",
+    "vp": "phone",
+    "issues": [],
+    "formResult": "Not connected yet. Email delivery still needs setting up, so nothing was sent."
+  },
+  {
+    "site": "09-receipt",
+    "vp": "desktop",
+    "issues": [],
+    "formResult": "Not connected yet. Email delivery still needs setting up, so nothing was sent."
+  },
+  {
+    "site": "10-museum",
+    "vp": "phone",
+    "issues": [],
+    "formResult": "Not connected yet. Email delivery still needs setting up, so nothing was sent."
+  },
+  {
+    "site": "10-museum",
+    "vp": "desktop",
+    "issues": [],
+    "formResult": "Not connected yet. Email delivery still needs setting up, so nothing was sent."
+  },
+  {
+    "site": "11-deep-dive",
+    "vp": "phone",
+    "issues": [
+      "note: no tappable get-it button on first screen state, opened dialog directly"
+    ],
+    "formResult": "Not connected yet. Email delivery still needs setting up, so nothing was sent."
+  },
+  {
+    "site": "11-deep-dive",
+    "vp": "desktop",
+    "issues": [
+      "note: no tappable get-it button on first screen state, opened dialog directly"
+    ],
+    "formResult": "Not connected yet. Email delivery still needs setting up, so nothing was sent."
+  },
+  {
+    "site": "12-tunnel",
+    "vp": "phone",
+    "issues": [
+      "note: no tappable get-it button on first screen state, opened dialog directly"
+    ],
+    "formResult": "Not connected yet. Email delivery still needs setting up, so nothing was sent."
+  },
+  {
+    "site": "12-tunnel",
+    "vp": "desktop",
+    "issues": [
+      "note: no tappable get-it button on first screen state, opened dialog directly"
+    ],
+    "formResult": "Not connected yet. Email delivery still needs setting up, so nothing was sent."
+  },
+  {
+    "site": "13-metro",
+    "vp": "phone",
+    "issues": [],
+    "formResult": "Not connected yet. Email delivery still needs setting up, so nothing was sent."
+  },
+  {
+    "site": "13-metro",
+    "vp": "desktop",
+    "issues": [],
+    "formResult": "Not connected yet. Email delivery still needs setting up, so nothing was sent."
+  },
+  {
+    "site": "14-card-catalog",
+    "vp": "phone",
+    "issues": [],
+    "formResult": "Not connected yet. Email delivery still needs setting up, so nothing was sent."
+  },
+  {
+    "site": "14-card-catalog",
+    "vp": "desktop",
+    "issues": [],
+    "formResult": "Not connected yet. Email delivery still needs setting up, so nothing was sent."
+  },
+  {
+    "site": "15-pixel-quest",
+    "vp": "phone",
+    "issues": [],
+    "formResult": "Not connected yet. Email delivery still needs setting up, so nothing was sent."
+  },
+  {
+    "site": "15-pixel-quest",
+    "vp": "desktop",
+    "issues": [],
+    "formResult": "Not connected yet. Email delivery still needs setting up, so nothing was sent."
+  },
+  {
+    "site": "16-sticker-sheet",
+    "vp": "phone",
+    "issues": [],
+    "formResult": "Not connected yet. Email delivery still needs setting up, so nothing was sent."
+  },
+  {
+    "site": "16-sticker-sheet",
+    "vp": "desktop",
+    "issues": [],
+    "formResult": "Not connected yet. Email delivery still needs setting up, so nothing was sent."
+  },
+  {
+    "site": "17-aurora-glass",
+    "vp": "phone",
+    "issues": [],
+    "formResult": "Not connected yet. Email delivery still needs setting up, so nothing was sent."
+  },
+  {
+    "site": "17-aurora-glass",
+    "vp": "desktop",
+    "issues": [],
+    "formResult": "Not connected yet. Email delivery still needs setting up, so nothing was sent."
+  },
+  {
+    "site": "18-bento",
+    "vp": "phone",
+    "issues": [],
+    "formResult": "Not connected yet. Email delivery still needs setting up, so nothing was sent."
+  },
+  {
+    "site": "18-bento",
+    "vp": "desktop",
+    "issues": [],
+    "formResult": "Not connected yet. Email delivery still needs setting up, so nothing was sent."
+  },
+  {
+    "site": "19-swiss-poster",
+    "vp": "phone",
+    "issues": [],
+    "formResult": "Not connected yet. Email delivery still needs setting up, so nothing was sent."
+  },
+  {
+    "site": "19-swiss-poster",
+    "vp": "desktop",
+    "issues": [],
+    "formResult": "Not connected yet. Email delivery still needs setting up, so nothing was sent."
+  },
+  {
+    "site": "20-zine",
+    "vp": "phone",
+    "issues": [
+      "note: no tappable get-it button on first screen state, opened dialog directly"
+    ],
+    "formResult": "Not connected yet. Email delivery still needs setting up, so nothing was sent."
+  },
+  {
+    "site": "20-zine",
+    "vp": "desktop",
+    "issues": [
+      "note: no tappable get-it button on first screen state, opened dialog directly"
+    ],
+    "formResult": "Not connected yet. Email delivery still needs setting up, so nothing was sent."
+  },
+  {
+    "site": "21-airmail",
+    "vp": "phone",
+    "issues": [],
+    "formResult": "Not connected yet. Email delivery still needs setting up, so nothing was sent."
+  },
+  {
+    "site": "21-airmail",
+    "vp": "desktop",
+    "issues": [],
+    "formResult": "Not connected yet. Email delivery still needs setting up, so nothing was sent."
+  },
+  {
+    "site": "22-vending",
+    "vp": "phone",
+    "issues": [],
+    "formResult": "Not connected yet. Email delivery still needs setting up, so nothing was sent."
+  },
+  {
+    "site": "22-vending",
+    "vp": "desktop",
+    "issues": [],
+    "formResult": "Not connected yet. Email delivery still needs setting up, so nothing was sent."
+  },
+  {
+    "site": "23-spreadsheet",
+    "vp": "phone",
+    "issues": [],
+    "formResult": "Not connected yet. Email delivery still needs setting up, so nothing was sent."
+  },
+  {
+    "site": "23-spreadsheet",
+    "vp": "desktop",
+    "issues": [],
+    "formResult": "Not connected yet. Email delivery still needs setting up, so nothing was sent."
+  },
+  {
+    "site": "24-blueprint",
+    "vp": "phone",
+    "issues": [],
+    "formResult": "Not connected yet. Email delivery still needs setting up, so nothing was sent."
+  },
+  {
+    "site": "24-blueprint",
+    "vp": "desktop",
+    "issues": [],
+    "formResult": "Not connected yet. Email delivery still needs setting up, so nothing was sent."
+  },
+  {
+    "site": "25-mosaic",
+    "vp": "phone",
+    "issues": [],
+    "formResult": "Not connected yet. Email delivery still needs setting up, so nothing was sent."
+  },
+  {
+    "site": "25-mosaic",
+    "vp": "desktop",
+    "issues": [],
+    "formResult": "Not connected yet. Email delivery still needs setting up, so nothing was sent."
+  },
+  {
+    "site": "26-notes",
+    "vp": "phone",
+    "issues": [],
+    "formResult": "Not connected yet. Email delivery still needs setting up, so nothing was sent."
+  },
+  {
+    "site": "26-notes",
+    "vp": "desktop",
+    "issues": [],
+    "formResult": "Not connected yet. Email delivery still needs setting up, so nothing was sent."
+  }
+]

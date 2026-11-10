@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Sairah González</title>
+<meta name="description" content="Sairah González. Get My Photo Gallery, a free desktop app.">
+<meta name="theme-color" content="#0f2fd6">
+<link rel="icon" href="../../shared/icon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@500;800;900&family=Schibsted+Grotesk:wght@400;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../shared/kit.css">
+<style>
+:root{--blue:#0f2fd6;--pink:#ff6ec7;
+--k-bg:#0f2fd6;--k-fg:#fff;--k-muted:#cfd6ff;--k-accent:#ff6ec7;--k-on:#0a1460;--k-line:#fff;--k-r:0;--k-font:"Schibsted Grotesk",sans-serif;--k-display:"Big Shoulders Display",sans-serif;--k-ok:#ffd1ee;--k-err:#ffd1d1;--k-dlg-r:0;--k-dlg-b:2px solid #fff}
+*{box-sizing:border-box}
+body{margin:0;background:var(--blue);color:#fff;font:16px/1.4 "Schibsted Grotesk",sans-serif}
+button{font:inherit;color:inherit}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--pink);outline-offset:3px}
+.space{position:fixed;inset:0;perspective:700px;perspective-origin:50% 50%;overflow:hidden}
+.rings{position:absolute;inset:0;transform-style:preserve-3d}
+.ring{position:absolute;left:50%;top:50%;width:150vmax;height:150vmax;margin:-75vmax 0 0 -75vmax;border:1.5px solid rgba(255,255,255,.28)}
+.plane{position:absolute;left:50%;top:50%;width:min(88vw,520px);transform-style:preserve-3d;will-change:transform,opacity;transform:translate(-50%,-50%)}
+.plane h1{margin:0;font:900 clamp(70px,21vw,150px)/.82 "Big Shoulders Display",sans-serif;text-transform:uppercase;letter-spacing:-.01em}
+.plane h1 span{display:block}
+.plane h1 span+span{color:var(--pink)}
+.plane h2{margin:0 0 12px;font:900 clamp(62px,19vw,120px)/.82 "Big Shoulders Display",sans-serif;text-transform:uppercase}
+.plane p{margin:0 0 12px}
+.av{width:74px;height:74px;margin-bottom:14px;display:grid;place-items:center;font:900 30px "Big Shoulders Display",sans-serif;color:var(--blue);background:#fff;overflow:hidden}
+.av img{width:100%;height:100%;object-fit:cover}
+.socs{display:flex;gap:4px;margin-left:-10px}
+.nextp{display:inline-flex;align-items:center;gap:6px;min-height:48px;margin-top:14px;padding:0 16px;font-weight:600;color:#0a1460;background:var(--pink);border:0;cursor:pointer}
+.tag{display:inline-block;padding:3px 10px;margin:0 6px 10px 0;font-weight:800;font-size:14px;color:var(--blue);background:#fff}
+.tag.p{background:var(--pink);color:#0a1460}
+.btn{display:flex;justify-content:space-between;align-items:center;width:100%;min-height:62px;padding:0 18px;font:800 30px "Big Shoulders Display",sans-serif;text-transform:uppercase;color:#0a1460;background:var(--pink);border:0;cursor:pointer}
+.ghost{min-height:46px;padding:0 16px;margin-top:8px;font-weight:600;background:none;border:2px solid #fff;cursor:pointer}
+.sm{font-size:14px;color:#dfe4ff}
+.lk>*{display:flex;justify-content:space-between;align-items:baseline;gap:10px;width:100%;padding:8px 0;min-height:50px;font:800 30px/1 "Big Shoulders Display",sans-serif;text-transform:uppercase;text-align:left;color:inherit;text-decoration:none;background:none;border:0;border-bottom:2px solid rgba(255,255,255,.35)}
+.lk>*:first-child{color:var(--pink);cursor:pointer}
+.lk small{font:600 13px "Schibsted Grotesk",sans-serif;text-transform:none;white-space:nowrap}
+.foot{display:flex;flex-wrap:wrap;gap:0 20px}
+.foot a{min-height:44px;display:inline-flex;align-items:center;font-weight:600}
+.hud{position:fixed;z-index:3;left:0;right:0;bottom:calc(12px + env(safe-area-inset-bottom));display:flex;justify-content:center;gap:4px}
+.hud button{width:44px;height:44px;padding:0;background:none;border:0;cursor:pointer;display:grid;place-items:center}
+.hud button:after{content:"";width:18px;height:4px;background:rgba(255,255,255,.4)}
+.hud button[aria-current=true]:after{width:30px;background:#fff}
+.hint{position:fixed;z-index:3;top:calc(14px + env(safe-area-inset-top));left:0;right:0;text-align:center;font:800 15px "Big Shoulders Display",sans-serif;letter-spacing:.2em;text-transform:uppercase;opacity:.85;pointer-events:none}
+.pg{--pg-bg:#0a1f9e;--pg-fg:#fff;--pg-mut:#cfd6ff;--pg-line:#4a63e8;--pg-acc:#ff6ec7;--pg-on:#0a1460;--pg-r:0;--pg-tile-r:0;--pg-font:"Schibsted Grotesk",sans-serif}
+/* reduced motion: plain scroll, no flight */
+.flat .space{position:static;perspective:none;overflow:visible}
+.flat .rings,.flat .hint,.flat .hud{display:none}
+.flat .plane{position:relative;left:auto;top:auto;transform:none!important;opacity:1!important;margin:0 auto;padding:60px 0;width:min(88vw,520px)}
+.flat #track{display:none}
+</style>
+</head>
+<body>
+<p class="hint" id="hint">Scroll to fly forward</p>
+<div class="space" id="space">
+  <div class="rings" id="rings"></div>
+  <section class="plane" aria-label="Profile">
+    <div class="av" data-av></div>
+    <h1><span data-t="person.first"></span><span data-t="person.last"></span></h1>
+    <p data-t="person.bio"></p><div class="socs" data-soc></div>
+    <button class="nextp" data-goto="1">Next: <b data-t="product.name"></b>, free →</button>
+  </section>
+  <section class="plane" aria-label="My Photo Gallery">
+    <span class="tag p" data-t="product.price"></span><span class="tag" data-t="product.compat"></span>
+    <h2 data-t="product.name"></h2>
+    <p data-t="product.description"></p><p><b data-t="product.promise"></b></p>
+    <ul data-details></ul>
+    <button class="btn" data-get><span>Get it free</span><span>→</span></button>
+    <button class="ghost" data-preview>Preview the app</button>
+    <p class="sm" style="margin-top:12px" data-t="product.compatNote"></p>
+  </section>
+  <section class="plane" aria-label="Links"><h2>Links</h2><div class="lk" id="links"></div></section>
+  <section class="plane" aria-label="Currently building"><p class="sm">Currently building</p><h2 data-t="building.name"></h2><p data-t="building.status"></p><a data-build-link>Follow the journey</a></section>
+  <section class="plane" aria-label="Newsletter"><h2>Newsletter</h2><p data-t="newsletter.intro"></p><div data-form="newsletter"></div>
+    <div class="foot" style="margin-top:20px"><a data-contact>Contact</a><a data-privacy>Privacy policy</a><span class="sm" style="align-self:center" data-t="footer.credit"></span></div></section>
+</div>
+<div id="track"></div>
+<nav class="hud" id="hud" aria-label="Sections"></nav>
+<script src="../../shared/content.js"></script>
+<script src="../../shared/kit.js"></script>
+<script>
+const {$,$$,S,link,esc,reduced}=BIO;
+$('#links').innerHTML=S.links.map(l=>link(l,`<span>${esc(l.label)}</span><small>${esc(l.note)}</small>`)).join('');
+const planes=$$('.plane'),D=1400,STEP=innerHeight*1.1;
+if(reduced){document.body.classList.add('flat')}else{
+ $('#track').style.height=(planes.length-1)*STEP+innerHeight+'px';
+ $('#rings').innerHTML=Array.from({length:14},()=>'<i class="ring"></i>').join('');
+ const rings=$$('.ring');
+ $('#hud').innerHTML=planes.map((p,i)=>`<button data-i="${i}" aria-label="${p.getAttribute('aria-label')}"></button>`).join('');
+ const hb=$$('#hud button');
+ function frame(){const pos=scrollY/STEP;
+  planes.forEach((p,i)=>{const z=(pos-i)*D;const vis=z>-D*2.2&&z<D*.35;
+   p.style.opacity=z>0?Math.max(0,1-z/(D*.3)):Math.max(0,1+z/(D*1.25));
+   p.style.transform=`translate(-50%,-50%) translateZ(${z}px)`;p.style.visibility=vis?'visible':'hidden';p.inert=Math.abs(z)>D*.3});
+  rings.forEach((r,k)=>{const z=((pos*D*.6+k*500)%(14*500))-14*500+600;r.style.transform=`translateZ(${z}px) rotate(${k*7+pos*20}deg)`;r.style.opacity=Math.min(1,(z+7000)/3000)});
+  const a=Math.round(pos);hb.forEach((b,i)=>b.setAttribute('aria-current',i===a));$('#hint').style.opacity=pos<.15?.85:0}
+ addEventListener('scroll',()=>requestAnimationFrame(frame),{passive:true});frame();
+ $('#hud').onclick=e=>{const b=e.target.closest('[data-i]');if(b)scrollTo({top:+b.dataset.i*STEP,behavior:'smooth'})};
+ let snapT;addEventListener('scroll',()=>{clearTimeout(snapT);snapT=setTimeout(()=>{const a=Math.round(scrollY/STEP);if(Math.abs(scrollY-a*STEP)>4)scrollTo({top:a*STEP,behavior:'smooth'})},180)},{passive:true});
+ addEventListener('keydown',e=>{if(e.target.matches('input'))return;const a=Math.round(scrollY/STEP);if(e.key==='ArrowDown'||e.key==='PageDown'){e.preventDefault();scrollTo({top:(a+1)*STEP,behavior:'smooth'})}if(e.key==='ArrowUp'||e.key==='PageUp'){e.preventDefault();scrollTo({top:(a-1)*STEP,behavior:'smooth'})}});
+ document.addEventListener('focusin',e=>{const p=e.target.closest('.plane');if(p){const i=planes.indexOf(p);if(Math.abs(scrollY-i*STEP)>4)scrollTo({top:i*STEP})}});
+ window.BIO_GOTO=i=>scrollTo({top:i*STEP});
+}
+document.addEventListener('click',e=>{const b=e.target.closest('[data-goto]');if(!b)return;const i=+b.dataset.goto;if(window.BIO_GOTO)BIO_GOTO(i);else planes[i].scrollIntoView({behavior:'smooth'})});
+</script>
+</body>
+</html>

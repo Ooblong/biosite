@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Sairah González</title>
+<meta name="description" content="Sairah González. Get My Photo Gallery, a free desktop app.">
+<meta name="theme-color" content="#eceeee">
+<link rel="icon" href="../../shared/icon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gloock&family=Libre+Franklin:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../shared/kit.css">
+<style>
+:root{--wall:#eceeee;--wall2:#dfe2e2;--floor:#9c7a5b;--ink:#1d1f20;--mute:#5b5f61;--acc:#1d1f20;
+--k-bg:#fff;--k-fg:#1d1f20;--k-muted:#5b5f61;--k-accent:#1d1f20;--k-on:#fff;--k-line:#1d1f20;--k-r:0;--k-font:"Libre Franklin",sans-serif;--k-display:Gloock,serif;--k-dlg-r:0}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;overflow:hidden;background:var(--wall);color:var(--ink);font:15px/1.45 "Libre Franklin",sans-serif;overscroll-behavior:none}
+button{font:inherit;color:inherit}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.hall{position:fixed;inset:0;display:flex;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scrollbar-width:none;background:linear-gradient(180deg,var(--wall) 0,var(--wall2) 84%,#6f5640 84%,var(--floor) 86%,#80634a 100%)}
+.hall::-webkit-scrollbar{display:none}
+.room{position:relative;flex:0 0 100vw;height:100%;scroll-snap-align:center;overflow-y:auto;padding:calc(56px + env(safe-area-inset-top)) 22px 18dvh;display:flex;flex-direction:column;align-items:center;scrollbar-width:none}
+.room::-webkit-scrollbar{display:none}
+.room:before{content:"";position:absolute;top:0;left:50%;width:min(520px,130vw);height:86%;transform:translateX(-50%);background:radial-gradient(50% 55% at 50% 30%,rgba(255,250,235,.95),transparent 70%);pointer-events:none}
+.room>*{position:relative}
+.frame{width:min(100%,380px);padding:16px;background:#fff;box-shadow:0 0 0 12px #1d1f20,0 0 0 13px #444,0 26px 40px 10px rgba(0,0,0,.28);margin:12px 0 30px}
+.frame.oak{box-shadow:0 0 0 12px #b08758,0 0 0 13px #7b5a37,0 26px 40px 10px rgba(0,0,0,.28)}
+.frame.wide{width:min(100%,430px)}
+.portrait{aspect-ratio:1;display:grid;place-items:center;font:400 120px Gloock,serif;color:#fff;background:#24292b;overflow:hidden}
+.portrait img{width:100%;height:100%;object-fit:cover}
+.label{width:min(100%,300px);padding:14px 16px;background:#fff;box-shadow:0 2px 6px rgba(0,0,0,.12);font-size:13.5px}
+.label h1,.label h2{margin:0;font:400 26px/1.08 Gloock,serif}
+.label .by{margin:2px 0 8px;font-weight:700}
+.label p{margin:0 0 8px}
+.label .med{color:var(--mute);font-style:italic}
+.label .nb{display:inline-block;padding:1px 7px;font-weight:700;font-size:12px;color:#fff;background:var(--ink)}
+.nextroom{display:flex;align-items:center;width:100%;min-height:48px;margin-top:12px;padding:0 12px;font-size:14px;text-align:left;color:#fff;background:var(--ink);border:0;cursor:pointer}
+.socs{display:flex;gap:2px;margin:4px 0 -6px -10px}
+.enter{display:block;width:100%;min-height:52px;margin:6px 0;font:400 20px Gloock,serif;color:#fff;background:var(--ink);border:0;cursor:pointer}
+.pg{--pg-r:0;--pg-tile-r:0;--pg-acc:#1d1f20;--pg-font:"Libre Franklin",sans-serif;border:0}
+.idx{display:grid;text-align:left}
+.idx>*{display:grid;grid-template-columns:30px 1fr;align-items:baseline;gap:2px 8px;width:100%;padding:10px 0;min-height:52px;font:inherit;color:inherit;text-decoration:none;text-align:left;background:none;border:0;border-bottom:1px solid #d5d7d8}
+.idx em{font:400 13px Gloock,serif;color:var(--mute);font-style:normal;grid-row:span 2}
+.idx b{font:400 20px/1.15 Gloock,serif}
+.idx small{grid-column:2;color:var(--mute);font-size:12.5px}
+.idx>*:first-child b{text-decoration:underline;text-underline-offset:4px}
+.idx button{cursor:pointer}
+.veil{aspect-ratio:4/3;display:grid;place-items:center;text-align:center;background:repeating-linear-gradient(-45deg,#f3f3f1 0 14px,#ebebe8 14px 28px);font:400 22px Gloock,serif;padding:20px}
+.book{padding:4px}
+.book p{margin:0 0 10px}
+.desk{display:grid;gap:4px;text-align:center}
+.desk a{min-height:44px;display:inline-flex;align-items:center;justify-content:center;font:400 22px Gloock,serif}
+.plate{position:fixed;z-index:4;top:calc(12px + env(safe-area-inset-top));left:50%;transform:translateX(-50%);padding:6px 12px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;background:#fff;box-shadow:0 1px 4px rgba(0,0,0,.15);white-space:nowrap}
+.nav{position:fixed;z-index:4;bottom:calc(10px + env(safe-area-inset-bottom));left:0;right:0;display:flex;justify-content:center;align-items:center;gap:10px;color:#fff}
+.nav button{width:48px;height:48px;font-size:20px;color:#fff;background:rgba(29,31,32,.82);border:0;border-radius:50%;cursor:pointer}
+.nav span{min-width:110px;text-align:center;font-size:13px;letter-spacing:.06em;text-shadow:0 1px 2px #0008}
+@media(min-width:900px){.room{flex-basis:56vw;padding-top:70px;justify-content:center;flex-direction:row;align-items:center;gap:34px}.room:first-child{margin-left:22vw}.room:last-child{margin-right:22vw}.frame{flex:none}.label{align-self:center}}
+@media(prefers-reduced-motion:reduce){.hall{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<p class="plate" id="plate">The Sairah González Wing</p>
+<main class="hall" id="hall">
+  <section class="room" aria-label="Portrait">
+    <div class="frame"><div class="portrait" data-av></div></div>
+    <div class="label"><h1 data-t="person.name"></h1><p class="med">Portrait, in progress</p><p data-t="person.bio"></p><div class="socs" data-soc></div><button class="nextroom" data-room="1">Next room: <b data-t="product.name"></b>, free →</button></div>
+  </section>
+  <section class="room" aria-label="My Photo Gallery">
+    <div class="frame oak wide"><div data-demo></div></div>
+    <div class="label"><p><span class="nb" data-t="product.price"></span> <span class="nb" style="background:#fff;color:#1d1f20;box-shadow:inset 0 0 0 1px #1d1f20" data-t="product.compat"></span></p><h2 data-t="product.name"></h2><p class="by">Sairah González</p><p class="med" data-t="product.kind"></p><p data-t="product.description"></p><p data-t="product.promise"></p><ul data-details></ul><button class="enter" data-get>Get it free</button><p class="med" style="font-size:12.5px" data-t="product.compatNote"></p></div>
+  </section>
+  <section class="room" aria-label="Collection index">
+    <div class="frame"><div class="idx" id="links"></div></div>
+    <div class="label"><h2>The collection</h2><p class="med">Links, free resources and works to come</p></div>
+  </section>
+  <section class="room" aria-label="Currently building">
+    <div class="frame"><div class="veil"><span>Work in progress<br><small style="font:13px 'Libre Franklin'">Behind this sheet</small></span></div></div>
+    <div class="label"><h2 data-t="building.name"></h2><p class="by">Currently building</p><p data-t="building.status"></p><a data-build-link>Follow the journey</a></div>
+  </section>
+  <section class="room" aria-label="Guestbook">
+    <div class="frame oak"><div class="book"><p style="font:400 26px/1.1 Gloock,serif">Sign the guestbook</p><p data-t="newsletter.intro"></p><div data-form="newsletter" data-btn="Sign"></div></div></div>
+    <div class="label"><h2>Newsletter</h2><p class="med">Updates by email. Leave any time.</p></div>
+  </section>
+  <section class="room" aria-label="Information desk">
+    <div class="frame"><div class="desk"><a data-contact>Contact</a><a data-privacy>Privacy policy</a></div></div>
+    <div class="label"><h2>Information desk</h2><p data-t="footer.credit"></p></div>
+  </section>
+</main>
+<nav class="nav" aria-label="Rooms"><button id="p" aria-label="Previous room">←</button><span id="rn" aria-live="polite"></span><button id="n" aria-label="Next room">→</button></nav>
+<script src="../../shared/content.js"></script>
+<script src="../../shared/kit.js"></script>
+<script>
+const {$,$$,S,link,esc,reduced}=BIO;
+$('#links').innerHTML=S.links.map((l,i)=>link(l,`<em>${String.fromCharCode(97+i)}.</em><b>${esc(l.label)}</b><small>${esc(l.note)}</small>`)).join('');
+const hall=$('#hall'),rooms=$$('.room');let cur=0;
+const NAMES=['Portrait','My Photo Gallery','The collection','Work in progress','Guestbook','Information desk'];
+function to(i){i=Math.max(0,Math.min(rooms.length-1,i));rooms[i].scrollIntoView({behavior:reduced?'auto':'smooth',inline:'center',block:'nearest'})}
+function sync(){const mid=hall.scrollLeft+innerWidth/2;let best=0,bd=1e9;rooms.forEach((r,i)=>{const c=r.offsetLeft+r.offsetWidth/2,d=Math.abs(c-mid);if(d<bd){bd=d;best=i}});cur=best;$('#rn').textContent=`Room ${cur+1} of ${rooms.length}`;$('#plate').textContent=NAMES[cur]}
+hall.addEventListener('scroll',()=>requestAnimationFrame(sync),{passive:true});
+document.addEventListener('click',e=>{const b=e.target.closest('[data-room]');if(b)to(+b.dataset.room)});
+$('#n').onclick=()=>to(cur+1);$('#p').onclick=()=>to(cur-1);
+addEventListener('keydown',e=>{if(e.target.matches('input'))return;if(e.key==='ArrowRight'){e.preventDefault();to(cur+1)}if(e.key==='ArrowLeft'){e.preventDefault();to(cur-1)}});
+hall.addEventListener('wheel',e=>{if(Math.abs(e.deltaY)<=Math.abs(e.deltaX))return;const r=e.target.closest('.room');if(r&&r.scrollHeight>r.clientHeight+4){const end=r.scrollTop+r.clientHeight>=r.scrollHeight-2,top=r.scrollTop<=0;if((e.deltaY>0&&!end)||(e.deltaY<0&&!top))return}e.preventDefault();hall.scrollBy({left:e.deltaY*1.4})},{passive:false});
+sync();
+</script>
+</body>
+</html>

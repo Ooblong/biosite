@@ -1,0 +1,6 @@
+.env
+node_modules
+
+# copy of someone else's design post, kept for reference only
+concepts/ref/
+.impeccable/

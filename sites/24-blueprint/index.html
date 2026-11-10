@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Sairah González</title>
+<meta name="description" content="Sairah González. Get My Photo Gallery, a free desktop app.">
+<meta name="theme-color" content="#0d3b8c">
+<link rel="icon" href="../../shared/icon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Architects+Daughter&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../shared/kit.css">
+<style>
+:root{--bp:#0d3b8c;--ln:#e8f1ff;--dim:#9fc0f0;--hl:#ffe27a;
+--k-bg:#0d3b8c;--k-fg:#e8f1ff;--k-muted:#c4d8f6;--k-accent:#e8f1ff;--k-on:#0d3b8c;--k-line:#e8f1ff;--k-r:0;--k-font:"Share Tech Mono",monospace;--k-display:"Architects Daughter",cursive;--k-ok:#ffe27a;--k-err:#ffc4b5;--k-dlg-r:0;--k-dlg-b:2px solid #e8f1ff}
+*{box-sizing:border-box}
+body{margin:0;min-height:100dvh;color:var(--ln);font:15px/1.5 "Share Tech Mono",monospace;background:var(--bp);background-image:linear-gradient(rgba(232,241,255,.16) 1px,transparent 1px),linear-gradient(90deg,rgba(232,241,255,.16) 1px,transparent 1px),linear-gradient(rgba(232,241,255,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(232,241,255,.06) 1px,transparent 1px);background-size:100px 100px,100px 100px,20px 20px,20px 20px}
+button{font:inherit;color:inherit}
+a{color:inherit}
+:focus-visible{outline:2px dashed var(--hl);outline-offset:3px}
+.sheet{max-width:760px;margin:0 auto;padding:calc(18px + env(safe-area-inset-top)) 16px 30px}
+.frame{border:2px solid var(--ln);padding:16px;position:relative;margin-bottom:22px}
+.frame:before{content:attr(data-n);position:absolute;top:-12px;left:12px;padding:0 6px;background:var(--bp);font-size:12px;letter-spacing:.12em}
+.hand{font:400 19px/1.3 "Architects Daughter",cursive;color:var(--hl)}
+h1{margin:0;font:400 clamp(36px,10.5vw,58px)/1.02 "Architects Daughter",cursive;letter-spacing:.01em}
+h2{margin:0 0 8px;font:400 clamp(28px,8vw,40px)/1.05 "Architects Daughter",cursive}
+.frame p{margin:0 0 10px}
+.me{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:center}
+.av{width:86px;height:86px;display:grid;place-items:center;font:400 30px "Architects Daughter";border:2px dashed var(--ln);border-radius:50%;overflow:hidden;position:relative}
+.av img{width:100%;height:100%;object-fit:cover;filter:grayscale(1) brightness(1.2) sepia(1) hue-rotate(180deg)}
+.socs{display:flex;gap:4px;margin-left:-10px}
+svg.draw{display:block;width:100%;height:auto;overflow:visible}
+svg.draw .s{fill:none;stroke:var(--ln);stroke-width:1.6;stroke-linecap:round;stroke-dasharray:var(--len);stroke-dashoffset:var(--len);transition:stroke-dashoffset 1.6s ease-in-out;transition-delay:var(--d,0s)}
+svg.draw.on .s{stroke-dashoffset:0}
+svg.draw .t{fill:var(--ln);font:12px "Share Tech Mono";opacity:0;transition:opacity .6s 1.4s}
+svg.draw .h{fill:var(--hl);font:16px "Architects Daughter"}
+svg.draw.on .t{opacity:1}
+svg.draw .tile{fill:rgba(232,241,255,.12);stroke:var(--ln);stroke-width:1}
+.spec{width:100%;border-collapse:collapse;margin:10px 0}
+.spec td{border:1px solid rgba(232,241,255,.5);padding:7px 8px;vertical-align:top}
+.spec td:first-child{width:38%;color:var(--dim)}
+.go{display:flex;justify-content:space-between;align-items:center;width:100%;min-height:58px;padding:0 16px;margin:12px 0 8px;font:400 22px "Architects Daughter";color:var(--bp);background:var(--ln);border:0;cursor:pointer}
+.go:hover{background:var(--hl)}
+.sm{font-size:13px;color:var(--k-muted)}
+.pg{--pg-bg:#0b3378;--pg-fg:#e8f1ff;--pg-mut:#c4d8f6;--pg-line:#6f97d6;--pg-acc:#e8f1ff;--pg-on:#0d3b8c;--pg-r:0;--pg-tile-r:0;--pg-font:"Share Tech Mono",monospace;--pg-filter:grayscale(1) sepia(1) hue-rotate(180deg) saturate(2.4);margin-top:10px}
+.bom{width:100%;border-collapse:collapse}
+.bom th,.bom td{border:1px solid rgba(232,241,255,.5);padding:0 8px;text-align:left;height:48px}
+.bom th{font-weight:400;font-size:12px;color:var(--dim);height:30px}
+.bom td:first-child{width:44px;text-align:center}
+.bom .lk{display:flex;align-items:center;min-height:46px;width:100%;color:inherit;background:none;border:0;padding:0;text-align:left;text-decoration:none}
+.bom button.lk{cursor:pointer;color:var(--hl);text-decoration:underline}
+.rev{display:inline-block;margin:4px 0 10px;padding:4px 10px;border:2px solid var(--hl);color:var(--hl);font:400 18px "Architects Daughter";transform:rotate(-3deg)}
+.tb{display:grid;grid-template-columns:1fr 1fr;border:2px solid var(--ln);font-size:12px}
+.tb>*{padding:6px 8px;border:1px solid rgba(232,241,255,.5);min-height:44px;display:flex;flex-direction:column;justify-content:center}
+.tb small{color:var(--dim);font-size:10.5px;letter-spacing:.08em}
+.tb .w{grid-column:1/-1}
+.tb a{text-decoration:underline;min-height:40px;display:inline-flex;align-items:center}
+@media(min-width:900px){.sheet{max-width:1100px;display:grid;grid-template-columns:1.3fr 1fr;gap:0 26px;align-items:start}.span{grid-column:1/-1}}
+@media(prefers-reduced-motion:reduce){svg.draw .s{transition:none;stroke-dashoffset:0}svg.draw .t{opacity:1;transition:none}}
+</style>
+</head>
+<body>
+<main class="sheet">
+  <section class="frame span me" data-n="A · ORIGINATOR"><div class="av" data-av></div><div><h1 data-t="person.name"></h1><p data-t="person.bio"></p><div class="socs" data-soc></div></div></section>
+  <section class="frame" data-n="B · GENERAL ARRANGEMENT">
+    <h2 data-t="product.name"></h2>
+    <svg class="draw" id="dw" viewBox="0 0 360 290" role="img" aria-label="Line drawing of My Photo Gallery on a desktop computer, with the parts labelled browse, search, filter and organise">
+      <rect class="s" x="20" y="20" width="320" height="196" rx="8"/>
+      <rect class="s" x="32" y="32" width="296" height="172" style="--d:.2s"/>
+      <path class="s" d="M150 216 L140 252 H220 L210 216" style="--d:.4s"/>
+      <path class="s" d="M110 256 H250" style="--d:.5s"/>
+      <path class="s" d="M32 52 H328" style="--d:.6s"/>
+      <rect class="s" x="44" y="38" width="120" height="10" rx="5" style="--d:.7s"/>
+      <path class="s" d="M100 52 V204" style="--d:.7s"/>
+      <g id="tiles"></g>
+      <path class="s" d="M20 272 H340 M20 266 V278 M340 266 V278" style="--d:1s"/>
+      <text class="t" x="180" y="287" text-anchor="middle">DESKTOP ONLY</text>
+      <path class="s" d="M104 43 L60 4" style="--d:1.1s"/><text class="t h" x="2" y="12">② search</text>
+      <path class="s" d="M70 120 L6 150" style="--d:1.1s"/><text class="t h" x="0" y="168">③ filter</text>
+      <path class="s" d="M250 120 L352 96" style="--d:1.1s"/><text class="t h" x="282" y="88">① browse</text>
+      <path class="s" d="M300 180 L352 236" style="--d:1.2s"/><text class="t h" x="270" y="250">④ organise</text>
+    </svg>
+    <table class="spec">
+      <tr><td>Price</td><td style="color:var(--hl)" data-t="product.price"></td></tr>
+      <tr><td>Type</td><td data-t="product.kind"></td></tr>
+      <tr><td>Function</td><td data-t="product.description"></td></tr>
+      <tr><td>Requires</td><td data-t="product.promise"></td></tr>
+      <tr><td>Platform</td><td data-t="product.compat"></td></tr>
+    </table>
+    <ul data-details></ul>
+    <button class="go" data-get><span>Get it free</span><span>→</span></button>
+    <p class="sm" data-t="product.compatNote"></p>
+    <p class="hand">↓ working model (sample files)</p>
+    <div data-demo></div>
+  </section>
+  <div>
+    <section class="frame" data-n="C · BILL OF MATERIALS"><h2>Links</h2><table class="bom"><thead><tr><th>ITEM</th><th>DESCRIPTION</th><th>STATUS</th></tr></thead><tbody id="bom"></tbody></table></section>
+    <section class="frame" data-n="D · REVISION IN PROGRESS"><span class="rev">Currently building</span><h2 data-t="building.name"></h2><p data-t="building.status"></p><a data-build-link>Follow the journey</a></section>
+    <section class="frame" data-n="E · CHANGE NOTICES"><h2>Newsletter</h2><p data-t="newsletter.intro"></p><div data-form="newsletter"></div></section>
+  </div>
+  <footer class="tb span">
+    <div class="w"><small>PROJECT</small>LINK IN BIO · <span data-t="person.name"></span></div>
+    <div><small>CONTACT</small><a data-contact>Contact</a></div>
+    <div><small>PRIVACY</small><a data-privacy>Privacy policy</a></div>
+    <div><small>DATE</small><span id="date"></span></div>
+    <div><small>SHEET</small>1 OF 1</div>
+    <div class="w"><small>©</small><span data-t="footer.credit"></span></div>
+  </footer>
+</main>
+<script src="../../shared/content.js"></script>
+<script src="../../shared/kit.js"></script>
+<script>
+const {$,$$,S,link,esc}=BIO;
+$('#bom').innerHTML=S.links.map((l,i)=>`<tr><td>${i+1}</td><td>${link(l,esc(l.label),'lk')}</td><td>${esc(l.note)}</td></tr>`).join('');
+$('#date').textContent=new Date().toISOString().slice(0,10);
+let t='';for(let r=0;r<3;r++)for(let c=0;c<4;c++)t+=`<rect class="tile" x="${110+c*54}" y="${62+r*46}" width="48" height="40"/>`;$('#tiles').innerHTML=t;
+$$('#dw .s').forEach(p=>p.style.setProperty('--len',Math.ceil(p.getTotalLength())+1));
+new IntersectionObserver((e,o)=>{if(e[0].isIntersecting){$('#dw').classList.add('on');o.disconnect()}},{threshold:.25}).observe($('#dw'));
+</script>
+</body>
+</html>

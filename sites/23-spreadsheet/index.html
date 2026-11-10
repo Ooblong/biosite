@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Sairah González</title>
+<meta name="description" content="Sairah González. Get My Photo Gallery, a free desktop app.">
+<meta name="theme-color" content="#f8faf9">
+<link rel="icon" href="../../shared/icon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../shared/kit.css">
+<style>
+:root{--g:#137333;--g2:#e6f4ea;--line:#e1e4e8;--head:#f3f5f7;--ink:#1f2328;--mute:#5f6670;--sel:#1a73e8;
+--k-bg:#fff;--k-fg:#1f2328;--k-muted:#5f6670;--k-accent:#137333;--k-on:#fff;--k-line:#c4c9cf;--k-r:4px;--k-font:Figtree,sans-serif;--k-display:Figtree,sans-serif}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;overflow:hidden;color:var(--ink);font:400 14.5px/1.35 Figtree,sans-serif;background:#fff;overscroll-behavior:none}
+button{font:inherit;color:inherit}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--sel);outline-offset:-2px}
+.app{height:100dvh;display:grid;grid-template-rows:auto auto auto 1fr auto}
+.bar{display:flex;align-items:center;gap:10px;padding:calc(8px + env(safe-area-inset-top)) 12px 6px;background:#f8faf9}
+.logo{width:30px;height:36px;flex:none;border-radius:4px;background:var(--g);position:relative}
+.logo:after{content:"";position:absolute;inset:12px 7px 7px;background:linear-gradient(#fff 0 0) 0 0/100% 2px no-repeat,linear-gradient(#fff 0 0) 0 50%/100% 2px no-repeat,linear-gradient(#fff 0 0) 0 100%/100% 2px no-repeat,linear-gradient(#fff 0 0) 40% 0/2px 100% no-repeat}
+.title b{display:block;font-weight:700;font-size:16px;line-height:1.1}
+.title span{font-size:12px;color:var(--mute)}
+.av{margin-left:auto;width:36px;height:36px;flex:none;display:grid;place-items:center;font:800 13px Figtree;color:#fff;background:#7b5cd6;border-radius:50%;overflow:hidden}
+.av img{width:100%;height:100%;object-fit:cover}
+.tools{display:flex;gap:2px;align-items:center;padding:4px 10px;background:#eef2f6;margin:0 10px;border-radius:20px;overflow-x:auto;scrollbar-width:none;font-size:13px;color:var(--mute);white-space:nowrap}
+.tools::-webkit-scrollbar{display:none}
+.tools span{padding:4px 8px}
+.tools .free{color:var(--g);font-weight:700}
+.fx{display:flex;align-items:stretch;margin-top:6px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);font:400 13px "JetBrains Mono",monospace}
+.fx .ref{flex:none;width:64px;padding:8px;border-right:1px solid var(--line);text-align:center;color:var(--mute)}
+.fx .f{flex:none;padding:8px 8px;color:var(--mute);font-style:italic;border-right:1px solid var(--line)}
+.fx output{flex:1;min-width:0;padding:8px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.grid{overflow:auto;position:relative}
+table{border-collapse:collapse;width:100%;min-width:100%;table-layout:fixed}
+th,td{border:1px solid var(--line);padding:0;text-align:left;vertical-align:top}
+thead th{position:sticky;top:0;z-index:2;height:26px;font-weight:500;font-size:12px;color:var(--mute);text-align:center;background:var(--head)}
+tbody th{width:38px;font-weight:500;font-size:12px;color:var(--mute);text-align:center;background:var(--head);vertical-align:middle}
+thead th:first-child{width:38px}
+td{position:relative;cursor:cell}
+td .c{min-height:40px;padding:9px 8px;overflow-wrap:anywhere}
+td.sel{outline:2px solid var(--sel);outline-offset:-2px;z-index:1}
+td.sel:after{content:"";position:absolute;right:-4px;bottom:-4px;width:7px;height:7px;background:var(--sel);border:1px solid #fff}
+.h td .c{font-weight:800;font-size:22px;letter-spacing:-.02em;line-height:1.1}
+.lbl .c{color:var(--mute);font-size:13px}
+.good .c{color:var(--g);font-weight:700;background:var(--g2)}
+.btn{display:block;width:100%;min-height:44px;font-weight:700;font-size:15px;color:#fff;background:var(--g);border:0;border-radius:4px;cursor:pointer}
+.c a,.c button.lnk{display:inline-flex;align-items:center;min-height:32px;color:var(--sel);background:none;border:0;padding:0;text-decoration:underline;cursor:pointer;text-align:left}
+.c .is-soon{color:var(--mute)}
+.socs{display:flex;gap:4px;margin:-6px 0 -6px -10px;color:var(--ink)}
+.pg{--pg-acc:#137333;--pg-r:6px;--pg-font:Figtree,sans-serif}
+.tabs{display:flex;gap:0;overflow-x:auto;background:#f8faf9;border-top:1px solid var(--line);padding:0 0 env(safe-area-inset-bottom);scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tabs button{flex:none;min-height:46px;padding:0 16px;font-weight:600;font-size:13.5px;color:var(--mute);background:none;border:0;border-right:1px solid var(--line);cursor:pointer;white-space:nowrap}
+.tabs button[aria-selected=true]{color:var(--g);background:#fff;box-shadow:inset 0 -3px 0 var(--g)}
+.colC{display:none}
+@media(min-width:760px){.colC{display:table-cell}col.cc{width:30%}.app{max-width:1200px;margin:auto;border-left:1px solid var(--line);border-right:1px solid var(--line)}}
+</style>
+</head>
+<body>
+<div class="app">
+  <header class="bar"><span class="logo" aria-hidden="true"></span><div class="title"><b data-t="person.name"></b><span>Link in bio · read only</span></div><div class="av" data-av></div></header>
+  <div class="tools" aria-hidden="true"><span>File</span><span>Edit</span><span>View</span><span>Insert</span><span>Format</span><span class="free">Free to view</span></div>
+  <div class="fx"><span class="ref" id="ref">A1</span><span class="f">fx</span><output id="fx"></output></div>
+  <div class="grid" id="grid"></div>
+  <nav class="tabs" id="tabs" role="tablist" aria-label="Sheets"></nav>
+</div>
+<script src="../../shared/content.js"></script>
+<script src="../../shared/kit.js"></script>
+<script>
+const {$,$$,S,link,esc,hydrate}=BIO;const P=S.product;
+// Each sheet: rows of [A, B, C, formula, rowClass]
+const q=s=>`"${s}"`;
+const SHEETS={
+ Profile:[[`<span data-t="person.name"></span>`,'','',`=NAME()`,'h'],['Bio',`<span data-t="person.bio"></span>`,'',`=BIO()`],['Social','<div class="socs" data-soc></div>','',`=SOCIALS("Instagram","TikTok","YouTube")`],['Featured',`<b>${esc(P.name)}</b>`,'<button class="lnk" data-tab="Product">Open sheet →</button>',`=FEATURED(${q(P.name)})`],['Price',esc(P.price),'',`=PRICE(${q(P.name)})`,'good']],
+ Product:[[esc(P.name),'','',`=PRODUCT()`,'h'],['Price',esc(P.price),'',`=IF(COST=0,"Free")`,'good'],['Type',esc(P.kind),'',`=TYPE()`],['Does',esc(P.description),'',`=DESCRIPTION()`],['Needs',esc(P.promise),'',`=AND(CLOUD=0,SUBSCRIPTION=0)`,'good'],['Runs on',esc(P.compat),esc(P.compatNote),`=PLATFORM("Desktop")`],
+  ...P.details.map((d,i)=>['Detail '+(i+1),esc(d),'',`=DETAIL(${i+1})`]),
+  ['Get it','<button class="btn" data-get>Get it free</button>','',`=SEND_LINK(EMAIL)`],['Preview','<div data-demo></div>','',`=PREVIEW("sample files")`]],
+ Links:[['Links','','',`=LINKS()`,'h'],...S.links.map(l=>[esc(l.label),link(l,l.action==='get'?'Get it free':l.url?'Open':esc(l.note),l.action==='get'?'lnk':''),esc(l.tag||''),l.action==='get'?`=FEATURED(${q(l.label)})`:l.url?`=HYPERLINK(${q(l.url)})`:`=IFBLANK(URL,"Coming soon")`,l.featured?'good':''])],
+ Building:[['Currently building','','',`=NOW_BUILDING()`,'h'],['Project',`<b data-t="building.name"></b>`,'',`=PROJECT()`],['Status',`<span data-t="building.status"></span>`,'',`=STATUS()`],['Follow','<a data-build-link>Follow the journey</a>','',`=JOURNEY()`]],
+ Newsletter:[['Newsletter','','',`=SUBSCRIBE()`,'h'],['About',`<span data-t="newsletter.intro"></span>`,'',`=INTRO()`],['Your email','<div data-form="newsletter"></div>','',`=SUBSCRIBE(EMAIL,CONSENT)`]],
+ Info:[['Info','','',`=INFO()`,'h'],['Contact','<a data-contact>Contact</a>','',`=CONTACT()`],['Privacy','<a data-privacy>Privacy policy</a>','',`=PRIVACY()`],['Credit',`<span data-t="footer.credit"></span>`,'',`=CREDIT()`]]
+};
+const names=Object.keys(SHEETS);let curS='Profile',r0=0,c0=0;
+$('#tabs').innerHTML=names.map(n=>`<button role="tab" data-tab="${n}">${n}</button>`).join('');
+function render(n){curS=n;const rows=SHEETS[n];
+ $('#grid').innerHTML=`<table><colgroup><col style="width:38px"><col style="width:30%"><col><col class="cc colC"></colgroup><thead><tr><th></th><th>A</th><th>B</th><th class="colC">C</th></tr></thead><tbody>${rows.map((r,i)=>{const h=r[4]==='h';return `<tr class="${r[4]||''}"><th>${i+1}</th>${h?`<td colspan="3" data-r="${i}" data-c="0"><div class="c">${r[0]}</div></td>`:`<td class="lbl" data-r="${i}" data-c="0"><div class="c">${r[0]}</div></td><td data-r="${i}" data-c="1"><div class="c">${r[1]}</div></td><td class="colC" data-r="${i}" data-c="2"><div class="c">${r[2]}</div></td>`}</tr>`}).join('')}${Array.from({length:6},(_,k)=>`<tr><th>${rows.length+k+1}</th><td></td><td></td><td class="colC"></td></tr>`).join('')}</tbody></table>`;
+ hydrate($('#grid'));$$('#tabs button').forEach(b=>b.setAttribute('aria-selected',b.dataset.tab===n));pick(0,0)}
+function pick(r,c){r0=r;c0=c;$$('td.sel').forEach(t=>t.classList.remove('sel'));const td=$(`td[data-r="${r}"][data-c="${c}"]`)||$(`td[data-r="${r}"][data-c="0"]`);if(!td)return;td.classList.add('sel');
+ $('#ref').textContent='ABC'[+td.dataset.c]+(r+1);const row=SHEETS[curS][r];if(!row)return;$('#fx').textContent=+td.dataset.c===0&&row[4]!=='h'?td.textContent.trim():row[3]}
+$('#grid').addEventListener('click',e=>{const td=e.target.closest('td[data-r]');if(td)pick(+td.dataset.r,+td.dataset.c)});
+document.addEventListener('click',e=>{const t=e.target.closest('[data-tab]');if(t)render(t.dataset.tab)});
+addEventListener('keydown',e=>{if(e.target.matches('input'))return;const m={ArrowDown:[1,0],ArrowUp:[-1,0],ArrowRight:[0,1],ArrowLeft:[0,-1]}[e.key];if(!m)return;e.preventDefault();pick(Math.max(0,Math.min(SHEETS[curS].length-1,r0+m[0])),Math.max(0,Math.min(2,c0+m[1])))});
+render('Profile');
+window.BIO_QA=async()=>{$('#grid').innerHTML=names.map(n=>{render(n);return $('#grid').innerHTML}).join('');hydrate($('#grid'))};
+</script>
+</body>
+</html>

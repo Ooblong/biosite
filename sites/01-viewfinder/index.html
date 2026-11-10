@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Sairah González</title>
+<meta name="description" content="Sairah González. Get My Photo Gallery, a free desktop app.">
+<meta name="theme-color" content="#000000">
+<link rel="icon" href="../../shared/icon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../shared/kit.css">
+<style>
+:root{--y:#ffd60a;--ink:#000;--panel:#0d0d0e;--w:#f5f5f0;--mute:#a4a4a0;
+--k-bg:#111;--k-fg:#f5f5f0;--k-muted:#a4a4a0;--k-accent:#ffd60a;--k-on:#000;--k-line:#55554f;--k-r:4px;--k-font:Barlow,sans-serif;--k-display:"Barlow Condensed",sans-serif;--k-err:#ff8f7a;--k-ok:#ffd60a}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;background:var(--ink);color:var(--w);font-family:Barlow,sans-serif;overscroll-behavior:none}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--y);outline-offset:2px}
+.cam{height:100dvh;display:grid;grid-template-rows:auto 1fr auto;max-width:520px;margin:auto;position:relative;overflow:hidden;background:#000}
+.hud{display:flex;justify-content:space-between;align-items:center;padding:calc(10px + env(safe-area-inset-top)) 16px 8px;font:600 15px "Barlow Condensed",sans-serif;letter-spacing:.08em}
+.hud b{color:var(--y);font-weight:600}
+.hud .rec{display:flex;align-items:center;gap:6px}
+.batt{width:26px;height:12px;border:1.5px solid var(--w);border-radius:2px;position:relative}
+.batt:before{content:"";position:absolute;inset:1.5px;right:6px;background:var(--w)}
+.batt:after{content:"";position:absolute;right:-4px;top:2px;width:2px;height:5px;background:var(--w)}
+.finder{position:relative;margin:0 8px;border-radius:6px;overflow:hidden;background:var(--panel)}
+.thirds{position:absolute;inset:0;pointer-events:none;z-index:3;opacity:.2;background:
+ linear-gradient(90deg,transparent calc(33.33% - .5px),#fff calc(33.33% - .5px),#fff calc(33.33% + .5px),transparent calc(33.33% + .5px),transparent calc(66.66% - .5px),#fff calc(66.66% - .5px),#fff calc(66.66% + .5px),transparent calc(66.66% + .5px)),
+ linear-gradient(transparent calc(33.33% - .5px),#fff calc(33.33% - .5px),#fff calc(33.33% + .5px),transparent calc(33.33% + .5px),transparent calc(66.66% - .5px),#fff calc(66.66% - .5px),#fff calc(66.66% + .5px),transparent calc(66.66% + .5px))}
+.corner{position:absolute;width:20px;height:20px;border:2px solid var(--w);z-index:3;pointer-events:none;opacity:.85}
+.c1{left:10px;top:10px;border-right:0;border-bottom:0}.c2{right:10px;top:10px;border-left:0;border-bottom:0}.c3{left:10px;bottom:10px;border-right:0;border-top:0}.c4{right:10px;bottom:10px;border-left:0;border-top:0}
+.reticle{position:absolute;z-index:4;width:76px;height:76px;margin:-38px 0 0 -38px;border:1.5px solid var(--y);pointer-events:none;opacity:0;transform:scale(1.5)}
+.reticle.on{animation:rt .7s cubic-bezier(.2,.9,.3,1)}
+@keyframes rt{0%{opacity:0;transform:scale(1.5)}25%{opacity:1;transform:scale(1)}40%{opacity:.4}55%{opacity:1}100%{opacity:0;transform:scale(1)}}
+.track{position:absolute;inset:0;display:flex;transition:transform .5s cubic-bezier(.3,.9,.2,1)}
+.scene{flex:0 0 100%;height:100%;overflow:auto;padding:30px 22px 26px;display:flex;flex-direction:column;justify-content:center;gap:14px;position:relative;scrollbar-width:none}
+.scene::-webkit-scrollbar{display:none}
+.scene>*{position:relative;z-index:1}
+.bgart{position:absolute!important;inset:0;z-index:0!important;opacity:.55;pointer-events:none}
+.bgart svg{width:100%;height:100%;display:block;filter:saturate(1.1) brightness(.62)}
+h1,h2{font-family:"Barlow Condensed",sans-serif;font-weight:700;line-height:.92;margin:0;letter-spacing:-.005em;text-transform:uppercase}
+h1{font-size:clamp(70px,21vw,104px)}
+h2{font-size:clamp(44px,13vw,64px)}
+.lbl{font:600 14px "Barlow Condensed",sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--y);margin:0}
+.scene p{margin:0;line-height:1.45;font-size:16px}
+.mut{color:#d6d6d0}
+.av{width:84px;height:84px;display:grid;place-items:center;font:700 34px "Barlow Condensed",sans-serif;color:#000;background:var(--y);border-radius:50%;overflow:hidden}
+.av img{width:100%;height:100%;object-fit:cover}
+.socs{display:flex;gap:4px;margin-left:-10px}
+.cta{display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%;min-height:60px;padding:0 16px;font:700 22px "Barlow Condensed",sans-serif;letter-spacing:.03em;text-transform:uppercase;color:#000;background:var(--y);border:0;border-radius:4px;cursor:pointer}
+.ghost{min-height:44px;padding:0 14px;font-weight:600;background:rgba(0,0,0,.4);border:1.5px solid #fff8;border-radius:4px;cursor:pointer}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.free{padding:3px 9px;font:700 16px "Barlow Condensed",sans-serif;letter-spacing:.06em;color:#000;background:var(--y)}
+.note{font-size:14px!important;color:#d6d6d0}
+.pg{--pg-bg:#000;--pg-fg:#f5f5f0;--pg-mut:#a4a4a0;--pg-line:#3a3a38;--pg-acc:#ffd60a;--pg-on:#000;--pg-r:4px;--pg-font:Barlow,sans-serif}
+.lk{list-style:none;margin:0;padding:0;display:grid;gap:0;border-top:1px solid #fff4}
+.lk>*{display:flex;justify-content:space-between;align-items:center;gap:12px;width:100%;min-height:50px;font:600 22px "Barlow Condensed",sans-serif;text-transform:uppercase;letter-spacing:.02em;color:inherit;background:none;border:0;border-bottom:1px solid #fff4;text-decoration:none;text-align:left;padding:4px 0}
+.lk small{font:500 13px Barlow,sans-serif;text-transform:none;letter-spacing:0;color:#c4c4be;white-space:nowrap}
+.lk .feat{color:var(--y);cursor:pointer}.lk .feat small{color:var(--y)}
+.is-soon{color:#c8c8c2}
+.foot{display:grid;gap:10px;font-size:15px}
+.foot a{color:var(--y);min-height:40px;display:inline-flex;align-items:center}
+.bottom{padding:6px 0 calc(14px + env(safe-area-inset-bottom));background:#000}
+.modes{overflow:hidden;position:relative;height:40px;mask:linear-gradient(90deg,transparent,#000 22%,#000 78%,transparent)}
+.strip{display:flex;position:absolute;left:50%;top:0;transition:transform .4s cubic-bezier(.3,.9,.2,1)}
+.strip button{flex:none;height:40px;padding:0 13px;font:600 17px "Barlow Condensed",sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#bdbdb6;background:none;border:0;cursor:pointer}
+.strip button[aria-current=true]{color:var(--y)}
+.ctrl{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:4px 26px 0}
+.side{justify-self:start;width:48px;height:48px;border-radius:8px;overflow:hidden;padding:0;background:#222;border:1.5px solid #fff5;cursor:pointer}
+.side svg{width:100%;height:100%;display:block}
+.flip{justify-self:end;width:48px;height:48px;font-size:22px;border-radius:50%;background:#1b1b1b;border:0;cursor:pointer}
+.shutter{width:72px;height:72px;padding:0;border-radius:50%;background:none;border:3px solid #fff;display:grid;place-items:center;cursor:pointer}
+.shutter i{display:block;width:58px;height:58px;border-radius:50%;background:#fff;transition:transform .12s}
+.shutter:active i{transform:scale(.86)}
+.flash{position:fixed;inset:0;background:#fff;z-index:20;opacity:0;pointer-events:none}
+.flash.on{animation:fl .35s ease-out}
+@keyframes fl{0%{opacity:.95}100%{opacity:0}}
+.iris{position:absolute;inset:0;z-index:5;pointer-events:none;background:#000;clip-path:circle(120% at 50% 50%);-webkit-mask:none;opacity:0}
+.iris.on{animation:ir .42s ease-in-out}
+@keyframes ir{0%{opacity:1;clip-path:polygon(0 0,100% 0,100% 100%,0 100%,0 0,50% 0,50% 0,50% 0,50% 0,50% 0)}50%{opacity:1;clip-path:polygon(0 0,100% 0,100% 100%,0 100%,0 0,50% 50%,50% 50%,50% 50%,50% 50%,50% 50%)}100%{opacity:1;clip-path:polygon(0 0,100% 0,100% 100%,0 100%,0 0,50% 0,50% 0,50% 0,50% 0,50% 0)}}
+@media(min-width:900px){
+ body{display:grid;place-items:center;background:radial-gradient(circle at 50% 30%,#2a2a2c,#09090a)}
+ .cam{width:min(1120px,94vw);max-width:none;height:min(680px,92vh);grid-template-columns:1fr 150px;grid-template-rows:auto 1fr;border-radius:26px;padding:12px;box-shadow:0 40px 100px #000,inset 0 0 0 2px #2c2c2e}
+ .hud{grid-column:1}.finder{grid-column:1;margin:0}
+ .bottom{grid-column:2;grid-row:1/3;display:flex;flex-direction:column;justify-content:center;gap:22px;padding:0}
+ .modes{height:auto;mask:none;overflow:visible;order:2}
+ .strip{position:static;flex-direction:column;transform:none!important;align-items:center}
+ .ctrl{grid-template-columns:1fr;justify-items:center;gap:14px;padding:0}.side{justify-self:center;order:3}.flip{display:none}
+ .scene{padding:40px 12%}
+}
+@media(prefers-reduced-motion:reduce){.track,.strip{transition:none}.iris.on,.flash.on,.reticle.on{animation:none}}
+</style>
+</head>
+<body>
+<main class="cam" id="cam">
+  <div class="hud"><span class="rec"><b id="modeName">PROFILE</b></span><span>ƒ/2.8 &nbsp; 1/250 &nbsp; ISO 400</span><span class="batt" aria-hidden="true"></span></div>
+  <section class="finder" id="finder" aria-live="polite">
+    <div class="track" id="track">
+      <article class="scene" data-mode="Profile">
+        <div class="bgart" id="bg0"></div>
+        <div class="av" data-av></div>
+        <h1 data-t="person.name"></h1>
+        <p data-t="person.bio"></p>
+        <div class="socs" data-soc></div>
+        <button class="cta" data-go="1"><span>My Photo Gallery</span><span>Free →</span></button>
+      </article>
+      <article class="scene" data-mode="Gallery">
+        <p class="row"><span class="free" data-t="product.price"></span><span class="lbl" data-t="product.compat"></span></p>
+        <h2 data-t="product.name"></h2>
+        <p data-t="product.description"></p>
+        <p class="mut" data-t="product.promise"></p>
+        <div data-demo></div>
+        <ul data-details></ul>
+        <button class="cta" data-get><span>Get it free</span><span>→</span></button>
+        <p class="note" data-t="product.compatNote"></p>
+      </article>
+      <article class="scene" data-mode="Links">
+        <div class="bgart" id="bg2"></div>
+        <h2>Links</h2><div class="lk" id="links"></div>
+      </article>
+      <article class="scene" data-mode="Building">
+        <div class="bgart" id="bg3"></div>
+        <p class="lbl">Currently building</p><h2 data-t="building.name"></h2><p data-t="building.status"></p>
+        <a class="ghost" data-build-link style="width:max-content;display:inline-flex;align-items:center;color:inherit;text-decoration:none">Follow the journey</a>
+      </article>
+      <article class="scene" data-mode="News">
+        <p class="lbl">Newsletter</p><h2>Stay in the frame</h2><p data-t="newsletter.intro"></p><div data-form="newsletter"></div>
+      </article>
+      <article class="scene" data-mode="Info">
+        <h2>Info</h2>
+        <div class="foot"><a data-contact>Contact</a><a data-privacy>Privacy policy</a><span data-t="footer.credit"></span></div>
+      </article>
+    </div>
+    <i class="thirds"></i><i class="corner c1"></i><i class="corner c2"></i><i class="corner c3"></i><i class="corner c4"></i>
+    <i class="reticle" id="ret"></i><i class="iris" id="iris"></i>
+  </section>
+  <div class="bottom">
+    <nav class="modes" aria-label="Sections"><div class="strip" id="strip"></div></nav>
+    <div class="ctrl">
+      <button class="side" id="thumb" aria-label="Preview My Photo Gallery" data-preview></button>
+      <button class="shutter" id="shutter" aria-label="Next section"><i></i></button>
+      <button class="flip" id="prev" aria-label="Previous section">↺</button>
+    </div>
+  </div>
+</main>
+<div class="flash" id="flash"></div>
+<script src="../../shared/content.js"></script>
+<script src="../../shared/kit.js"></script>
+<script>
+const {$,$$,S,art,link,esc,reduced}=BIO;
+$('#bg0').innerHTML=art(2,480,800);$('#bg2').innerHTML=art(8,480,800);$('#bg3').innerHTML=art(6,480,800);$('#thumb').innerHTML=art(0,96,96);
+$('#links').innerHTML=S.links.map(l=>link(l,`<span>${esc(l.label)}</span><small>${esc(l.note)}</small>`,l.featured?'feat':'')).join('');
+const scenes=$$('.scene'),track=$('#track'),strip=$('#strip');let i=0;
+strip.innerHTML=scenes.map((s,n)=>`<button data-m="${n}">${s.dataset.mode}</button>`).join('');
+const btns=$$('button',strip);
+function audio(){try{const c=new(window.AudioContext||webkitAudioContext)(),b=c.createBuffer(1,2400,44100),d=b.getChannelData(0);for(let k=0;k<2400;k++)d[k]=(Math.random()*2-1)*Math.pow(1-k/2400,5)*.25;const s=c.createBufferSource();s.buffer=b;s.connect(c.destination);s.start()}catch{}}
+function set(n,fx=true){
+  n=(n+scenes.length)%scenes.length;
+  const go=()=>{i=n;track.style.transform=`translateX(${-i*100}%)`;scenes.forEach((s,k)=>{s.inert=k!==i});
+    btns.forEach((b,k)=>b.setAttribute('aria-current',k===i));
+    if(innerWidth<900){const b=btns[i];strip.style.transform=`translateX(${-(b.offsetLeft+b.offsetWidth/2)}px)`}
+    $('#modeName').textContent=scenes[i].dataset.mode.toUpperCase();scenes[i].scrollTop=0};
+  if(fx&&!reduced){const ir=$('#iris');ir.classList.remove('on');void ir.offsetWidth;ir.classList.add('on');setTimeout(go,200)}else go();
+}
+strip.onclick=e=>{const b=e.target.closest('[data-m]');if(b)set(+b.dataset.m)};
+document.addEventListener('click',e=>{const b=e.target.closest('[data-go]');if(b)set(+b.dataset.go)});
+$('#shutter').onclick=()=>{audio();const f=$('#flash');f.classList.remove('on');void f.offsetWidth;f.classList.add('on');set(i+1)};
+$('#prev').onclick=()=>set(i-1);
+$('#finder').addEventListener('pointerdown',e=>{if(e.target.closest('input,button,a,label'))return;const r=$('#finder').getBoundingClientRect(),t=$('#ret');t.style.left=e.clientX-r.left+'px';t.style.top=e.clientY-r.top+'px';t.classList.remove('on');void t.offsetWidth;t.classList.add('on')});
+let sx=0,sy=0;const f=$('#finder');
+f.addEventListener('touchstart',e=>{sx=e.touches[0].clientX;sy=e.touches[0].clientY},{passive:true});
+f.addEventListener('touchend',e=>{if(e.target.closest('input'))return;const dx=e.changedTouches[0].clientX-sx,dy=e.changedTouches[0].clientY-sy;if(Math.abs(dx)>55&&Math.abs(dx)>Math.abs(dy)*1.4)set(i+(dx<0?1:-1))},{passive:true});
+addEventListener('keydown',e=>{if(e.target.matches('input'))return;if(e.key==='ArrowRight')set(i+1);if(e.key==='ArrowLeft')set(i-1)});
+addEventListener('resize',()=>set(i,false));
+document.fonts.ready.then(()=>set(0,false));set(0,false);
+</script>
+</body>
+</html>

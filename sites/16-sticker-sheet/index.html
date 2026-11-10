@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Sairah González</title>
+<meta name="description" content="Sairah González. Get My Photo Gallery, a free desktop app.">
+<meta name="theme-color" content="#d9f0ff">
+<link rel="icon" href="../../shared/icon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Rubik:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../shared/kit.css">
+<style>
+:root{--y:#ffd23f;--t:#3bceac;--p:#ee4266;--v:#540d6e;--b:#2f80ff;--ink:#1b1430;
+--k-bg:#fff;--k-fg:#1b1430;--k-muted:#4d4566;--k-accent:#1b1430;--k-on:#fff;--k-line:#1b1430;--k-r:14px;--k-font:Rubik,sans-serif;--k-display:"Lilita One",sans-serif;--k-field:#fff;--k-dlg-b:3px solid #1b1430}
+*{box-sizing:border-box}
+body{margin:0;min-height:100dvh;color:var(--ink);font:500 16px/1.4 Rubik,sans-serif;background:#d9f0ff;background-image:linear-gradient(#b7dcf5 1px,transparent 1px),linear-gradient(90deg,#b7dcf5 1px,transparent 1px);background-size:24px 24px;overflow-x:hidden}
+button{font:inherit;color:inherit}
+a{color:inherit}
+:focus-visible{outline:3px dashed var(--ink);outline-offset:3px}
+.sheet{position:relative;max-width:560px;margin:0 auto;padding:calc(20px + env(safe-area-inset-top)) 16px 40px;display:grid;gap:22px}
+.st{position:relative;padding:18px;background:var(--bg,#fff);border:3px solid var(--ink);border-radius:var(--rad,22px);box-shadow:0 0 0 7px #fff,0 0 0 9.5px var(--ink),6px 10px 0 9.5px rgba(27,20,48,.18);transform:rotate(var(--rot,0deg));transition:transform .25s cubic-bezier(.3,1.6,.5,1)}
+.st:hover{transform:rotate(0deg) scale(1.01)}
+.st>*{position:relative}
+.hello{text-align:center;--bg:var(--y);--rot:-1.5deg}
+.hello .av{width:110px;height:110px;margin:4px auto 10px;display:grid;place-items:center;font:400 42px "Lilita One",sans-serif;color:#fff;background:var(--p);border:3px solid var(--ink);border-radius:50%;overflow:hidden}
+.av img{width:100%;height:100%;object-fit:cover}
+h1{margin:0;font:400 clamp(44px,13vw,64px)/.95 "Lilita One",sans-serif;letter-spacing:.005em;-webkit-text-stroke:0}
+h2{margin:0 0 8px;font:400 clamp(32px,9.6vw,44px)/1 "Lilita One",sans-serif}
+.st p{margin:0 0 10px}
+.socs{display:flex;justify-content:center;gap:8px}
+.socs .k-soc{width:48px;height:48px;background:#fff;border:3px solid var(--ink);border-radius:50%}
+.prod{--bg:#fff;--rot:1deg;--rad:28px}
+.badge{position:absolute!important;right:-12px;top:-26px;width:92px;height:92px;display:grid;place-items:center;text-align:center;font:400 22px/1 "Lilita One",sans-serif;color:var(--ink);background:var(--y);border:3px solid var(--ink);clip-path:polygon(50% 0,61% 13%,77% 6%,81% 22%,97% 25%,91% 40%,100% 54%,87% 63%,90% 79%,74% 80%,66% 95%,52% 86%,37% 97%,29% 82%,12% 83%,14% 66%,0 56%,9% 42%,3% 26%,19% 22%,24% 6%,39% 13%);transform:rotate(12deg);animation:spin 14s linear infinite}
+@keyframes spin{to{transform:rotate(372deg)}}
+.pill{display:inline-block;padding:4px 12px;font-weight:800;font-size:13px;color:#fff;background:var(--v);border-radius:99px}
+.go{display:block;width:100%;min-height:60px;margin:12px 0 8px;font:400 24px "Lilita One",sans-serif;color:#fff;background:var(--p);border:3px solid var(--ink);border-radius:16px;box-shadow:0 5px 0 var(--ink);cursor:pointer;transition:transform .1s,box-shadow .1s}
+.go:active{transform:translateY(5px);box-shadow:0 0 0 var(--ink)}
+.sm{font-size:14px;color:#4d4566}
+.pg{--pg-r:16px;--pg-acc:#540d6e;--pg-line:#1b1430;--pg-font:Rubik,sans-serif;border-width:3px;margin:12px 0 4px}
+.links{--bg:var(--t);--rot:-1deg}
+.lk{display:grid;gap:9px}
+.lk>*{display:flex;justify-content:space-between;align-items:center;gap:10px;min-height:54px;padding:6px 16px;font:inherit;font-weight:800;text-align:left;color:inherit;text-decoration:none;background:#fff;border:3px solid var(--ink);border-radius:99px}
+.lk>*:first-child{color:#fff;background:var(--v);cursor:pointer}
+.lk small{font-weight:500;font-size:13px;white-space:nowrap}
+.duo{display:grid;gap:22px}
+.build{--bg:var(--b);--rot:1.6deg;--rad:50px 14px 50px 14px;color:#fff}
+.build a{color:#fff}
+.news{--bg:#fff;--rot:-.8deg}
+.foot{display:flex;flex-wrap:wrap;justify-content:center;gap:0 20px;font-weight:700;font-size:14px;padding:0 0 calc(20px + env(safe-area-inset-bottom))}
+.foot a{min-height:44px;display:inline-flex;align-items:center}
+.deco{position:absolute;z-index:3;width:64px;height:64px;display:grid;place-items:center;font:400 15px/1 "Lilita One",sans-serif;text-align:center;border:3px solid var(--ink);box-shadow:0 0 0 5px #fff,0 0 0 7px var(--ink);cursor:grab;touch-action:none;user-select:none}
+.deco:active{cursor:grabbing}
+.tip{text-align:center;font-size:13px;font-weight:700;color:#4d4566;margin:-8px 0 0}
+@media(min-width:900px){.sheet{max-width:980px;grid-template-columns:1fr 1.15fr;align-items:start;gap:34px;padding-top:50px}.hello{grid-row:span 2}.tip{grid-column:1/-1}}
+@media(prefers-reduced-motion:reduce){.badge{animation:none}.st,.go{transition:none}}
+</style>
+</head>
+<body>
+<main class="sheet" id="sheet">
+  <section class="st hello"><div class="av" data-av></div><h1 data-t="person.name"></h1><p data-t="person.bio"></p><div class="socs" data-soc></div></section>
+  <section class="st prod">
+    <span class="badge" aria-hidden="true">100%<br>FREE</span>
+    <p><span class="pill" data-t="product.price"></span> <span class="pill" style="background:var(--ink)" data-t="product.compat"></span></p>
+    <h2 data-t="product.name"></h2><p data-t="product.description"></p><p><b data-t="product.promise"></b></p>
+    <ul data-details></ul>
+    <button class="go" data-get>Get it free</button>
+    <p class="sm" data-t="product.compatNote"></p>
+    <div data-demo></div>
+  </section>
+  <section class="st links"><h2>Links</h2><div class="lk" id="links"></div></section>
+  <div class="duo">
+    <section class="st build"><p style="font-weight:800">Currently building</p><h2 data-t="building.name"></h2><p data-t="building.status"></p><a data-build-link>Follow the journey</a></section>
+    <section class="st news"><h2>Newsletter</h2><p data-t="newsletter.intro"></p><div data-form="newsletter"></div></section>
+  </div>
+  <p class="tip">Psst: the loose stickers can be dragged around.</p>
+  <footer class="foot"><a data-contact>Contact</a><a data-privacy>Privacy policy</a><span style="align-self:center" data-t="footer.credit"></span></footer>
+</main>
+<script src="../../shared/content.js"></script>
+<script src="../../shared/kit.js"></script>
+<script>
+const {$,$$,S,link,esc}=BIO;
+$('#links').innerHTML=S.links.map(l=>link(l,`<span>${esc(l.label)}</span><small>${esc(l.note)}</small>`)).join('');
+const sheet=$('#sheet');
+// each loose sticker sits on a corner of a section, so it never covers a button
+const D=[['★','var(--y)','50%','.hello',0,0],['NO<br>CLOUD','var(--t)','18px','.links',1,0],['♥','var(--p)','50%','.build',0,0],['DESK<br>TOP','#fff','12px','.news',1,0]];
+document.fonts.ready.then(()=>D.forEach(([txt,bg,r,sel,right],i)=>{const d=document.createElement('div');d.className='deco';d.setAttribute('aria-hidden','true');d.innerHTML=txt;d.style.background=bg;d.style.borderRadius=r;
+ const host=$(sel),hb=host.getBoundingClientRect(),sb=sheet.getBoundingClientRect();
+ d.style.left=(right?hb.right-sb.left-46:hb.left-sb.left-18)+'px';d.style.top=(hb.top-sb.top-30)+'px';d.style.transform=`rotate(${(i%2?1:-1)*(8+i*4)}deg)`;sheet.append(d);
+ let s=null;d.addEventListener('pointerdown',e=>{s={x:e.clientX-d.offsetLeft,y:e.clientY-d.offsetTop};d.setPointerCapture(e.pointerId);d.style.zIndex=9;d.style.scale='1.12'});
+ d.addEventListener('pointermove',e=>{if(!s)return;d.style.left=Math.max(-10,Math.min(sheet.clientWidth-60,e.clientX-s.x))+'px';d.style.top=(e.clientY-s.y)+'px'});
+ d.addEventListener('pointerup',()=>{s=null;d.style.scale='1'})}));
+</script>
+</body>
+</html>

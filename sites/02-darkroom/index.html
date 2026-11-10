@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Sairah González</title>
+<meta name="description" content="Sairah González. Get My Photo Gallery, a free desktop app.">
+<meta name="theme-color" content="#160304">
+<link rel="icon" href="../../shared/icon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,600;1,300;1,500&family=Spline+Sans+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../shared/kit.css">
+<style>
+:root{--room:#160304;--glow:#ff2a1c;--soft:#ff9f8e;--paper:#f7cfc4;--inkc:#2a0605;
+--k-bg:#f7cfc4;--k-fg:#2a0605;--k-muted:#6a2a22;--k-accent:#b3160c;--k-on:#ffe9e2;--k-line:#2a060566;--k-r:2px;--k-font:"Spline Sans Mono",monospace;--k-display:"Cormorant Garamond",serif;--k-err:#8e0d05;--k-ok:#2a0605;--k-field:#fbe2da}
+body.day{--room:#dfe2df;--glow:#4c5450;--soft:#333a36;--paper:#fff;--inkc:#121513;--k-bg:#fff;--k-fg:#121513;--k-muted:#555;--k-accent:#121513;--k-on:#fff;--k-field:#f4f4f2}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--room);color:var(--soft);font-family:"Spline Sans Mono",monospace;font-size:14px;line-height:1.5;transition:background 1.2s,color 1.2s;overflow-x:hidden}
+button{font:inherit;color:inherit}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--soft);outline-offset:2px}
+.safelight{position:fixed;left:50%;top:-180px;width:700px;height:520px;transform:translateX(-50%);background:radial-gradient(closest-side,var(--glow),transparent);opacity:.4;pointer-events:none;animation:hum 6s ease-in-out infinite;transition:opacity 1.2s}
+body.day .safelight{opacity:0}
+@keyframes hum{50%{opacity:.3}}
+.switch{position:fixed;right:12px;top:calc(12px + env(safe-area-inset-top));z-index:9;min-height:44px;padding:0 14px;font-size:12px;color:var(--soft);background:color-mix(in srgb,var(--room) 80%,transparent);border:1px solid currentColor;border-radius:99px;cursor:pointer}
+.tray{position:relative;min-height:92dvh;display:flex;flex-direction:column;justify-content:center;padding:70px 22px 40px;max-width:640px;margin:auto}
+.tray h1{margin:0;font:300 clamp(66px,20vw,124px)/.88 "Cormorant Garamond",serif;letter-spacing:-.04em;color:var(--soft);text-shadow:0 0 30px color-mix(in srgb,var(--glow) 60%,transparent)}
+.tray h1 span{display:block;opacity:0;filter:blur(16px);animation:dev 3s .2s ease-out forwards}
+.tray h1 span+span{font-style:italic;animation-delay:1s;padding-left:.3em}
+@keyframes dev{to{opacity:1;filter:blur(0)}}
+.tray p{max-width:30em;margin:22px 0 0}
+.tray .av{width:96px;height:96px;margin-bottom:24px;display:grid;place-items:center;font:italic 300 36px "Cormorant Garamond",serif;color:var(--inkc);background:var(--paper);overflow:hidden;box-shadow:0 0 0 8px var(--room),0 0 0 9px var(--soft)}
+.av img{width:100%;height:100%;object-fit:cover}
+.socs{display:flex;gap:4px;margin:14px 0 0 -10px}
+.peek{display:inline-flex;align-items:center;min-height:44px;margin-top:6px;font-size:15px;color:var(--soft);text-underline-offset:4px}
+.hint{margin-top:30px!important;font-size:12px;opacity:.85}
+.line{position:relative;height:2px;background:var(--soft);opacity:.55}
+.hang{max-width:640px;margin:auto;padding:0 18px 80px}
+.print{--dev:0;position:relative;margin:64px 0 0;padding:20px 20px 24px;background:var(--paper);color:color-mix(in srgb,var(--inkc) calc(var(--dev)*100%),var(--paper));transform:rotate(var(--r,0deg));transform-origin:50% -30px;box-shadow:0 18px 40px rgba(0,0,0,.5)}
+.print:before,.print:after{content:"";position:absolute;top:-22px;width:14px;height:36px;background:#6b6f73;border-radius:3px 3px 1px 1px;box-shadow:inset 0 0 0 1px #0005}
+.print:before{left:24px}.print:after{right:24px}
+.print::selection{background:#000}
+.print h2{margin:0 0 10px;font:300 clamp(40px,12vw,64px)/.98 "Cormorant Garamond",serif;letter-spacing:-.03em}
+.print h3{margin:0 0 8px;font:italic 500 28px/1.1 "Cormorant Garamond",serif}
+.print p{margin:0 0 12px}
+.print ul{margin:0 0 12px}
+.tag{display:inline-block;padding:2px 8px;margin-right:6px;font-size:12px;color:var(--paper);background:color-mix(in srgb,var(--inkc) calc(var(--dev)*100%),var(--paper))}
+.big{display:block;width:100%;min-height:60px;margin:14px 0 8px;font:500 24px "Cormorant Garamond",serif;color:var(--paper);background:color-mix(in srgb,var(--k-accent) calc(var(--dev)*100%),var(--paper));border:0;cursor:pointer}
+.pg{--pg-bg:#1a0504;--pg-fg:#ffd8cf;--pg-mut:#ffb3a3;--pg-line:#6d2318;--pg-acc:#ff5a4a;--pg-on:#1a0504;--pg-r:0;--pg-tile-r:0;--pg-font:"Spline Sans Mono",monospace;--pg-filter:grayscale(1) sepia(1) saturate(4) hue-rotate(-40deg);margin:12px 0;opacity:calc(.1 + var(--dev)*.9);filter:contrast(calc(.3 + var(--dev)*.7))}
+body.day .pg{--pg-bg:#111;--pg-fg:#eee;--pg-mut:#bbb;--pg-line:#444;--pg-acc:#eee;--pg-on:#111;--pg-filter:none}
+.lk{display:grid}
+.lk>*{display:flex;justify-content:space-between;gap:12px;align-items:baseline;width:100%;padding:12px 0;min-height:48px;font:inherit;text-align:left;color:inherit;background:none;border:0;border-bottom:1px solid currentColor;text-decoration:none}
+.lk b{font:italic 500 21px "Cormorant Garamond",serif}
+.lk .feat{cursor:pointer}.lk .feat b:after{content:" ★"}
+.lk small{font-size:12px;white-space:nowrap}
+.foot{padding:30px 22px calc(40px + env(safe-area-inset-bottom));max-width:640px;margin:auto;display:flex;flex-wrap:wrap;gap:8px 22px;align-items:center;font-size:13px}
+.foot a{min-height:44px;display:inline-flex;align-items:center}
+.lk .is-soon,.lk .is-soon small{opacity:1}
+@media(min-width:900px){.hang{max-width:1080px;display:grid;grid-template-columns:1.25fr 1fr;gap:0 44px;align-items:start}.print.wide{grid-row:span 3}.tray{max-width:1080px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.tray h1 span{animation:none;opacity:1;filter:none}.safelight{animation:none}.print{--dev:1!important}}
+</style>
+</head>
+<body>
+<div class="safelight"></div>
+<button class="switch" id="sw" aria-pressed="false">Turn lights on</button>
+<header class="tray">
+  <div class="av" data-av></div>
+  <h1><span data-t="person.first"></span><span data-t="person.last"></span></h1>
+  <p data-t="person.bio"></p>
+  <div class="socs" data-soc></div>
+  <p class="hint">Scroll to develop the prints ↓</p><a class="peek" href="#prod">First print: <b data-t="product.name"></b>, <span data-t="product.price"></span> ↓</a>
+</header>
+<div class="line"></div>
+<main class="hang">
+  <article class="print wide" id="prod" style="--r:-.6deg;scroll-margin-top:60px">
+    <span class="tag" data-t="product.price"></span><span class="tag" data-t="product.compat"></span>
+    <h2 data-t="product.name" style="margin-top:12px"></h2>
+    <p data-t="product.description"></p><p><strong data-t="product.promise"></strong></p>
+    <div data-demo></div>
+    <ul data-details></ul>
+    <button class="big" data-get>Get it free</button>
+    <p style="font-size:12.5px;margin:0" data-t="product.compatNote"></p>
+  </article>
+  <article class="print" style="--r:.8deg"><h3>Links &amp; resources</h3><div class="lk" id="links"></div></article>
+  <article class="print" style="--r:-.5deg"><h3>On the enlarger now</h3><p style="font:300 34px/1 "Cormorant Garamond",serif" data-t="building.name"></p><p data-t="building.status"></p><a data-build-link>Follow the journey</a></article>
+  <article class="print" style="--r:.4deg"><h3>Newsletter</h3><p data-t="newsletter.intro"></p><div data-form="newsletter"></div></article>
+</main>
+<footer class="foot"><a data-contact>Contact</a><a data-privacy>Privacy policy</a><span data-t="footer.credit"></span></footer>
+<script src="../../shared/content.js"></script>
+<script src="../../shared/kit.js"></script>
+<script>
+const {$,$$,S,link,esc,reduced}=BIO;
+$('#links').innerHTML=S.links.map(l=>link(l,`<b>${esc(l.label)}</b><small>${esc(l.note)}</small>`,l.featured?'feat':'')).join('');
+const prints=$$('.print');let tick=false;
+function develop(){tick=false;const vh=innerHeight;prints.forEach(p=>{const r=p.getBoundingClientRect();const v=Math.max(0,Math.min(1,(vh*1.02-r.top)/(vh*.42)));p.style.setProperty('--dev',reduced?1:v.toFixed(3))})}
+addEventListener('scroll',()=>{if(!tick){tick=true;requestAnimationFrame(develop)}},{passive:true});
+addEventListener('resize',develop);develop();
+$('#sw').onclick=e=>{const on=document.body.classList.toggle('day');e.currentTarget.textContent=on?'Back to safelight':'Turn lights on';e.currentTarget.setAttribute('aria-pressed',on)};
+</script>
+</body>
+</html>
